@@ -1,0 +1,8 @@
+name: MinecraftManhuntPlugin
+version: 1.0
+main: com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin
+api-version: 1.16
+author: the_ricetech
+authors:
+  - jonapap
+  - OrangeFirefly
