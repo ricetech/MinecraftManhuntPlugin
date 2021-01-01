@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+@SuppressWarnings("unused")
 public class PlayerDeathCoordsListener implements Listener {
     @EventHandler
     public void playerDeath(PlayerDeathEvent event) {
