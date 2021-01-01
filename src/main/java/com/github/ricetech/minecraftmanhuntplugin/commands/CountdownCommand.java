@@ -38,6 +38,7 @@ public class CountdownCommand implements CommandExecutor {
         public void run() {
             if (remainingTime <= 0) {
                 Bukkit.broadcastMessage("Countdown finished. GO!");
+                this.cancel();
             } else if (remainingTime == 45 || remainingTime % 30 == 0 || remainingTime == 15 || remainingTime < 11) {
                 Bukkit.broadcastMessage(remainingTime + " seconds remain");
             }
