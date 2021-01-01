@@ -7,6 +7,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+/**
+ * Runs a countdown for the given number of seconds.
+ * Reminders of remaining time are given at 30 second intervals, 45 seconds, 15 seconds and each of the last 10 seconds.
+ */
 public class CountdownCommand implements CommandExecutor {
     private final JavaPlugin plugin;
 
