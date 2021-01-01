@@ -10,6 +10,8 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import java.util.List;
+
 @SuppressWarnings("unused")
 public class InventoryHandlerListener implements Listener {
     public static void giveCompass(Player player) {
@@ -39,6 +41,11 @@ public class InventoryHandlerListener implements Listener {
     @EventHandler
     public void removeCompassOnDeath(PlayerDeathEvent event) {
         ItemStack compassStack = new ItemStack(Material.COMPASS, 1);
-        event.getDrops().remove(compassStack);
+        List<ItemStack> drops = event.getDrops();
+        for (int i = 0; i < drops.size(); i++) {
+            if (drops.get(i).isSimilar(compassStack)) {
+                drops.set(i, null);
+            }
+        }
     }
 }
