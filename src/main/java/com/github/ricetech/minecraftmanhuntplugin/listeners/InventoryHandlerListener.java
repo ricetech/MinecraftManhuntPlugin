@@ -4,6 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
@@ -32,5 +33,11 @@ public class InventoryHandlerListener implements Listener {
     public void compassOnRespawn(PlayerRespawnEvent event) {
         Player p = event.getPlayer();
         giveCompass(p);
+    }
+
+    @EventHandler
+    public void removeCompassOnDeath(PlayerDeathEvent event) {
+        ItemStack compassStack = new ItemStack(Material.COMPASS, 1);
+        event.getDrops().remove(compassStack);
     }
 }
