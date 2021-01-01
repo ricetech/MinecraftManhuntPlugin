@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
 import com.github.ricetech.minecraftmanhuntplugin.commands.CountdownCommand;
+import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCoordsListener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,6 +15,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
+        manager.registerEvents(new InventoryHandlerListener(), this);
 
         // Add Commands
         this.getCommand("countdown").setExecutor(new CountdownCommand(this));
