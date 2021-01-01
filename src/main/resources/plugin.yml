@@ -6,3 +6,7 @@ author: the_ricetech
 authors:
   - jonapap
   - OrangeFirefly
+commands:
+  countdown:
+    description: Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
+    usage: /start <time in seconds>
