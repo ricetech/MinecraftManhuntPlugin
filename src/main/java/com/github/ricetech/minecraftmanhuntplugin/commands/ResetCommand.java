@@ -8,6 +8,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * Reset the world and all players in preparation for starting a new game of Manhunt.
+ */
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
     @Override
