@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,6 +10,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.CompassMeta;
 
 import java.util.List;
 
@@ -40,10 +42,10 @@ public class InventoryHandlerListener implements Listener {
 
     @EventHandler
     public void removeCompassOnDeath(PlayerDeathEvent event) {
-        ItemStack compassStack = new ItemStack(Material.COMPASS, 1);
         List<ItemStack> drops = event.getDrops();
         for (int i = 0; i < drops.size(); i++) {
-            if (drops.get(i).isSimilar(compassStack)) {
+            ItemStack drop = drops.get(i);
+            if (drop.getType() == Material.COMPASS) {
                 drops.set(i, null);
             }
         }
