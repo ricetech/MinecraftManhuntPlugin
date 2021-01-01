@@ -6,11 +6,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+import java.util.Objects;
+
 public class PlayerDeathCoordsListener implements Listener {
     @EventHandler
     public void playerDeath(PlayerDeathEvent event) {
         Player p = event.getEntity();
         Location pLoc = p.getLocation();
-        p.sendMessage("You died at: " + pLoc.getBlockX() + ", " + pLoc.getBlockY() + ", " + pLoc.getBlockZ());
+        p.sendMessage("You died at: " + pLoc.getBlockX() + ", " + pLoc.getBlockY() + ", " + pLoc.getBlockZ() +
+                " in: " + Objects.requireNonNull(pLoc.getWorld()).getName());
     }
 }
