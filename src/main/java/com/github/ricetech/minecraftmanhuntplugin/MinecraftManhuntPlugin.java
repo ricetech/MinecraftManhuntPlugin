@@ -6,6 +6,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MinecraftManhuntPlugin extends JavaPlugin {
+    @SuppressWarnings("ConstantConditions")
     @Override
     public void onEnable() {
         getLogger().info("Manhunt Plugin enabled!");
