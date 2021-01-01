@@ -8,6 +8,8 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Manhunt Plugin enabled!");
+
+        // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
     }
