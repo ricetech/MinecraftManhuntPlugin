@@ -9,6 +9,10 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 @SuppressWarnings("unused")
 public class PlayerDeathCoordsListener implements Listener {
+    /**
+     * If a player dies, tell them the world in which they died and the coordinates of their death through a
+     * private message.
+     */
     @EventHandler
     public void whisperDeathLocation(PlayerDeathEvent event) {
         Player p = event.getEntity();
