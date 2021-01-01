@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -23,6 +24,12 @@ public class InventoryHandlerListener implements Listener {
 
     @EventHandler
     public void compassOnJoin(PlayerJoinEvent event) {
+        Player p = event.getPlayer();
+        giveCompass(p);
+    }
+
+    @EventHandler
+    public void compassOnRespawn(PlayerRespawnEvent event) {
         Player p = event.getPlayer();
         giveCompass(p);
     }
