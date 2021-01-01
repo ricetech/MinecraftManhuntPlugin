@@ -21,7 +21,7 @@ public class CountdownCommand implements CommandExecutor {
         }
 
         int seconds = Integer.parseInt(args[0]);
-        Bukkit.broadcastMessage("Started countdown for " + seconds + " seconds");
+        Bukkit.broadcastMessage("Started a countdown for " + seconds + " seconds");
         new CountdownRunnable(seconds).runTaskTimer(plugin, 0, 20);
 
         return true;
