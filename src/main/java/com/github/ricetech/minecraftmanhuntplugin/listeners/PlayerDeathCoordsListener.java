@@ -10,7 +10,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 @SuppressWarnings("unused")
 public class PlayerDeathCoordsListener implements Listener {
     @EventHandler
-    public void playerDeath(PlayerDeathEvent event) {
+    public void whisperDeathLocation(PlayerDeathEvent event) {
         Player p = event.getEntity();
         Location pLoc = p.getLocation();
         World world = p.getWorld();
