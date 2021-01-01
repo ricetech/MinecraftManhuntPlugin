@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class CountdownCommand implements CommandExecutor {
     private final JavaPlugin plugin;
@@ -23,5 +24,23 @@ public class CountdownCommand implements CommandExecutor {
         Bukkit.broadcastMessage("Started countdown for " + seconds + " seconds");
 
         return true;
+    }
+
+    private static class CountdownRunnable extends BukkitRunnable {
+        int remainingTime;
+
+        public CountdownRunnable(int counterTime) {
+            this.remainingTime = counterTime;
+        }
+
+        @Override
+        public void run() {
+            if (remainingTime <= 0) {
+                Bukkit.broadcastMessage("Countdown finished. GO!");
+            } else if (remainingTime == 45 || remainingTime % 30 == 0 || remainingTime == 15 || remainingTime < 11) {
+                Bukkit.broadcastMessage(remainingTime + " seconds remain");
+            }
+            remainingTime--;
+        }
     }
 }
