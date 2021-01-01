@@ -6,6 +6,7 @@ import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCoordsLis
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@SuppressWarnings("unused")
 public class MinecraftManhuntPlugin extends JavaPlugin {
     @SuppressWarnings("ConstantConditions")
     @Override
