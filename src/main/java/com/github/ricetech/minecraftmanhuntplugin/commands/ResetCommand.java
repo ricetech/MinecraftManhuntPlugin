@@ -62,6 +62,6 @@ public class ResetCommand implements CommandExecutor {
             }
         }
 
-        return false;
+        return true;
     }
 }
