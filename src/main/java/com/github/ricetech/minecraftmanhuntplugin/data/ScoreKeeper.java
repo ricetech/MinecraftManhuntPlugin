@@ -39,4 +39,14 @@ public class ScoreKeeper {
             deaths.getScore(p.getName()).setScore(0);
         }
     }
+
+    /**
+     * Reset the scores of a particular player p.
+     *
+     * @param p - The player to reset the scores of.
+     */
+    public void resetPlayer(Player p) {
+        kills.getScore(p.getName()).setScore(0);
+        deaths.getScore(p.getName()).setScore(0);
+    }
 }
