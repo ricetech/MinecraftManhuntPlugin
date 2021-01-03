@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
+import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -13,6 +14,12 @@ import org.bukkit.entity.Player;
  */
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
+    private ScoreKeeper scoreKeeper;
+
+    public ResetCommand(ScoreKeeper scoreKeeper) {
+        this.scoreKeeper = scoreKeeper;
+    }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (args.length > 0) {
