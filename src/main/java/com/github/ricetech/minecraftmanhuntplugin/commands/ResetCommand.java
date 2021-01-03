@@ -3,6 +3,7 @@ package com.github.ricetech.minecraftmanhuntplugin.commands;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -51,6 +52,9 @@ public class ResetCommand implements CommandExecutor {
             p.setFoodLevel(20);
             p.setSaturation(20);
             p.setExhaustion(0);
+
+            // Set gamemode to survival
+            p.setGameMode(GameMode.SURVIVAL);
         }
 
         // Set time to 0
