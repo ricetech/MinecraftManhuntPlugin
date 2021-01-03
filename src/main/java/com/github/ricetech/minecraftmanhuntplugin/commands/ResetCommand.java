@@ -29,7 +29,9 @@ public class ResetCommand implements CommandExecutor {
             return false;
         }
 
-        Location spawnLocation = Bukkit.getWorlds().get(0).getSpawnLocation();
+        World overworld = Bukkit.getServer().getWorlds().get(0);
+
+        Location spawnLocation = overworld.getSpawnLocation();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             // Reset scores
@@ -52,7 +54,6 @@ public class ResetCommand implements CommandExecutor {
         }
 
         // Set time to 0
-        World overworld = Bukkit.getServer().getWorlds().get(0);
         overworld.setTime(0);
 
         // Kill all dropped entities
