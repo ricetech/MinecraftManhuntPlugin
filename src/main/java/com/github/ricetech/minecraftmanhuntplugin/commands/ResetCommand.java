@@ -53,6 +53,10 @@ public class ResetCommand implements CommandExecutor {
             p.setSaturation(20);
             p.setExhaustion(0);
 
+            // Reset XP
+            p.setExp(0);
+            p.setLevel(0);
+
             // Set gamemode to survival
             p.setGameMode(GameMode.SURVIVAL);
         }
