@@ -17,7 +17,7 @@ import org.bukkit.entity.Player;
  */
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
-    private ScoreKeeper scoreKeeper;
+    private final ScoreKeeper scoreKeeper;
 
     public ResetCommand(ScoreKeeper scoreKeeper) {
         this.scoreKeeper = scoreKeeper;
