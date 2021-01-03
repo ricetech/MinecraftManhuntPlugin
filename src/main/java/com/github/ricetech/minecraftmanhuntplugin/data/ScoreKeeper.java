@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.data;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
@@ -27,5 +28,15 @@ public class ScoreKeeper {
             this.deaths = mainScoreboard.registerNewObjective("deaths", "deathCount", "Deaths");
         }
         deaths.setDisplaySlot(DisplaySlot.SIDEBAR);
+    }
+
+    /**
+     * Sets the scores of all currently online players to 0.
+     */
+    public void resetScores() {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            kills.getScore(p.getName()).setScore(0);
+            deaths.getScore(p.getName()).setScore(0);
+        }
     }
 }
