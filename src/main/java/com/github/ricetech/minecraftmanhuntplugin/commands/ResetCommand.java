@@ -29,6 +29,9 @@ public class ResetCommand implements CommandExecutor {
         Location spawnLocation = Bukkit.getWorlds().get(0).getSpawnLocation();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
+            // Reset scores
+            this.scoreKeeper.resetPlayer(p);
+
             // Clear inventory
             p.getInventory().clear();
 
