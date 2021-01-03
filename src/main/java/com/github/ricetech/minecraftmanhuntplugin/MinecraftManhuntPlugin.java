@@ -16,6 +16,9 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Manhunt Plugin enabled!");
 
+        // Init Scoreboard
+        scoreKeeper = new ScoreKeeper();
+
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
@@ -23,9 +26,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
         // Add Commands
         this.getCommand("countdown").setExecutor(new CountdownCommand(this));
-
-        // Init Scoreboard
-        scoreKeeper = new ScoreKeeper();
     }
 
     @Override
