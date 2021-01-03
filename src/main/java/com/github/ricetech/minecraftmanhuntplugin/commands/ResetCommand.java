@@ -40,8 +40,13 @@ public class ResetCommand implements CommandExecutor {
 
             // Teleport to spawn
             p.teleport(spawnLocation);
-        }
 
+            // Reset health, food, saturation and exhaustion
+            p.setHealth(20);
+            p.setFoodLevel(20);
+            p.setSaturation(20);
+            p.setExhaustion(0);
+        }
         return false;
     }
 }
