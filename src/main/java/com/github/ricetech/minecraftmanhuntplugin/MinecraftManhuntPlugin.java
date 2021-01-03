@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
 import com.github.ricetech.minecraftmanhuntplugin.commands.CountdownCommand;
+import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCoordsListener;
 import org.bukkit.plugin.PluginManager;
@@ -8,6 +9,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
 public class MinecraftManhuntPlugin extends JavaPlugin {
+    private ScoreKeeper scoreKeeper;
+
     @SuppressWarnings("ConstantConditions")
     @Override
     public void onEnable() {
@@ -20,6 +23,9 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
         // Add Commands
         this.getCommand("countdown").setExecutor(new CountdownCommand(this));
+
+        // Init Scoreboard
+        scoreKeeper = new ScoreKeeper();
     }
 
     @Override
