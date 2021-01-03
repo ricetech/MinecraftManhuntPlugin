@@ -4,9 +4,12 @@ import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 
 /**
@@ -47,6 +50,11 @@ public class ResetCommand implements CommandExecutor {
             p.setSaturation(20);
             p.setExhaustion(0);
         }
+
+        // Set time to 0
+        World overworld = Bukkit.getServer().getWorlds().get(0);
+        overworld.setTime(0);
+
         return false;
     }
 }
