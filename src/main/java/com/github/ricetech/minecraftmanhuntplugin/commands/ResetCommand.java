@@ -55,6 +55,13 @@ public class ResetCommand implements CommandExecutor {
         World overworld = Bukkit.getServer().getWorlds().get(0);
         overworld.setTime(0);
 
+        // Kill all dropped entities
+        for (Entity en : overworld.getEntities()) {
+            if (en instanceof Item) {
+                en.remove();
+            }
+        }
+
         return false;
     }
 }
