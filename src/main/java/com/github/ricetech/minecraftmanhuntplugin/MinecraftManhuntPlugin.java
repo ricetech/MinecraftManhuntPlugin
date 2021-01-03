@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
 import com.github.ricetech.minecraftmanhuntplugin.commands.CountdownCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.ResetCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCoordsListener;
@@ -26,6 +27,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
         // Add Commands
         this.getCommand("countdown").setExecutor(new CountdownCommand(this));
+        this.getCommand("rs").setExecutor(new ResetCommand(this.scoreKeeper));
     }
 
     @Override

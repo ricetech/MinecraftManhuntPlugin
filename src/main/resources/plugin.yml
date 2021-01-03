@@ -10,3 +10,6 @@ commands:
   countdown:
     description: Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
     usage: /countdown <time in seconds>
+  rs:
+    description: Resets the state of the world and players to prepare for a new game.
+    usage: /rs
