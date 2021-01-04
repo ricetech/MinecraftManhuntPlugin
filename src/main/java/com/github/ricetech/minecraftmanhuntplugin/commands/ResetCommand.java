@@ -2,10 +2,7 @@ package com.github.ricetech.minecraftmanhuntplugin.commands;
 
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -61,8 +58,9 @@ public class ResetCommand implements CommandExecutor {
             p.setGameMode(GameMode.SURVIVAL);
         }
 
-        // Set time to 0
+        // Set time to 0 & enable daylight cycle
         overworld.setTime(0);
+        overworld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, true);
 
         // Kill all dropped entities
         for (Entity en : overworld.getEntities()) {
