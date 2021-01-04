@@ -79,6 +79,9 @@ public class ResetCommand implements CommandExecutor {
             }
         }
 
+        // Revoke all advancements
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a everything");
+
         return true;
     }
 }
