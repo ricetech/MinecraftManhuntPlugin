@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 
 /**
  * Reset the world and all players in preparation for starting a new game of Manhunt.
@@ -34,6 +35,11 @@ public class ResetCommand implements CommandExecutor {
         for (Player p : Bukkit.getOnlinePlayers()) {
             // Reset scores
             this.scoreKeeper.resetPlayer(p);
+
+            // Remove effects
+            for (PotionEffect effect : p.getActivePotionEffects()) {
+                p.removePotionEffect(effect.getType());
+            }
 
             // Clear inventory
             p.getInventory().clear();
