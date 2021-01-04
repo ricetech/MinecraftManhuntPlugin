@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -31,7 +32,9 @@ public class PlayerDeathCoordsListener implements Listener {
                 worldEnv = "The End";
                 break;
         }
-        p.sendMessage("You died at: " + pLoc.getBlockX() + ", " + pLoc.getBlockY() + ", " + pLoc.getBlockZ() +
-                " in " + worldEnv);
+        String deathCoords = " died at: " + pLoc.getBlockX() + ", " + pLoc.getBlockY() + ", " + pLoc.getBlockZ() +
+                " in " + worldEnv;
+        Bukkit.getLogger().info(p.getName() + deathCoords);
+        p.sendMessage("You" + deathCoords);
     }
 }
