@@ -62,6 +62,10 @@ public class ResetCommand implements CommandExecutor {
         overworld.setTime(0);
         overworld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, true);
 
+        // Set weather
+        overworld.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
+        overworld.setStorm(false);
+
         // Kill all dropped entities
         for (Entity en : overworld.getEntities()) {
             if (en instanceof Item) {
