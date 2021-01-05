@@ -11,8 +11,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
 public class MinecraftManhuntPlugin extends JavaPlugin {
+    private boolean gameInProgress = false;
+
     private ScoreKeeper scoreKeeper;
     private TeamManager teamManager;
+
+    public boolean isGameInProgress() {
+        return gameInProgress;
+    }
 
     @SuppressWarnings("ConstantConditions")
     @Override
