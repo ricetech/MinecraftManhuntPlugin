@@ -11,6 +11,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
 public class MinecraftManhuntPlugin extends JavaPlugin {
+    public static final String RESET_COMMAND_ALIAS = "rs";
+
     private boolean gameInProgress = false;
 
     private ScoreKeeper scoreKeeper;
@@ -39,7 +41,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
         // Add Commands
         this.getCommand("countdown").setExecutor(new CountdownCommand(this));
-        this.getCommand("rs").setExecutor(new ResetCommand(this.scoreKeeper));
+        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this.scoreKeeper));
 
         this.teamManager = new TeamManager();
     }
