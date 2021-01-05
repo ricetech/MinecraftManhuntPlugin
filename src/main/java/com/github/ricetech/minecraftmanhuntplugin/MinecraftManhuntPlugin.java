@@ -20,6 +20,10 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         return gameInProgress;
     }
 
+    public void setGameInProgress(boolean gameInProgress) {
+        this.gameInProgress = gameInProgress;
+    }
+
     @SuppressWarnings("ConstantConditions")
     @Override
     public void onEnable() {
