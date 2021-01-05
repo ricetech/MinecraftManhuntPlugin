@@ -26,11 +26,18 @@ public class CountdownCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
+        int seconds;
+
         if (args.length != 1) {
             return false;
         }
 
-        int seconds = Integer.parseInt(args[0]);
+        try {
+            seconds = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            commandSender.sendMessage("Error: " + args[0] + " is not a number");
+            return false;
+        }
 
         // Cancel any existing timers
         if (task != null) {
