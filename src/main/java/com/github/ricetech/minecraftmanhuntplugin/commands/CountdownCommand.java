@@ -59,8 +59,10 @@ public class CountdownCommand implements CommandExecutor {
                 Bukkit.broadcastMessage("Countdown finished. GO!");
                 this.cancel();
                 deleteTask();
+            } else if (remainingTime == 1) {
+                Bukkit.broadcastMessage("1 second left");
             } else if (remainingTime == 45 || remainingTime % 30 == 0 || remainingTime == 15 || remainingTime < 11) {
-                Bukkit.broadcastMessage(remainingTime + " seconds remain");
+                Bukkit.broadcastMessage(remainingTime + " seconds left");
             }
             remainingTime--;
         }
