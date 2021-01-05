@@ -32,12 +32,10 @@ public class CountdownCommand implements CommandExecutor {
 
         int seconds = Integer.parseInt(args[0]);
 
-        try {
-            // Cancel any existing timers
+        // Cancel any existing timers
+        if (task != null) {
             task.cancel();
             Bukkit.broadcastMessage("The previous timer was cancelled.");
-        } catch (NullPointerException ignored) {
-
         }
 
         task = new CountdownRunnable(seconds).runTaskTimer(plugin, 0, 20);
