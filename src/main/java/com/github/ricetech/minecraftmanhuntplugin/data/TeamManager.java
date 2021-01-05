@@ -78,11 +78,20 @@ public class TeamManager {
     }
 
     public void editTeam(Player p, ManhuntTeams team) {
+        //noinspection EnhancedSwitchMigration
         switch (team) {
-            case RUNNERS -> runners.addEntry(p.getName());
-            case ELIMINATED -> eliminated.addEntry(p.getName());
-            case HUNTERS -> hunters.addEntry(p.getName());
-            case SPECTATORS -> spectators.addEntry(p.getName());
+            case RUNNERS:
+                runners.addEntry(p.getName());
+                break;
+            case ELIMINATED:
+                eliminated.addEntry(p.getName());
+                break;
+            case HUNTERS:
+                hunters.addEntry(p.getName());
+                break;
+            case SPECTATORS:
+                spectators.addEntry(p.getName());
+                break;
         }
     }
 }
