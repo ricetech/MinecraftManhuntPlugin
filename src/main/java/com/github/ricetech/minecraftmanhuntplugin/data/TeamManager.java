@@ -2,6 +2,7 @@ package com.github.ricetech.minecraftmanhuntplugin.data;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
@@ -74,5 +75,14 @@ public class TeamManager {
         hunters.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.ALWAYS);
         spectators.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.FOR_OWN_TEAM);
 
+    }
+
+    public void editTeam(Player p, ManhuntTeams team) {
+        switch (team) {
+            case RUNNERS -> runners.addEntry(p.getName());
+            case ELIMINATED -> eliminated.addEntry(p.getName());
+            case HUNTERS -> hunters.addEntry(p.getName());
+            case SPECTATORS -> spectators.addEntry(p.getName());
+        }
     }
 }
