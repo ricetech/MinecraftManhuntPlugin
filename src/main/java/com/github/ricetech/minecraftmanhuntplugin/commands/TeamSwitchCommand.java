@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 public class TeamSwitchCommand implements CommandExecutor {
@@ -33,7 +32,7 @@ public class TeamSwitchCommand implements CommandExecutor {
             return false;
         }
 
-        if (!validTeams.contains(args[0])) {
+        if (!validTeams.contains(args[0].toUpperCase())) {
             commandSender.sendMessage("Error: " + args[0] + " is not a valid team.");
             return false;
         }
