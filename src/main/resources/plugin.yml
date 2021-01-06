@@ -13,3 +13,6 @@ commands:
   rs:
     description: Resets the state of the world and players to prepare for a new game.
     usage: /rs
+  changeteam:
+    description: Change to another team or join a team if not already part of one.
+    usage: /changeteam <runners|eliminated|hunters|spectators>

@@ -2,6 +2,7 @@ package com.github.ricetech.minecraftmanhuntplugin;
 
 import com.github.ricetech.minecraftmanhuntplugin.commands.CountdownCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.ResetCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.TeamSwitchCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
@@ -14,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String COUNTDOWN_COMMAND_ALIAS = "countdown";
     public static final String RESET_COMMAND_ALIAS = "rs";
+    public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
 
     public static final ChatColor RUNNERS_COLOR = ChatColor.DARK_BLUE;
     public static final ChatColor ELIMINATED_COLOR = ChatColor.DARK_AQUA;
@@ -49,6 +51,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Add Commands
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
         this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this.scoreKeeper));
+        this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this.teamManager));
 
         this.teamManager = new TeamManager();
     }
