@@ -37,6 +37,16 @@ public class NewGameCommand implements CommandExecutor {
         spectatorsComponent.setColor(ChatColor.GOLD);
         spectatorsComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "changeteam spectators"));
 
+        builderSelectTeamMsg
+                .append(" ")
+                .append(runnersComponent)
+                .append(" ")
+                .append(eliminatedComponent)
+                .append(" ")
+                .append(huntersComponent)
+                .append(" ")
+                .append(spectatorsComponent);
+
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.spigot().sendMessage(builderSelectTeamMsg.create());
         }
