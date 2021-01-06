@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.data;
 
+import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -45,10 +46,10 @@ public class TeamManager {
         hunters.setDisplayName("Hunters");
         spectators.setDisplayName("Spectators");
 
-        runners.setColor(ChatColor.DARK_BLUE);
-        eliminated.setColor(ChatColor.DARK_AQUA);
-        hunters.setColor(ChatColor.RED);
-        spectators.setColor(ChatColor.GOLD);
+        runners.setColor(MinecraftManhuntPlugin.RUNNERS_COLOR);
+        eliminated.setColor(MinecraftManhuntPlugin.ELIMINATED_COLOR);
+        hunters.setColor(MinecraftManhuntPlugin.HUNTERS_COLOR);
+        spectators.setColor(MinecraftManhuntPlugin.SPECTATORS_COLOR);
 
         runners.setAllowFriendlyFire(true);
         eliminated.setAllowFriendlyFire(true);
