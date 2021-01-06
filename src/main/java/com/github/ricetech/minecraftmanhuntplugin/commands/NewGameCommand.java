@@ -23,19 +23,19 @@ public class NewGameCommand implements CommandExecutor {
 
         TextComponent runnersComponent = new TextComponent("[RUNNERS]");
         runnersComponent.setColor(ChatColor.DARK_BLUE);
-        runnersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "changeteam runners"));
+        runnersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam runners"));
 
         TextComponent eliminatedComponent = new TextComponent("[ELIMINATED]");
         eliminatedComponent.setColor(ChatColor.DARK_AQUA);
-        eliminatedComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "changeteam eliminated"));
+        eliminatedComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam eliminated"));
 
         TextComponent huntersComponent = new TextComponent("[HUNTERS]");
         huntersComponent.setColor(ChatColor.RED);
-        huntersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "changeteam hunters"));
+        huntersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam hunters"));
 
         TextComponent spectatorsComponent = new TextComponent("[SPECTATORS]");
         spectatorsComponent.setColor(ChatColor.GOLD);
-        spectatorsComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "changeteam spectators"));
+        spectatorsComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam spectators"));
 
         builderSelectTeamMsg
                 .append(" ")
