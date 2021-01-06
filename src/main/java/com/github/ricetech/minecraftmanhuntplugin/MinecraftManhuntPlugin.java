@@ -40,8 +40,9 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Manhunt Plugin enabled!");
 
-        // Init Scoreboard
-        scoreKeeper = new ScoreKeeper();
+        // Init Managers
+        this.scoreKeeper = new ScoreKeeper();
+        this.teamManager = new TeamManager();
 
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
@@ -52,8 +53,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
         this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this.scoreKeeper));
         this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this.teamManager));
-
-        this.teamManager = new TeamManager();
     }
 
     @Override
