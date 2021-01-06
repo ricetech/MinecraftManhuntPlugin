@@ -33,6 +33,6 @@ public class StartGameCommand implements CommandExecutor {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS + seconds);
 
         this.plugin.setGameInProgress(true);
-        return false;
+        return true;
     }
 }
