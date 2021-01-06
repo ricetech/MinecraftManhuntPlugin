@@ -22,3 +22,6 @@ commands:
   startgame:
     description: Resets all players and starts a new game with a countdown timer.
     usage: /startgame <time in seconds>
+  stopgame:
+    description: Stops a manhunt game in progress.
+    usage: /stopgame
