@@ -19,3 +19,6 @@ commands:
   newgame:
     description: Start a new game.
     usage: /newgame
+  startgame:
+    description: Resets all players and starts a new game with a countdown timer.
+    usage: /startgame <time in seconds>
