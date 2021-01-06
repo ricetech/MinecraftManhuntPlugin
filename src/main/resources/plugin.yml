@@ -16,3 +16,6 @@ commands:
   changeteam:
     description: Change to another team or join a team if not already part of one.
     usage: /changeteam <runners|eliminated|hunters|spectators>
+  newgame:
+    description: Start a new game.
+    usage: /newgame
