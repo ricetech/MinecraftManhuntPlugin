@@ -1,9 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
-import com.github.ricetech.minecraftmanhuntplugin.commands.CountdownCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.NewGameCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.ResetCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.TeamSwitchCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.*;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
@@ -18,6 +15,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String RESET_COMMAND_ALIAS = "rs";
     public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
     public static final String NEW_GAME_COMMAND_ALIAS = "newgame";
+    public static final String START_GAME_COMMAND_ALIAS = "startgame";
 
     public static final ChatColor RUNNERS_COLOR = ChatColor.DARK_BLUE;
     public static final ChatColor ELIMINATED_COLOR = ChatColor.DARK_AQUA;
@@ -56,6 +54,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this.scoreKeeper));
         this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this.teamManager));
         this.getCommand(NEW_GAME_COMMAND_ALIAS).setExecutor(new NewGameCommand());
+        this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
     }
 
     @Override
