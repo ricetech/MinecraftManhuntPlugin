@@ -2,7 +2,6 @@ package com.github.ricetech.minecraftmanhuntplugin.data;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
