@@ -1,6 +1,5 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
-import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
