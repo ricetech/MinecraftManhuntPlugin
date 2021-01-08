@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
+import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
 import org.bukkit.*;
 import org.bukkit.command.Command;
@@ -17,9 +18,11 @@ import org.bukkit.potion.PotionEffect;
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
     private final ScoreKeeper scoreKeeper;
+    private final TeamManager teamManager;
 
-    public ResetCommand(ScoreKeeper scoreKeeper) {
+    public ResetCommand(ScoreKeeper scoreKeeper, TeamManager teamManager) {
         this.scoreKeeper = scoreKeeper;
+        this.teamManager = teamManager;
     }
 
     @Override
