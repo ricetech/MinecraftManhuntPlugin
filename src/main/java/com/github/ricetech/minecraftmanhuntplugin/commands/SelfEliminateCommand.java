@@ -12,8 +12,8 @@ import org.bukkit.entity.Player;
 public class SelfEliminateCommand implements CommandExecutor {
     private final TeamManager teamManager;
 
-    public SelfEliminateCommand(TeamManager teamManager) {
-        this.teamManager = teamManager;
+    public SelfEliminateCommand(MinecraftManhuntPlugin manhuntPlugin) {
+        this.teamManager = manhuntPlugin.getTeamManager();
     }
 
     @Override

@@ -7,10 +7,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class StartGameCommand implements CommandExecutor {
-    private MinecraftManhuntPlugin plugin;
+    private MinecraftManhuntPlugin manhuntPlugin;
 
-    public StartGameCommand(MinecraftManhuntPlugin plugin) {
-        this.plugin = plugin;
+    public StartGameCommand(MinecraftManhuntPlugin manhuntPlugin) {
+        this.manhuntPlugin = manhuntPlugin;
     }
 
     @SuppressWarnings("DuplicatedCode")
@@ -33,7 +33,7 @@ public class StartGameCommand implements CommandExecutor {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS +
                 " " + seconds);
 
-        this.plugin.setGameInProgress(true);
+        this.manhuntPlugin.setGameInProgress(true);
         return true;
     }
 }

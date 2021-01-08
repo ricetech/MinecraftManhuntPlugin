@@ -6,15 +6,15 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class StopGameCommand implements CommandExecutor {
-    private MinecraftManhuntPlugin plugin;
+    private MinecraftManhuntPlugin manhuntPlugin;
 
-    public StopGameCommand(MinecraftManhuntPlugin plugin) {
-        this.plugin = plugin;
+    public StopGameCommand(MinecraftManhuntPlugin manhuntPlugin) {
+        this.manhuntPlugin = manhuntPlugin;
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
-        this.plugin.setGameInProgress(false);
+        this.manhuntPlugin.setGameInProgress(false);
         return true;
     }
 }

@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
+import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
@@ -25,9 +26,9 @@ public class ResetCommand implements CommandExecutor {
     private final ScoreKeeper scoreKeeper;
     private final TeamManager teamManager;
 
-    public ResetCommand(ScoreKeeper scoreKeeper, TeamManager teamManager) {
-        this.scoreKeeper = scoreKeeper;
-        this.teamManager = teamManager;
+    public ResetCommand(MinecraftManhuntPlugin manhuntPlugin) {
+        this.scoreKeeper = manhuntPlugin.getScoreKeeper();
+        this.teamManager = manhuntPlugin.getTeamManager();
     }
 
     @Override

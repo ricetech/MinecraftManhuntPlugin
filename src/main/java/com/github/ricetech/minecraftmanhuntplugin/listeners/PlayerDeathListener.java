@@ -13,11 +13,11 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class PlayerDeathListener implements Listener {
     private final ScoreKeeper scoreKeeper;
-    private final MinecraftManhuntPlugin plugin;
+    private final MinecraftManhuntPlugin manhuntPlugin;
 
-    public PlayerDeathListener(ScoreKeeper scoreKeeper, MinecraftManhuntPlugin plugin) {
-        this.scoreKeeper = scoreKeeper;
-        this.plugin = plugin;
+    public PlayerDeathListener(MinecraftManhuntPlugin manhuntPlugin) {
+        this.manhuntPlugin = manhuntPlugin;
+        this.scoreKeeper = manhuntPlugin.getScoreKeeper();
     }
 
     public static void sendDeathConfirmMsg(Player p) {
@@ -44,7 +44,7 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void eliminationMsgOnDeath(PlayerDeathEvent event) {
-        if (this.plugin.isGameInProgress()) {
+        if (this.manhuntPlugin.isGameInProgress()) {
             Player victim = event.getEntity();
             Player killer = victim.getKiller();
             if (killer != null) {
