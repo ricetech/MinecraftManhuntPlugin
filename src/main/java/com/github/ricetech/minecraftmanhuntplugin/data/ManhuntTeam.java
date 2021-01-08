@@ -1,6 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.data;
 
-public enum ManhuntTeams {
+public enum ManhuntTeam {
     RUNNERS,
     ELIMINATED,
     HUNTERS,

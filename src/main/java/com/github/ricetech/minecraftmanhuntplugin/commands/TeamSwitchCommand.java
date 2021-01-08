@@ -1,7 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
-import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeams;
+import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,7 +17,7 @@ public class TeamSwitchCommand implements CommandExecutor {
 
     public TeamSwitchCommand(TeamManager teamManager) {
         this.teamManager = teamManager;
-        for (ManhuntTeams team : ManhuntTeams.values()) {
+        for (ManhuntTeam team : ManhuntTeam.values()) {
             validTeams.add(team.name());
         }
     }
@@ -41,7 +41,7 @@ public class TeamSwitchCommand implements CommandExecutor {
         // Cast commandSender to player, type safety verified above
         Player p = (Player) commandSender;
 
-        teamManager.editTeam(p, ManhuntTeams.valueOf(args[0].toUpperCase()));
+        teamManager.editTeam(p, ManhuntTeam.valueOf(args[0].toUpperCase()));
 
         return true;
     }

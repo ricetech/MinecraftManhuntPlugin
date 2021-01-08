@@ -1,6 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
-import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeams;
+import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
@@ -72,7 +72,7 @@ public class ResetCommand implements CommandExecutor {
                 alertMsg.setColor(ChatColor.RED);
                 p.spigot().sendMessage(new ComponentBuilder(alertMsg).create());
 
-                this.teamManager.editTeam(p, ManhuntTeams.SPECTATORS);
+                this.teamManager.editTeam(p, ManhuntTeam.SPECTATORS);
             } else if (team == this.teamManager.getSpectators()) {
                 p.setGameMode(GameMode.SPECTATOR);
             } else {
