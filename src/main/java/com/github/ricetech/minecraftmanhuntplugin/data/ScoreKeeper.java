@@ -31,6 +31,10 @@ public class ScoreKeeper {
         deaths.setDisplaySlot(DisplaySlot.SIDEBAR);
     }
 
+    public Scoreboard getMainScoreboard() {
+        return mainScoreboard;
+    }
+
     /**
      * Sets the scores of all currently online players to 0.
      */
