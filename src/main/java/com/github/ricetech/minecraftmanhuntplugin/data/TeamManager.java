@@ -78,6 +78,22 @@ public class TeamManager {
 
     }
 
+    public Team getRunners() {
+        return runners;
+    }
+
+    public Team getEliminated() {
+        return eliminated;
+    }
+
+    public Team getHunters() {
+        return hunters;
+    }
+
+    public Team getSpectators() {
+        return spectators;
+    }
+
     public void editTeam(Player p, ManhuntTeams team) {
         //noinspection EnhancedSwitchMigration
         switch (team) {
