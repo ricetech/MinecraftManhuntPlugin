@@ -1,8 +1,12 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
+import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeams;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,6 +15,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.scoreboard.Team;
 
 /**
  * Reset the world and all players in preparation for starting a new game of Manhunt.
@@ -35,6 +40,8 @@ public class ResetCommand implements CommandExecutor {
 
         Location spawnLocation = overworld.getSpawnLocation();
 
+        Team team;
+
         for (Player p : Bukkit.getOnlinePlayers()) {
             // Reset scores
             this.scoreKeeper.resetPlayer(p);
@@ -50,6 +57,29 @@ public class ResetCommand implements CommandExecutor {
             // Give compass
             InventoryHandlerListener.giveCompass(p);
 
+            // Set gamemode if necessary
+            //noinspection ConstantConditions
+            team = Bukkit.getScoreboardManager().getMainScoreboard().getEntryTeam(p.getName());
+            if (team == null) {
+                // Add players not on any team to Spectators
+                // Also allow them to still select a team
+
+                NewGameCommand.sendTeamSelectMsg(p);
+
+                TextComponent alertMsg = new TextComponent("Alert: You did not select a team and have therefore " +
+                        "been added to the Spectators team automatically. You can use the message above to join" +
+                        "a different team.");
+                alertMsg.setColor(ChatColor.RED);
+                p.spigot().sendMessage(new ComponentBuilder(alertMsg).create());
+
+                this.teamManager.editTeam(p, ManhuntTeams.SPECTATORS);
+            } else if (team == this.teamManager.getSpectators()) {
+                p.setGameMode(GameMode.SPECTATOR);
+            } else {
+                // Set gamemode to survival
+                p.setGameMode(GameMode.SURVIVAL);
+            }
+
             // Teleport to spawn
             p.teleport(spawnLocation);
 
@@ -62,9 +92,6 @@ public class ResetCommand implements CommandExecutor {
             // Reset XP
             p.setExp(0);
             p.setLevel(0);
-
-            // Set gamemode to survival
-            p.setGameMode(GameMode.SURVIVAL);
         }
 
         // Set time to 0 & enable daylight cycle
