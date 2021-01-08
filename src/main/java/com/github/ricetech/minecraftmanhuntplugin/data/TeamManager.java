@@ -138,6 +138,6 @@ public class TeamManager {
     public void eliminatePlayer(Player p) {
         eliminated.addEntry(p.getName());
         Bukkit.broadcastMessage(ChatColor.BLUE + p.getName() + ChatColor.RESET + " has been " + ChatColor.RED +
-                " eliminated.");
+                "eliminated.");
     }
 }
