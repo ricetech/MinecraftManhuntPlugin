@@ -77,7 +77,6 @@ public class TeamManager {
         eliminated.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.ALWAYS);
         hunters.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.ALWAYS);
         spectators.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.FOR_OWN_TEAM);
-
     }
 
     public Team getRunners() {
