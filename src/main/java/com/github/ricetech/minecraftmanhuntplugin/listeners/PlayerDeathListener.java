@@ -45,7 +45,8 @@ public class PlayerDeathListener implements Listener {
     @EventHandler
     public void eliminationMsgOnDeath(PlayerDeathEvent event) {
         if (this.plugin.isGameInProgress()) {
-            Player killer = event.getEntity().getKiller();
+            Player victim = event.getEntity();
+            Player killer = victim.getKiller();
             if (killer != null) {
                 // Increment killer's kills
                 this.scoreKeeper.addKill(killer);
