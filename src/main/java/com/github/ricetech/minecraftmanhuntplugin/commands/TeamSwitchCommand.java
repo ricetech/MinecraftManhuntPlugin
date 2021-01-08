@@ -15,8 +15,8 @@ public class TeamSwitchCommand implements CommandExecutor {
     private TeamManager teamManager;
     private Set<String> validTeams = new HashSet<>();
 
-    public TeamSwitchCommand(TeamManager teamManager) {
-        this.teamManager = teamManager;
+    public TeamSwitchCommand(MinecraftManhuntPlugin manhuntPlugin) {
+        this.teamManager = manhuntPlugin.getTeamManager();
         for (ManhuntTeam team : ManhuntTeam.values()) {
             validTeams.add(team.name());
         }
