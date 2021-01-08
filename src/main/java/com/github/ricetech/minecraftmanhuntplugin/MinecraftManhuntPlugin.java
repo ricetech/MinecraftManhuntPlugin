@@ -31,20 +31,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     private ScoreKeeper scoreKeeper;
     private TeamManager teamManager;
 
-    public static void sendOnlyPlayersErrorMsg(CommandSender target) {
-        TextComponent errorMsg = new TextComponent("Error: Only players can use this command.");
-        errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
-        target.spigot().sendMessage(errorMsg);
-    }
-
-    public boolean isGameInProgress() {
-        return gameInProgress;
-    }
-
-    public void setGameInProgress(boolean gameInProgress) {
-        this.gameInProgress = gameInProgress;
-    }
-
     @SuppressWarnings("ConstantConditions")
     @Override
     public void onEnable() {
@@ -72,5 +58,19 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("Manhunt Plugin disabled!");
+    }
+
+    public static void sendOnlyPlayersErrorMsg(CommandSender target) {
+        TextComponent errorMsg = new TextComponent("Error: Only players can use this command.");
+        errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
+        target.spigot().sendMessage(errorMsg);
+    }
+
+    public boolean isGameInProgress() {
+        return gameInProgress;
+    }
+
+    public void setGameInProgress(boolean gameInProgress) {
+        this.gameInProgress = gameInProgress;
     }
 }
