@@ -52,7 +52,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
         // Add Commands
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
-        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this.scoreKeeper));
+        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this.scoreKeeper, this.teamManager));
         this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this.teamManager));
         this.getCommand(NEW_GAME_COMMAND_ALIAS).setExecutor(new NewGameCommand());
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
