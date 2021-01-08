@@ -2,6 +2,7 @@ package com.github.ricetech.minecraftmanhuntplugin.data;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
@@ -132,5 +133,11 @@ public class TeamManager {
                 p.setGameMode(GameMode.SPECTATOR);
                 break;
         }
+    }
+
+    public void eliminatePlayer(Player p) {
+        eliminated.addEntry(p.getName());
+        Bukkit.broadcastMessage(ChatColor.BLUE + p.getName() + ChatColor.RESET + " has been " + ChatColor.RED +
+                " eliminated.");
     }
 }
