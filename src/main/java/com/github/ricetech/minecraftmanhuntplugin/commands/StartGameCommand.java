@@ -7,7 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class StartGameCommand implements CommandExecutor {
-    private MinecraftManhuntPlugin manhuntPlugin;
+    private final MinecraftManhuntPlugin manhuntPlugin;
 
     public StartGameCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
