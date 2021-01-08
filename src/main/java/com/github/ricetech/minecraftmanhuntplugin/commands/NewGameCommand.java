@@ -24,10 +24,6 @@ public class NewGameCommand implements CommandExecutor {
         runnersComponent.setColor(ChatColor.DARK_BLUE);
         runnersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam runners"));
 
-        TextComponent eliminatedComponent = new TextComponent("[ELIMINATED]");
-        eliminatedComponent.setColor(ChatColor.DARK_AQUA);
-        eliminatedComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam eliminated"));
-
         TextComponent huntersComponent = new TextComponent("[HUNTERS]");
         huntersComponent.setColor(ChatColor.RED);
         huntersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam hunters"));
@@ -39,8 +35,6 @@ public class NewGameCommand implements CommandExecutor {
         builderSelectTeamMsg
                 .append(" ")
                 .append(runnersComponent)
-                .append(" ")
-                .append(eliminatedComponent)
                 .append(" ")
                 .append(huntersComponent)
                 .append(" ")
