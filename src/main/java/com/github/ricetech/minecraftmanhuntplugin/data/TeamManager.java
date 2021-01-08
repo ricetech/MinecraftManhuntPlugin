@@ -95,6 +95,23 @@ public class TeamManager {
         return spectators;
     }
 
+    public ManhuntTeams getTeam(Player p) {
+        Team team = mainScoreboard.getEntryTeam(p.getName());
+        if (team == null) {
+            return null;
+        } else if (team.equals(runners)) {
+            return ManhuntTeams.RUNNERS;
+        } else if (team.equals(hunters)) {
+            return ManhuntTeams.HUNTERS;
+        } else if (team.equals(eliminated)) {
+            return ManhuntTeams.ELIMINATED;
+        } else if (team.equals(spectators)) {
+            return ManhuntTeams.SPECTATORS;
+        } else {
+            return null;
+        }
+    }
+
     public void editTeam(Player p, ManhuntTeams team) {
         //noinspection EnhancedSwitchMigration
         switch (team) {
