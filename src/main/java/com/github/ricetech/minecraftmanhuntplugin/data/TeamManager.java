@@ -8,6 +8,7 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 public class TeamManager {
+    private Scoreboard mainScoreboard;
     private Team runners;
     private Team eliminated;
     private Team hunters;
@@ -15,7 +16,7 @@ public class TeamManager {
 
     public TeamManager() {
         //noinspection ConstantConditions
-        Scoreboard mainScoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        this.mainScoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
 
         // Get all teams from scoreboard to see if they exist or not
         runners = mainScoreboard.getTeam("runners");
