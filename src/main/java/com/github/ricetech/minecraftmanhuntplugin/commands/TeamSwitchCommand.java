@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
+import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeams;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import org.bukkit.command.Command;
@@ -28,8 +29,8 @@ public class TeamSwitchCommand implements CommandExecutor {
         }
 
         if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage("Error: Only players can use this command.");
-            return false;
+            MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(commandSender);
+            return true;
         }
 
         if (!validTeams.contains(args[0].toUpperCase())) {
