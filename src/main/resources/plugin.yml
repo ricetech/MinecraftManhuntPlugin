@@ -25,3 +25,6 @@ commands:
   stopgame:
     description: Stops a manhunt game in progress.
     usage: /stopgame
+  selfelim:
+    description: Eliminate yourself from the game. Only works if you are a runner.
+    usage: /selfelim
