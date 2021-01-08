@@ -8,7 +8,7 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 public class TeamManager {
-    private Scoreboard mainScoreboard;
+    private final Scoreboard mainScoreboard;
     private Team runners;
     private Team eliminated;
     private Team hunters;
