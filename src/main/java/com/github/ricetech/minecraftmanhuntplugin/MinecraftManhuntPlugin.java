@@ -5,7 +5,9 @@ import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCoordsListener;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,6 +29,12 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
     private ScoreKeeper scoreKeeper;
     private TeamManager teamManager;
+
+    public static void sendOnlyPlayersErrorMsg(CommandSender target) {
+        TextComponent errorMsg = new TextComponent("Error: Only players can use this command.");
+        errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
+        target.spigot().sendMessage(errorMsg);
+    }
 
     public boolean isGameInProgress() {
         return gameInProgress;
