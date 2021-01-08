@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
 public class ScoreKeeper {
@@ -48,5 +49,15 @@ public class ScoreKeeper {
     public void resetPlayer(Player p) {
         kills.getScore(p.getName()).setScore(0);
         deaths.getScore(p.getName()).setScore(0);
+    }
+
+    /**
+     * Increments the Player p's kill counter by 1.
+     *
+     * @param p - The player to add a kill to.
+     */
+    public void addKill(Player p) {
+        Score pKills = kills.getScore(p.getName());
+        pKills.setScore(pKills.getScore() + 1);
     }
 }
