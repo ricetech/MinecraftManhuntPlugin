@@ -66,6 +66,14 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         target.spigot().sendMessage(errorMsg);
     }
 
+    public ScoreKeeper getScoreKeeper() {
+        return scoreKeeper;
+    }
+
+    public TeamManager getTeamManager() {
+        return teamManager;
+    }
+
     public boolean isGameInProgress() {
         return gameInProgress;
     }
