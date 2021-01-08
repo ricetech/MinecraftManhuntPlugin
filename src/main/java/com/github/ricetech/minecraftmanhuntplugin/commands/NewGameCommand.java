@@ -11,13 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class NewGameCommand implements CommandExecutor {
-
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String labels, String[] args) {
-        if (args.length != 0) {
-            return false;
-        }
-
+    public static void sendTeamSelectMsg(Player p) {
         ComponentBuilder builderSelectTeamMsg = new ComponentBuilder("Select a team:");
 
         TextComponent runnersComponent = new TextComponent("[RUNNERS]");
@@ -40,8 +34,17 @@ public class NewGameCommand implements CommandExecutor {
                 .append(" ")
                 .append(spectatorsComponent);
 
+        p.spigot().sendMessage(builderSelectTeamMsg.create());
+    }
+
+    @Override
+    public boolean onCommand(CommandSender commandSender, Command command, String labels, String[] args) {
+        if (args.length != 0) {
+            return false;
+        }
+
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.spigot().sendMessage(builderSelectTeamMsg.create());
+            sendTeamSelectMsg(p);
         }
 
         return true;
