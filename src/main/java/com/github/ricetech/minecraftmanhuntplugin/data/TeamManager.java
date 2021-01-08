@@ -99,12 +99,15 @@ public class TeamManager {
         switch (team) {
             case RUNNERS:
                 runners.addEntry(p.getName());
+                p.setGameMode(GameMode.SURVIVAL);
                 break;
             case ELIMINATED:
                 eliminated.addEntry(p.getName());
+                p.setGameMode(GameMode.SURVIVAL);
                 break;
             case HUNTERS:
                 hunters.addEntry(p.getName());
+                p.setGameMode(GameMode.SURVIVAL);
                 break;
             case SPECTATORS:
                 spectators.addEntry(p.getName());
