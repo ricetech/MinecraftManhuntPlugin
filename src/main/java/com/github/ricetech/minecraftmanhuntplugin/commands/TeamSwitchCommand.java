@@ -12,8 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TeamSwitchCommand implements CommandExecutor {
-    private TeamManager teamManager;
-    private Set<String> validTeams = new HashSet<>();
+    private final TeamManager teamManager;
+    private final Set<String> validTeams = new HashSet<>();
 
     public TeamSwitchCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.teamManager = manhuntPlugin.getTeamManager();

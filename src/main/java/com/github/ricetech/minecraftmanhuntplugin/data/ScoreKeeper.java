@@ -8,7 +8,7 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
 public class ScoreKeeper {
-    private Scoreboard mainScoreboard;
+    private final Scoreboard mainScoreboard;
     private Objective kills;
     private Objective deaths;
 

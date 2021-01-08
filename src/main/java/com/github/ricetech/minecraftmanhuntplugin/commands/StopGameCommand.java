@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class StopGameCommand implements CommandExecutor {
-    private MinecraftManhuntPlugin manhuntPlugin;
+    private final MinecraftManhuntPlugin manhuntPlugin;
 
     public StopGameCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
