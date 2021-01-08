@@ -95,24 +95,24 @@ public class TeamManager {
         return spectators;
     }
 
-    public ManhuntTeams getTeam(Player p) {
+    public ManhuntTeam getTeam(Player p) {
         Team team = mainScoreboard.getEntryTeam(p.getName());
         if (team == null) {
             return null;
         } else if (team.equals(runners)) {
-            return ManhuntTeams.RUNNERS;
+            return ManhuntTeam.RUNNERS;
         } else if (team.equals(hunters)) {
-            return ManhuntTeams.HUNTERS;
+            return ManhuntTeam.HUNTERS;
         } else if (team.equals(eliminated)) {
-            return ManhuntTeams.ELIMINATED;
+            return ManhuntTeam.ELIMINATED;
         } else if (team.equals(spectators)) {
-            return ManhuntTeams.SPECTATORS;
+            return ManhuntTeam.SPECTATORS;
         } else {
             return null;
         }
     }
 
-    public void editTeam(Player p, ManhuntTeams team) {
+    public void editTeam(Player p, ManhuntTeam team) {
         //noinspection EnhancedSwitchMigration
         switch (team) {
             case RUNNERS:
