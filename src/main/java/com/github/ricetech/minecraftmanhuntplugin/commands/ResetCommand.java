@@ -59,8 +59,7 @@ public class ResetCommand implements CommandExecutor {
             InventoryHandlerListener.giveCompass(p);
 
             // Set gamemode if necessary
-            //noinspection ConstantConditions
-            team = Bukkit.getScoreboardManager().getMainScoreboard().getEntryTeam(p.getName());
+            team = this.scoreKeeper.getMainScoreboard().getEntryTeam(p.getName());
             if (team == null) {
                 // Add players not on any team to Spectators
                 // Also allow them to still select a team
