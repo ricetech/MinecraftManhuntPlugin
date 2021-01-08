@@ -19,7 +19,7 @@ public class ScoreKeeper {
         // Create kills if it doesn't exist already
         this.kills = mainScoreboard.getObjective("kills");
         if (this.kills == null) {
-            this.kills = mainScoreboard.registerNewObjective("kills", "playerKillCount", "Kills");
+            this.kills = mainScoreboard.registerNewObjective("kills", "dummy", "Kills");
         }
         kills.setDisplaySlot(DisplaySlot.PLAYER_LIST);
 
