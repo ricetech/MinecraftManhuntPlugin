@@ -2,6 +2,7 @@ package com.github.ricetech.minecraftmanhuntplugin.data;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -91,6 +92,7 @@ public class TeamManager {
                 break;
             case SPECTATORS:
                 spectators.addEntry(p.getName());
+                p.setGameMode(GameMode.SPECTATOR);
                 break;
         }
     }
