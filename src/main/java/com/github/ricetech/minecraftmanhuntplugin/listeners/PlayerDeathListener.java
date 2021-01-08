@@ -44,14 +44,16 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void eliminationMsgOnDeath(PlayerDeathEvent event) {
-        Player killer = event.getEntity().getKiller();
-        if (killer != null) {
-            // Increment killer's kills
-            this.scoreKeeper.addKill(killer);
-            // No other actions - teleports are not allowed after a death to another player
-        } else {
-            // Ask if this death occurred because of a player or not
-            sendDeathConfirmMsg(event.getEntity());
+        if (this.plugin.isGameInProgress()) {
+            Player killer = event.getEntity().getKiller();
+            if (killer != null) {
+                // Increment killer's kills
+                this.scoreKeeper.addKill(killer);
+                // No other actions - teleports are not allowed after a death to another player
+            } else {
+                // Ask if this death occurred because of a player or not
+                sendDeathConfirmMsg(event.getEntity());
+            }
         }
     }
 }
