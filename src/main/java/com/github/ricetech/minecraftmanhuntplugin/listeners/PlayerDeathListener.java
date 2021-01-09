@@ -23,7 +23,7 @@ public class PlayerDeathListener implements Listener {
         this.teamManager = manhuntPlugin.getTeamManager();
     }
 
-    public static void sendDeathConfirmMsg(Player p) {
+    public static void sendDeathCauseMsg(Player p) {
         p.sendMessage("Did you die to natural causes or to a player?");
         p.sendMessage("Remember, you must select [Player] even if the cause of death was indirect.");
         ComponentBuilder builderDeathConfirmMsg = new ComponentBuilder("Pick one: ");
@@ -56,7 +56,7 @@ public class PlayerDeathListener implements Listener {
                 // No other actions - teleports are not allowed after a death to another player
             } else {
                 // Ask if this death occurred because of a player or not
-                sendDeathConfirmMsg(event.getEntity());
+                sendDeathCauseMsg(event.getEntity());
             }
         }
     }
