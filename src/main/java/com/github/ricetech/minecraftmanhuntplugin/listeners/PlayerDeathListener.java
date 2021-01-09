@@ -2,6 +2,7 @@ package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
+import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -14,10 +15,12 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 public class PlayerDeathListener implements Listener {
     private final MinecraftManhuntPlugin manhuntPlugin;
     private final ScoreKeeper scoreKeeper;
+    private final TeamManager teamManager;
 
     public PlayerDeathListener(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
         this.scoreKeeper = manhuntPlugin.getScoreKeeper();
+        this.teamManager = manhuntPlugin.getTeamManager();
     }
 
     public static void sendDeathConfirmMsg(Player p) {
