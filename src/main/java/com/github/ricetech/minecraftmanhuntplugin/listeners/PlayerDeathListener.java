@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import net.md_5.bungee.api.ChatColor;
@@ -50,9 +51,14 @@ public class PlayerDeathListener implements Listener {
         if (this.manhuntPlugin.isGameInProgress()) {
             Player victim = event.getEntity();
             Player killer = victim.getKiller();
+            ManhuntTeam victimTeam = this.teamManager.getTeam(victim);
             if (killer != null) {
                 // Increment killer's kills
                 this.scoreKeeper.addKill(killer);
+                // Eliminate Runners
+                if (victimTeam == ManhuntTeam.RUNNERS) {
+                    teamManager.eliminatePlayer(victim);
+                }
                 // No other actions - teleports are not allowed after a death to another player
             } else {
                 // Ask if this death occurred because of a player or not
