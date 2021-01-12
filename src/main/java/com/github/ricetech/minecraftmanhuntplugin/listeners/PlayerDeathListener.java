@@ -35,7 +35,7 @@ public class PlayerDeathListener implements Listener {
 
         TextComponent playerComponent = new TextComponent("[Player]");
         playerComponent.setColor(ChatColor.RED);
-        playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/"));
+        playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/selfelim"));
 
         builderDeathConfirmMsg
                 .append(" ")
