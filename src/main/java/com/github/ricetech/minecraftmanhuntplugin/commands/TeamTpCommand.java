@@ -18,6 +18,8 @@ public class TeamTpCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        Player p;
+
         if (args.length != 1) {
             return false;
         }
@@ -25,6 +27,8 @@ public class TeamTpCommand implements CommandExecutor {
         if (!(sender instanceof Player)) {
             MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
             return true;
+        } else {
+            p = ((Player) sender);
         }
 
         Player target = Bukkit.getPlayer(args[0]);
