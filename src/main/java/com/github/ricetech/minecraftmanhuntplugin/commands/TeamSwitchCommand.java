@@ -13,13 +13,11 @@ import java.util.Set;
 
 public class TeamSwitchCommand implements CommandExecutor {
     private final TeamManager teamManager;
-    private final Set<String> validTeams = new HashSet<>();
+    private final Set<String> validTeams;
 
     public TeamSwitchCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.teamManager = manhuntPlugin.getTeamManager();
-        for (ManhuntTeam team : ManhuntTeam.values()) {
-            validTeams.add(team.name());
-        }
+        this.validTeams = teamManager.getValidTeams();
     }
 
     @Override
