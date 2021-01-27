@@ -34,6 +34,12 @@ public class TeamTpCommand implements CommandExecutor {
         Player target = Bukkit.getPlayer(args[0]);
         if (target == null) {
             sender.sendMessage(ChatColor.RED + "Error: Target player does not exist or is offline");
+            return true;
+        }
+
+        if (teamManager.getTeam(p) != teamManager.getTeam(target)) {
+            sender.sendMessage(ChatColor.RED + "Error: Target player is not on your team");
+            return true;
         }
         return true;
     }
