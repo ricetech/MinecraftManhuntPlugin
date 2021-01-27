@@ -10,19 +10,19 @@ import org.bukkit.entity.Player;
 
 public class TeamTpCommand implements CommandExecutor {
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length != 1) {
             return false;
         }
 
-        if (!(commandSender instanceof Player)) {
-            MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(commandSender);
+        if (!(sender instanceof Player)) {
+            MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
             return true;
         }
 
         Player target = Bukkit.getPlayer(args[0]);
         if (target == null) {
-            commandSender.sendMessage(ChatColor.RED + "Error: Target player does not exist or is offline");
+            sender.sendMessage(ChatColor.RED + "Error: Target player does not exist or is offline");
         }
         return true;
     }
