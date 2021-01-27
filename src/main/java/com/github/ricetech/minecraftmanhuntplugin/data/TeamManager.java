@@ -8,8 +8,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class TeamManager {
     private final Scoreboard mainScoreboard;
+    private final Set<String> validTeams = new HashSet<>();
     private Team runners;
     private Team eliminated;
     private Team hunters;
@@ -77,6 +81,14 @@ public class TeamManager {
         eliminated.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.ALWAYS);
         hunters.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.ALWAYS);
         spectators.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.FOR_OWN_TEAM);
+
+        for (ManhuntTeam team : ManhuntTeam.values()) {
+            validTeams.add(team.name());
+        }
+    }
+
+    public Set<String> getValidTeams() {
+        return validTeams;
     }
 
     public Team getRunners() {
