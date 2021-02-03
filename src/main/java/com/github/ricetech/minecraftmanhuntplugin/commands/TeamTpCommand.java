@@ -8,8 +8,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class TeamTpCommand implements CommandExecutor {
+    @SuppressWarnings("FieldCanBeLocal")
+    private final long SAFETY_DELAY_SECONDS = 5;
+
     private final TeamManager teamManager;
     private final MinecraftManhuntPlugin manhuntPlugin;
 
@@ -46,7 +50,23 @@ public class TeamTpCommand implements CommandExecutor {
             return true;
         }
 
-        p.teleport(target);
+        new TeamTpRunnable(p, target).runTaskLater(this.manhuntPlugin, SAFETY_DELAY_SECONDS * 20);
+
         return true;
+    }
+
+    private static class TeamTpRunnable extends BukkitRunnable {
+        private final Player p;
+        private final Player target;
+
+        public TeamTpRunnable(Player p, Player target) {
+            this.p = p;
+            this.target = target;
+        }
+
+        @Override
+        public void run() {
+            p.teleport(target);
+        }
     }
 }
