@@ -64,7 +64,7 @@ public class ResetCommand implements CommandExecutor {
                 // Add players not on any team to Spectators
                 // Also allow them to still select a team
 
-                NewGameCommand.sendTeamSelectMsg(p);
+                TeamSwitchCommand.sendTeamSelectMsg(p);
 
                 TextComponent alertMsg = new TextComponent("Alert: You did not select a team and have therefore " +
                         "been added to the Spectators team automatically. You can use the message above to join" +
