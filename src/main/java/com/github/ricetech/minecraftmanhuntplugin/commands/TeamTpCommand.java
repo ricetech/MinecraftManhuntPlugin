@@ -11,9 +11,11 @@ import org.bukkit.entity.Player;
 
 public class TeamTpCommand implements CommandExecutor {
     private final TeamManager teamManager;
+    private final MinecraftManhuntPlugin manhuntPlugin;
 
     public TeamTpCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.teamManager = manhuntPlugin.getTeamManager();
+        this.manhuntPlugin = manhuntPlugin;
+        this.teamManager = this.manhuntPlugin.getTeamManager();
     }
 
     @Override
