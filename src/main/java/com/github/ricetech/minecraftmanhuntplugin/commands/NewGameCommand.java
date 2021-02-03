@@ -22,6 +22,7 @@ public class NewGameCommand implements CommandExecutor {
         }
 
         this.manhuntPlugin.setGameInProgress(false);
+        Bukkit.broadcastMessage(ChatColor.AQUA + "Manhunt: A new game is starting. Please select your teams.");
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             TeamSwitchCommand.sendTeamSelectMsg(p);
