@@ -17,22 +17,22 @@ public class TeamTpCommand implements CommandExecutor {
     @SuppressWarnings("FieldCanBeLocal")
     private final long SAFETY_DELAY_SECONDS = 5;
 
+    private static final Map<String, Boolean> eligibility = new HashMap<>();
+
     private final TeamManager teamManager;
     private final MinecraftManhuntPlugin manhuntPlugin;
-
-    private final Map<String, Boolean> eligibility = new HashMap<>();
 
     public TeamTpCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
         this.teamManager = this.manhuntPlugin.getTeamManager();
     }
 
-    public boolean getEligibility(String entry) {
-        return this.eligibility.getOrDefault(entry, false);
+    public static boolean getEligibility(String entry) {
+        return eligibility.getOrDefault(entry, false);
     }
 
-    public void setEligibility(String entry, boolean eligibility) {
-        this.eligibility.put(entry, eligibility);
+    public static void setEligibility(String entry, boolean isEligible) {
+        eligibility.put(entry, isEligible);
     }
 
     @Override

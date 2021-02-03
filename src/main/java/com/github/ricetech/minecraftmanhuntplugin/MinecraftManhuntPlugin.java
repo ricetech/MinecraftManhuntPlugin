@@ -20,8 +20,8 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String NEW_GAME_COMMAND_ALIAS = "newgame";
     public static final String START_GAME_COMMAND_ALIAS = "startgame";
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
-    public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
     public static final String TEAM_TP_COMMAND_ALIAS = "teamtp";
+    public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
 
     // Standard Colours
     public static final ChatColor RUNNERS_COLOR = ChatColor.DARK_BLUE;
@@ -36,10 +36,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     private ScoreKeeper scoreKeeper;
     private TeamManager teamManager;
 
-    // Commands with public methods
-    private TeamTpCommand teamTpCommand;
-    private SelfEliminateCommand selfEliminateCommand;
-
     @SuppressWarnings("ConstantConditions")
     @Override
     public void onEnable() {
@@ -48,10 +44,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Init Managers
         this.scoreKeeper = new ScoreKeeper();
         this.teamManager = new TeamManager();
-
-        // Init commands with public methods
-        this.teamTpCommand = new TeamTpCommand(this);
-        this.selfEliminateCommand = new SelfEliminateCommand(this);
 
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
@@ -65,10 +57,8 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(NEW_GAME_COMMAND_ALIAS).setExecutor(new NewGameCommand());
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
-
-        // Register commands with public methods
-        this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(teamTpCommand);
-        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(selfEliminateCommand);
+        this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(new TeamTpCommand(this));
+        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand(this));
     }
 
     @Override
@@ -88,14 +78,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
     public TeamManager getTeamManager() {
         return teamManager;
-    }
-
-    public TeamTpCommand getTeamTpCommand() {
-        return teamTpCommand;
-    }
-
-    public SelfEliminateCommand getSelfEliminateCommand() {
-        return selfEliminateCommand;
     }
 
     public boolean isGameInProgress() {
