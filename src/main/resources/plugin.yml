@@ -14,7 +14,7 @@ commands:
     description: Resets the state of the world and players to prepare for a new game.
     usage: /rs
   changeteam:
-    description: Change to another team or join a team if not already part of one.
+    description: Internal use only.
     usage: /changeteam <runners|eliminated|hunters|spectators>
   newgame:
     description: Start a new game.
@@ -26,7 +26,7 @@ commands:
     description: Stops a manhunt game in progress.
     usage: /stopgame
   selfelim:
-    description: Eliminate yourself from the game. Only works if you are a runner.
+    description: Internal use only.
     usage: /selfelim
   teamtp:
     description: Internal use only.
