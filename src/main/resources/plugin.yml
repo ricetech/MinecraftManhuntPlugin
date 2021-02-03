@@ -28,3 +28,6 @@ commands:
   selfelim:
     description: Eliminate yourself from the game. Only works if you are a runner.
     usage: /selfelim
+  teamtp:
+    description: Internal use only.
+    usage: /teamtp <target player>
