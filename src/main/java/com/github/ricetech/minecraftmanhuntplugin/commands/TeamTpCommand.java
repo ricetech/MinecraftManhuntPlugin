@@ -10,6 +10,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TeamTpCommand implements CommandExecutor {
     @SuppressWarnings("FieldCanBeLocal")
     private final long SAFETY_DELAY_SECONDS = 5;
@@ -17,9 +20,19 @@ public class TeamTpCommand implements CommandExecutor {
     private final TeamManager teamManager;
     private final MinecraftManhuntPlugin manhuntPlugin;
 
+    private final Map<String, Boolean> eligibility = new HashMap<>();
+
     public TeamTpCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
         this.teamManager = this.manhuntPlugin.getTeamManager();
+    }
+
+    public boolean getEligibility(String entry) {
+        return this.eligibility.getOrDefault(entry, false);
+    }
+
+    public void setEligibility(String entry, boolean eligibility) {
+        this.eligibility.put(entry, eligibility);
     }
 
     @Override
@@ -47,6 +60,11 @@ public class TeamTpCommand implements CommandExecutor {
 
         if (teamManager.getTeam(p) != teamManager.getTeam(target)) {
             sender.sendMessage(ChatColor.RED + "Error: Target player is not on your team");
+            return true;
+        }
+
+        if (!eligibility.getOrDefault(p.getName(), false)) {
+            sender.sendMessage(ChatColor.RED + "Error: You are not eligible to teleport");
             return true;
         }
 
