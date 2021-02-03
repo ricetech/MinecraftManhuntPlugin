@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class TeamTpCommand implements CommandExecutor {
-    private TeamManager teamManager;
+    private final TeamManager teamManager;
 
     public TeamTpCommand(TeamManager teamManager) {
         this.teamManager = teamManager;
