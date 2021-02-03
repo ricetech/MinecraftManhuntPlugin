@@ -41,6 +41,8 @@ public class TeamTpCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Error: Target player is not on your team");
             return true;
         }
+
+        p.teleport(target);
         return true;
     }
 }
