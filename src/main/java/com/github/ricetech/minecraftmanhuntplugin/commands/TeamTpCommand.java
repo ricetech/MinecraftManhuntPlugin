@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class TeamTpCommand implements CommandExecutor {
     @SuppressWarnings("FieldCanBeLocal")
-    private final long SAFETY_DELAY_SECONDS = 5;
+    private static final long SAFETY_DELAY_SECONDS = 5;
 
     private static final Map<String, Boolean> eligibility = new HashMap<>();
 
