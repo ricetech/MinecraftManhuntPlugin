@@ -38,6 +38,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
     // Commands with public methods
     private TeamTpCommand teamTpCommand;
+    private SelfEliminateCommand selfEliminateCommand;
 
     @SuppressWarnings("ConstantConditions")
     @Override
@@ -50,6 +51,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
         // Init commands with public methods
         this.teamTpCommand = new TeamTpCommand(this);
+        this.selfEliminateCommand = new SelfEliminateCommand(this);
 
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
@@ -63,10 +65,10 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(NEW_GAME_COMMAND_ALIAS).setExecutor(new NewGameCommand());
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
-        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand(this));
 
         // Register commands with public methods
         this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(teamTpCommand);
+        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(selfEliminateCommand);
     }
 
     @Override
@@ -90,6 +92,10 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
     public TeamTpCommand getTeamTpCommand() {
         return teamTpCommand;
+    }
+
+    public SelfEliminateCommand getSelfEliminateCommand() {
+        return selfEliminateCommand;
     }
 
     public boolean isGameInProgress() {
