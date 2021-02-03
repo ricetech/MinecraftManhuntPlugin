@@ -24,6 +24,7 @@ public class TeamTpCommand implements CommandExecutor {
             return false;
         }
 
+        // Ensure sender is a player, then cast sender to Player
         if (!(sender instanceof Player)) {
             MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
             return true;
@@ -31,6 +32,7 @@ public class TeamTpCommand implements CommandExecutor {
             p = ((Player) sender);
         }
 
+        // Get Player object of target player, check if online
         Player target = Bukkit.getPlayer(args[0]);
         if (target == null) {
             sender.sendMessage(ChatColor.RED + "Error: Target player does not exist or is offline");
