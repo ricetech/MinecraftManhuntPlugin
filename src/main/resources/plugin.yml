@@ -20,8 +20,8 @@ commands:
     description: Start a new game.
     usage: /newgame
   startgame:
-    description: Resets all players and starts a new game with a countdown timer.
-    usage: /startgame <time in seconds>
+    description: Resets all players and starts a new game with a countdown timer. Set the optional second option to 'true' if you do not want to reset all players.
+    usage: /startgame <time in seconds> [(skip reset) true|false]
   stopgame:
     description: Stops a manhunt game in progress.
     usage: /stopgame

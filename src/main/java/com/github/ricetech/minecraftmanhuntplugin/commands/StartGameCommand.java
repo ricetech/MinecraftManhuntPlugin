@@ -18,7 +18,7 @@ public class StartGameCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         int seconds;
 
-        if (args.length != 1) {
+        if (args.length < 1 || args.length > 2) {
             return false;
         }
 
@@ -29,7 +29,15 @@ public class StartGameCommand implements CommandExecutor {
             return false;
         }
 
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.RESET_COMMAND_ALIAS);
+        if (args.length == 2 && !args[1].toLowerCase().matches("^true$|^false$")) {
+            sender.sendMessage("Error: Argument for 'skip reset' must be 'true' or 'false'");
+            return false;
+        }
+
+        if (args.length == 1 || args[1].equalsIgnoreCase("false")) {
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.RESET_COMMAND_ALIAS);
+        }
+
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS +
                 " " + seconds);
 
