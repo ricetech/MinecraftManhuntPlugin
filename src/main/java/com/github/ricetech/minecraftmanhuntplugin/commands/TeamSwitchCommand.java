@@ -65,6 +65,8 @@ public class TeamSwitchCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
+        Player p;
+
         if (args.length != 1) {
             return false;
         }
@@ -72,15 +74,14 @@ public class TeamSwitchCommand implements CommandExecutor {
         if (!(commandSender instanceof Player)) {
             MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(commandSender);
             return true;
+        } else {
+            p = ((Player) commandSender);
         }
 
         if (!validTeams.contains(args[0].toUpperCase())) {
             commandSender.sendMessage("Error: " + args[0] + " is not a valid team.");
             return false;
         }
-
-        // Cast commandSender to player, type safety verified above
-        Player p = (Player) commandSender;
 
         if (!eligibility.getOrDefault(p.getName(), false)) {
             commandSender.sendMessage(org.bukkit.ChatColor.RED + "Error: You are not eligible for team changing.");
