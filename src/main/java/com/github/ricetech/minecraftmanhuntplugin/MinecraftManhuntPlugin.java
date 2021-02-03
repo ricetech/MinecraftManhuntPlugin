@@ -47,6 +47,8 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Init Managers
         this.scoreKeeper = new ScoreKeeper();
         this.teamManager = new TeamManager();
+
+        // Init commands with public methods
         this.teamTpCommand = new TeamTpCommand(this);
 
         // Add Event Listeners
@@ -54,7 +56,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
         manager.registerEvents(new InventoryHandlerListener(), this);
 
-        // Add Commands
+        // Register Commands
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
         this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this));
         this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this));
@@ -62,6 +64,8 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand(this));
+
+        // Register commands with public methods
         this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(teamTpCommand);
     }
 
