@@ -18,13 +18,11 @@ public class PlayerDeathListener implements Listener {
     private final MinecraftManhuntPlugin manhuntPlugin;
     private final ScoreKeeper scoreKeeper;
     private final TeamManager teamManager;
-    private final SelfEliminateCommand selfEliminateCommand;
 
     public PlayerDeathListener(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
         this.scoreKeeper = manhuntPlugin.getScoreKeeper();
         this.teamManager = manhuntPlugin.getTeamManager();
-        this.selfEliminateCommand = manhuntPlugin.getSelfEliminateCommand();
     }
 
     public void sendDeathCauseMsg(Player p) {
@@ -46,7 +44,7 @@ public class PlayerDeathListener implements Listener {
                 .append(" ")
                 .append(playerComponent);
 
-        this.selfEliminateCommand.setEligibility(p.getName(), true);
+        SelfEliminateCommand.setEligibility(p.getName(), true);
         // TODO: Add eligibility call for Natural Causes command
         // TODO: Add canceller for selfelim eligibility in Natural Causes command
         // TODO: Add canceller for Natural causes command in selfelim

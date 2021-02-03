@@ -14,20 +14,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SelfEliminateCommand implements CommandExecutor {
-    private final TeamManager teamManager;
+    private static final Map<String, Boolean> eligibility = new HashMap<>();
 
-    private final Map<String, Boolean> eligibility = new HashMap<>();
+    private final TeamManager teamManager;
 
     public SelfEliminateCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.teamManager = manhuntPlugin.getTeamManager();
     }
 
-    public boolean getEligibility(String entry) {
-        return this.eligibility.getOrDefault(entry, false);
+    public static boolean getEligibility(String entry) {
+        return eligibility.getOrDefault(entry, false);
     }
 
-    public void setEligibility(String entry, boolean eligibility) {
-        this.eligibility.put(entry, eligibility);
+    public static void setEligibility(String entry, boolean isEligible) {
+        eligibility.put(entry, isEligible);
     }
 
     @Override
