@@ -21,6 +21,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String START_GAME_COMMAND_ALIAS = "startgame";
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
     public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
+    public static final String TEAM_TP_COMMAND_ALIAS = "teamtp";
 
     // Standard Colours
     public static final ChatColor RUNNERS_COLOR = ChatColor.DARK_BLUE;
@@ -36,6 +37,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     private TeamManager teamManager;
 
     // Commands with public methods
+    private TeamTpCommand teamTpCommand;
 
     @SuppressWarnings("ConstantConditions")
     @Override
@@ -45,6 +47,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Init Managers
         this.scoreKeeper = new ScoreKeeper();
         this.teamManager = new TeamManager();
+        this.teamTpCommand = new TeamTpCommand(this);
 
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
@@ -59,6 +62,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand(this));
+        this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(teamTpCommand);
     }
 
     @Override
@@ -78,6 +82,10 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
     public TeamManager getTeamManager() {
         return teamManager;
+    }
+
+    public TeamTpCommand getTeamTpCommand() {
+        return teamTpCommand;
     }
 
     public boolean isGameInProgress() {
