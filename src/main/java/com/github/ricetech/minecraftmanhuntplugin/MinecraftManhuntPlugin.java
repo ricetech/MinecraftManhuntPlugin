@@ -13,6 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
 public class MinecraftManhuntPlugin extends JavaPlugin {
+    // Command Aliases
     public static final String COUNTDOWN_COMMAND_ALIAS = "countdown";
     public static final String RESET_COMMAND_ALIAS = "rs";
     public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
@@ -21,15 +22,20 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
     public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
 
+    // Standard Colours
     public static final ChatColor RUNNERS_COLOR = ChatColor.DARK_BLUE;
     public static final ChatColor ELIMINATED_COLOR = ChatColor.DARK_AQUA;
     public static final ChatColor HUNTERS_COLOR = ChatColor.RED;
     public static final ChatColor SPECTATORS_COLOR = ChatColor.GOLD;
 
+    // Internal variables
     private boolean gameInProgress = false;
 
+    // Plugin Helper Components
     private ScoreKeeper scoreKeeper;
     private TeamManager teamManager;
+
+    // Commands with public methods
 
     @SuppressWarnings("ConstantConditions")
     @Override
