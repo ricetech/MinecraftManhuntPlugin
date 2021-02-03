@@ -19,11 +19,13 @@ import java.util.Set;
 public class TeamSwitchCommand implements CommandExecutor {
     private static final Map<String, Boolean> eligibility = new HashMap<>();
 
+    private final MinecraftManhuntPlugin manhuntPlugin;
     private final TeamManager teamManager;
 
     private final Set<String> validTeams;
 
     public TeamSwitchCommand(MinecraftManhuntPlugin manhuntPlugin) {
+        this.manhuntPlugin = manhuntPlugin;
         this.teamManager = manhuntPlugin.getTeamManager();
         this.validTeams = teamManager.getValidTeams();
     }
@@ -81,6 +83,12 @@ public class TeamSwitchCommand implements CommandExecutor {
         if (!validTeams.contains(args[0].toUpperCase())) {
             sender.sendMessage("Error: " + args[0] + " is not a valid team.");
             return false;
+        }
+
+        if (manhuntPlugin.isGameInProgress()) {
+            sender.sendMessage(org.bukkit.ChatColor.RED + "Error: You cannot change teams after the game " +
+                    "has started.");
+            return true;
         }
 
         if (!eligibility.getOrDefault(p.getName(), false)) {
