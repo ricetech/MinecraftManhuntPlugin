@@ -15,7 +15,7 @@ public class StartGameCommand implements CommandExecutor {
 
     @SuppressWarnings("DuplicatedCode")
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         int seconds;
 
         if (args.length != 1) {
@@ -25,7 +25,7 @@ public class StartGameCommand implements CommandExecutor {
         try {
             seconds = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            commandSender.sendMessage("Error: " + args[0] + " is not a number");
+            sender.sendMessage("Error: " + args[0] + " is not a number");
             return false;
         }
 

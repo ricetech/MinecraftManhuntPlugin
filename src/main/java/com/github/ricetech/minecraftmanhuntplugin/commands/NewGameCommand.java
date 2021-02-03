@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 public class NewGameCommand implements CommandExecutor {
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String labels, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String labels, String[] args) {
         if (args.length != 0) {
             return false;
         }
