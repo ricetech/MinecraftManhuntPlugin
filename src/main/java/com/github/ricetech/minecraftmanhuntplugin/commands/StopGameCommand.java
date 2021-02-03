@@ -13,7 +13,7 @@ public class StopGameCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         this.manhuntPlugin.setGameInProgress(false);
         return true;
     }
