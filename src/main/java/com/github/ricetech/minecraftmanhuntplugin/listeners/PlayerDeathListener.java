@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import com.github.ricetech.minecraftmanhuntplugin.commands.SelfEliminateCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
@@ -17,14 +18,16 @@ public class PlayerDeathListener implements Listener {
     private final MinecraftManhuntPlugin manhuntPlugin;
     private final ScoreKeeper scoreKeeper;
     private final TeamManager teamManager;
+    private final SelfEliminateCommand selfEliminateCommand;
 
     public PlayerDeathListener(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
         this.scoreKeeper = manhuntPlugin.getScoreKeeper();
         this.teamManager = manhuntPlugin.getTeamManager();
+        this.selfEliminateCommand = manhuntPlugin.getSelfEliminateCommand();
     }
 
-    public static void sendDeathCauseMsg(Player p) {
+    public void sendDeathCauseMsg(Player p) {
         p.sendMessage("Did you die to natural causes or to a player?");
         p.sendMessage("Remember, you must select [Player] even if the cause of death was indirect.");
         ComponentBuilder builderDeathConfirmMsg = new ComponentBuilder("Pick one: ");
@@ -42,6 +45,11 @@ public class PlayerDeathListener implements Listener {
                 .append(naturalCausesComponent)
                 .append(" ")
                 .append(playerComponent);
+
+        this.selfEliminateCommand.setEligibility(p.getName(), true);
+        // TODO: Add eligibility call for Natural Causes command
+        // TODO: Add canceller for selfelim eligibility in Natural Causes command
+        // TODO: Add canceller for Natural causes command in selfelim
 
         p.spigot().sendMessage(builderDeathConfirmMsg.create());
     }
