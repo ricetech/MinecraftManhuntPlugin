@@ -55,16 +55,15 @@ public class SelfEliminateCommand implements CommandExecutor {
             return true;
         }
 
-        if (team == ManhuntTeam.RUNNERS) {
-            eligibility.put(p.getName(), false);
-            teamManager.eliminatePlayer(p);
-        } else {
+        if (team != ManhuntTeam.RUNNERS) {
             TextComponent errorMsg = new TextComponent("Error: You cannot be eliminated unless you are a Runner.");
             errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
             p.spigot().sendMessage(errorMsg);
             return true;
         }
 
+        eligibility.put(p.getName(), false);
+        teamManager.eliminatePlayer(p);
         return true;
     }
 }
