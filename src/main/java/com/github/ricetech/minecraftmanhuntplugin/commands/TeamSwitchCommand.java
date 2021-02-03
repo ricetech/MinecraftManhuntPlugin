@@ -12,15 +12,28 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class TeamSwitchCommand implements CommandExecutor {
+    private static final Map<String, Boolean> eligibility = new HashMap<>();
+
     private final TeamManager teamManager;
+
     private final Set<String> validTeams;
 
     public TeamSwitchCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.teamManager = manhuntPlugin.getTeamManager();
         this.validTeams = teamManager.getValidTeams();
+    }
+
+    public static boolean getEligibility(String entry) {
+        return eligibility.getOrDefault(entry, false);
+    }
+
+    public static void setEligibility(String entry, boolean isEligible) {
+        eligibility.put(entry, isEligible);
     }
 
     public static void sendTeamSelectMsg(Player p) {
@@ -46,6 +59,7 @@ public class TeamSwitchCommand implements CommandExecutor {
                 .append(" ")
                 .append(spectatorsComponent);
 
+        eligibility.put(p.getName(), true);
         p.spigot().sendMessage(builderSelectTeamMsg.create());
     }
 
@@ -68,6 +82,12 @@ public class TeamSwitchCommand implements CommandExecutor {
         // Cast commandSender to player, type safety verified above
         Player p = (Player) commandSender;
 
+        if (!eligibility.getOrDefault(p.getName(), false)) {
+            commandSender.sendMessage(org.bukkit.ChatColor.RED + "Error: You are not eligible for team changing.");
+            return true;
+        }
+
+        eligibility.put(p.getName(), false);
         teamManager.editTeam(p, ManhuntTeam.valueOf(args[0].toUpperCase()));
 
         return true;
