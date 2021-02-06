@@ -56,9 +56,9 @@ public class CountdownCommand implements CommandExecutor {
     }
 
     private static class CountdownRunnable extends BukkitRunnable {
-        int initTime;
-        int remainingTime;
-        final String secondsWord;
+        private final int initTime;
+        private int remainingTime;
+        private final String secondsWord;
 
         public CountdownRunnable(int counterTime) {
             this.remainingTime = counterTime;
