@@ -129,18 +129,22 @@ public class TeamManager {
             case RUNNERS:
                 runners.addEntry(p.getName());
                 p.setGameMode(GameMode.SURVIVAL);
+                p.sendMessage("You have joined the" + MinecraftManhuntPlugin.RUNNERS_COLOR + " Runners team.");
                 break;
             case ELIMINATED:
                 eliminated.addEntry(p.getName());
                 p.setGameMode(GameMode.SURVIVAL);
+                p.sendMessage("You have been"+ MinecraftManhuntPlugin.ELIMINATED_COLOR + " eliminated.");
                 break;
             case HUNTERS:
                 hunters.addEntry(p.getName());
                 p.setGameMode(GameMode.SURVIVAL);
+                p.sendMessage("You have joined the" + MinecraftManhuntPlugin.HUNTERS_COLOR + " Hunters team.");
                 break;
             case SPECTATORS:
                 spectators.addEntry(p.getName());
                 p.setGameMode(GameMode.SPECTATOR);
+                p.sendMessage("You have joined the" + MinecraftManhuntPlugin.SPECTATORS_COLOR + " Spectators team.");
                 break;
         }
     }
