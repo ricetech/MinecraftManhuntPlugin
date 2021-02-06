@@ -13,6 +13,8 @@ import org.bukkit.scheduler.BukkitTask;
  * Reminders of remaining time are given at 30 second intervals, 45 seconds, 15 seconds and each of the last 10 seconds.
  */
 public class CountdownCommand implements CommandExecutor {
+    public final long COUNTDOWN_START_DELAY_SECONDS = 5L;
+
     private static BukkitTask task;
     private final JavaPlugin plugin;
 
@@ -46,8 +48,9 @@ public class CountdownCommand implements CommandExecutor {
             Bukkit.broadcastMessage("The previous timer was cancelled.");
         }
 
-        task = new CountdownRunnable(seconds).runTaskTimer(plugin, 0, 20);
-        Bukkit.broadcastMessage("Started a countdown for " + seconds + " seconds");
+        task = new CountdownRunnable(seconds).runTaskTimer(plugin, COUNTDOWN_START_DELAY_SECONDS * 20, 20);
+        Bukkit.broadcastMessage("A countdown for " + seconds + " seconds will start in " +
+                COUNTDOWN_START_DELAY_SECONDS + " seconds.");
 
         return true;
     }
