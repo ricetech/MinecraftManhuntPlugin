@@ -125,7 +125,6 @@ public class TeamManager {
     }
 
     public void editTeam(Player p, ManhuntTeam team) {
-        //noinspection EnhancedSwitchMigration
         switch (team) {
             case RUNNERS:
                 runners.addEntry(p.getName());
