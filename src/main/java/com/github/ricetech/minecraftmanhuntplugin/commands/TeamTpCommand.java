@@ -70,6 +70,14 @@ public class TeamTpCommand implements CommandExecutor {
 
         new TeamTpRunnable(p, target).runTaskLater(this.manhuntPlugin, SAFETY_DELAY_SECONDS * 20L);
 
+        // Alert players
+        String secondsWord = SAFETY_DELAY_SECONDS == 1 ? " second" : " seconds";
+
+        p.sendMessage(ChatColor.YELLOW + "Alert: You will be teleported to " + target.getName() + " in " +
+                SAFETY_DELAY_SECONDS + secondsWord + ".");
+        target.sendMessage(ChatColor.YELLOW + "Alert: " + p.getName() + " will be teleported to you in " +
+                SAFETY_DELAY_SECONDS + secondsWord + ". Make sure you are in a safe location!");
+
         return true;
     }
 
