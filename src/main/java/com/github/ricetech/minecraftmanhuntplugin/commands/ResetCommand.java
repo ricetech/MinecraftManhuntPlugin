@@ -80,6 +80,11 @@ public class ResetCommand implements CommandExecutor {
                 p.setGameMode(GameMode.SURVIVAL);
             }
 
+            // Un-eliminate all eliminated players
+            if (team == this.teamManager.getEliminated()) {
+                this.teamManager.editTeam(p, ManhuntTeam.RUNNERS);
+            }
+
             // Teleport to spawn
             p.teleport(spawnLocation);
 
