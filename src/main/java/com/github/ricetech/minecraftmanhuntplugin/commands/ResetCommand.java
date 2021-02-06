@@ -67,7 +67,7 @@ public class ResetCommand implements CommandExecutor {
                 TeamSwitchCommand.sendTeamSelectMsg(p);
 
                 TextComponent alertMsg = new TextComponent("Alert: You did not select a team and have therefore " +
-                        "been added to the Spectators team automatically. You can use the message above to join" +
+                        "been added to the Spectators team automatically. You can use the message above to join " +
                         "a different team.");
                 alertMsg.setColor(ChatColor.RED);
                 p.spigot().sendMessage(new ComponentBuilder(alertMsg).create());
