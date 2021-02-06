@@ -56,14 +56,21 @@ public class CountdownCommand implements CommandExecutor {
     }
 
     private static class CountdownRunnable extends BukkitRunnable {
+        int initTime;
         int remainingTime;
+        final String secondsWord;
 
         public CountdownRunnable(int counterTime) {
             this.remainingTime = counterTime;
+            this.initTime = counterTime;
+            this.secondsWord = counterTime == 1 ? " second." : " seconds.";
         }
 
         @Override
         public void run() {
+            if (remainingTime == initTime) {
+                Bukkit.broadcastMessage("Countdown started for " + initTime + secondsWord);
+            }
             if (remainingTime <= 0) {
                 Bukkit.broadcastMessage("Countdown finished. GO!");
                 this.cancel();
