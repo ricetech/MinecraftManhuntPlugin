@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class TeamTpCommand implements CommandExecutor {
     @SuppressWarnings("FieldCanBeLocal")
-    private static final long SAFETY_DELAY_SECONDS = 5;
+    private static final long SAFETY_DELAY_SECONDS = 5L;
 
     private static final Map<String, Boolean> eligibility = new HashMap<>();
 
@@ -68,7 +68,7 @@ public class TeamTpCommand implements CommandExecutor {
             return true;
         }
 
-        new TeamTpRunnable(p, target).runTaskLater(this.manhuntPlugin, SAFETY_DELAY_SECONDS * 20);
+        new TeamTpRunnable(p, target).runTaskLater(this.manhuntPlugin, SAFETY_DELAY_SECONDS * 20L);
 
         return true;
     }

@@ -48,7 +48,7 @@ public class CountdownCommand implements CommandExecutor {
             Bukkit.broadcastMessage("The previous timer was cancelled.");
         }
 
-        task = new CountdownRunnable(seconds).runTaskTimer(plugin, COUNTDOWN_START_DELAY_SECONDS * 20, 20);
+        task = new CountdownRunnable(seconds).runTaskTimer(plugin, COUNTDOWN_START_DELAY_SECONDS * 20L, 20L);
         Bukkit.broadcastMessage("A countdown for " + seconds + " seconds will start in " +
                 COUNTDOWN_START_DELAY_SECONDS + " seconds.");
 
