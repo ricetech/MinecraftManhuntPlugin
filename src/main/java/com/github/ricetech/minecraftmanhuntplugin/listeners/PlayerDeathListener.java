@@ -2,6 +2,7 @@ package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.commands.SelfEliminateCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.TeamTpCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
@@ -44,8 +45,9 @@ public class PlayerDeathListener implements Listener {
                 .append(" ")
                 .append(playerComponent);
 
+        TeamTpCommand.setEligibility(p.getName(), true);
         SelfEliminateCommand.setEligibility(p.getName(), true);
-        // TODO: Add eligibility call for Natural Causes command
+
         // TODO: Add canceller for selfelim eligibility in Natural Causes command
         // TODO: Add canceller for Natural causes command in selfelim
 
