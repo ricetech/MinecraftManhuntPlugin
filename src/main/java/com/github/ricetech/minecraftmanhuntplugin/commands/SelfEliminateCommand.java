@@ -44,7 +44,7 @@ public class SelfEliminateCommand implements CommandExecutor {
         ManhuntTeam team = teamManager.getTeam(p);
 
         if (team == null) {
-            TextComponent errorMsg = new TextComponent("Error: You aren't on a team. Use /changeteam to join a team.");
+            TextComponent errorMsg = new TextComponent("Error: You aren't on a team. Use /"+ MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " to join a team.");
             errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
             p.spigot().sendMessage(errorMsg);
             return true;

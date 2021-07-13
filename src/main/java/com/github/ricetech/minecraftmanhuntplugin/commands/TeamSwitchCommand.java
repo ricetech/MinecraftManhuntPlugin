@@ -43,15 +43,15 @@ public class TeamSwitchCommand implements CommandExecutor {
 
         TextComponent runnersComponent = new TextComponent("[RUNNERS]");
         runnersComponent.setColor(ChatColor.DARK_BLUE);
-        runnersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam runners"));
+        runnersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " runners"));
 
         TextComponent huntersComponent = new TextComponent("[HUNTERS]");
         huntersComponent.setColor(ChatColor.RED);
-        huntersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam hunters"));
+        huntersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " hunters"));
 
         TextComponent spectatorsComponent = new TextComponent("[SPECTATORS]");
         spectatorsComponent.setColor(ChatColor.GOLD);
-        spectatorsComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/changeteam spectators"));
+        spectatorsComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " spectators"));
 
         builderSelectTeamMsg
                 .append(" ")

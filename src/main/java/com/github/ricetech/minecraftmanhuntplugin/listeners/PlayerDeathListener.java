@@ -36,7 +36,7 @@ public class PlayerDeathListener implements Listener {
 
         TextComponent playerComponent = new TextComponent("[Player]");
         playerComponent.setColor(ChatColor.RED);
-        playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/selfelim"));
+        playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.SELF_ELIMINATE_COMMAND_ALIAS));
 
         builderDeathConfirmMsg
                 .append(" ")
