@@ -30,13 +30,13 @@ public class PlayerDeathListener implements Listener {
         p.sendMessage("Remember, you must select [Player] even if the cause of death was indirect.");
         ComponentBuilder builderDeathConfirmMsg = new ComponentBuilder("Pick one: ");
 
-        TextComponent naturalCausesComponent = new TextComponent("[Natural Causes]");
-        naturalCausesComponent.setColor(ChatColor.DARK_BLUE);
-        naturalCausesComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/"));
-
         TextComponent playerComponent = new TextComponent("[Player]");
         playerComponent.setColor(ChatColor.RED);
         playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.SELF_ELIMINATE_COMMAND_ALIAS));
+
+        TextComponent naturalCausesComponent = new TextComponent("[Natural Causes]");
+        naturalCausesComponent.setColor(ChatColor.DARK_BLUE);
+        naturalCausesComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/"));
 
         builderDeathConfirmMsg
                 .append(" ")
