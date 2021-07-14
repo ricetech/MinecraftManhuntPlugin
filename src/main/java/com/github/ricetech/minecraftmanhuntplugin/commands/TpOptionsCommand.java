@@ -62,7 +62,7 @@ public class TpOptionsCommand implements CommandExecutor {
                     + " " + TeamTpCommand.SELF_TP_ARG));
             TextComponent no = new TextComponent("[No]");
             no.setColor(net.md_5.bungee.api.ChatColor.RED);
-            no.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/"));
+            no.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.RESET_ELIGIBILITY_COMMAND_ALIAS));
 
             teleportMsg.append(" ").append(yes).append(" ").append(no);
 
