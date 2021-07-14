@@ -47,21 +47,26 @@ public class TpOptionsCommand implements CommandExecutor {
         // Get list of players to tp to
         List<Player> playerOptions = teamManager.listTeamPlayers(teamManager.getTeam(p), p);
 
-        // Build message
-        ComponentBuilder selectPlayerMsg = new ComponentBuilder("Select a teammate to teleport to:");
-        net.md_5.bungee.api.ChatColor teamColor = MinecraftManhuntPlugin.getBungeeCordTeamColor(teamManager.getTeam(p));
+        if (playerOptions.size() == 0) {
+            p.sendMessage(ChatColor.RED + "Error: There are no available teammates to teleport to.");
+        } else {
+            // Send message with list of tp options
+            ComponentBuilder selectPlayerMsg = new ComponentBuilder("Select a teammate to teleport to:");
+            net.md_5.bungee.api.ChatColor teamColor = MinecraftManhuntPlugin.getBungeeCordTeamColor(teamManager.getTeam(p));
 
-        for (Player playerOption : playerOptions) {
-            TextComponent playerComponent = new TextComponent(playerOption.getName());
-            playerComponent.setColor(teamColor);
-            playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" +
-                    MinecraftManhuntPlugin.TEAM_TP_COMMAND_ALIAS + " " + playerOption.getName()));
+            for (Player playerOption : playerOptions) {
+                TextComponent playerComponent = new TextComponent(playerOption.getName());
+                playerComponent.setColor(teamColor);
+                playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" +
+                        MinecraftManhuntPlugin.TEAM_TP_COMMAND_ALIAS + " " + playerOption.getName()));
 
-            // Append to message builder
-            selectPlayerMsg.append(" ");
-            selectPlayerMsg.append(playerComponent);
+                // Append to message builder
+                selectPlayerMsg.append(" ");
+                selectPlayerMsg.append(playerComponent);
+            }
+            p.spigot().sendMessage(selectPlayerMsg.create());
         }
-        p.spigot().sendMessage(selectPlayerMsg.create());
+
         return true;
     }
 }
