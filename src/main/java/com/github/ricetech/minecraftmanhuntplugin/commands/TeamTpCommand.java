@@ -68,6 +68,7 @@ public class TeamTpCommand implements CommandExecutor {
             return true;
         }
 
+        eligibility.put(p.getName(), false);
         new TeamTpRunnable(p, target).runTaskLater(this.manhuntPlugin, SAFETY_DELAY_SECONDS * 20L);
 
         // Alert players
