@@ -20,7 +20,6 @@ public class PlayerDeathCoordsListener implements Listener {
         Location pLoc = p.getLocation();
         World world = p.getWorld();
         String worldEnv = world.getName();
-        //noinspection EnhancedSwitchMigration
         switch (world.getEnvironment()) {
             case NORMAL:
                 worldEnv = "the Overworld";
