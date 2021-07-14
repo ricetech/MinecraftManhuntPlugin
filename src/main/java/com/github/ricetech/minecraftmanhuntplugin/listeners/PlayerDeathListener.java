@@ -40,9 +40,9 @@ public class PlayerDeathListener implements Listener {
         naturalCausesComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS));
 
         builderDeathConfirmMsg
-                .append(naturalCausesComponent)
+                .append(playerComponent)
                 .append(" ")
-                .append(playerComponent);
+                .append(naturalCausesComponent);
 
         TeamTpCommand.setEligibility(p.getName(), true);
         SelfEliminateCommand.setEligibility(p.getName(), true);
