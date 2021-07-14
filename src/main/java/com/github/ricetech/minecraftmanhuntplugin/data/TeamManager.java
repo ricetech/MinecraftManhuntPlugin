@@ -8,7 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class TeamManager {
@@ -122,6 +124,36 @@ public class TeamManager {
         } else {
             return null;
         }
+    }
+
+    public List<Player> listTeamPlayers(ManhuntTeam team) {
+        Team targetTeam;
+        switch (team) {
+            case RUNNERS:
+                targetTeam = runners;
+                break;
+            case HUNTERS:
+                targetTeam = hunters;
+                break;
+            case ELIMINATED:
+                targetTeam = eliminated;
+                break;
+            case SPECTATORS:
+                targetTeam = spectators;
+                break;
+            default:
+                targetTeam = null;
+        }
+
+        ArrayList<Player> players = new ArrayList<>();
+
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (mainScoreboard.getEntryTeam(p.getName()) == targetTeam) {
+                players.add(p);
+            }
+        }
+
+        return players;
     }
 
     public void editTeam(Player p, ManhuntTeam team) {
