@@ -5,6 +5,7 @@ import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
+import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationStorageListener;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -46,6 +47,9 @@ public class ResetCommand implements CommandExecutor {
         for (Player p : Bukkit.getOnlinePlayers()) {
             // Reset scores
             this.scoreKeeper.resetPlayer(p);
+
+            // Reset Death Locations
+            PlayerDeathLocationStorageListener.resetDeathLocations();
 
             // Remove effects
             for (PotionEffect effect : p.getActivePotionEffects()) {
