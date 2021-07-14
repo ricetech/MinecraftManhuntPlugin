@@ -22,6 +22,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
     public static final String TEAM_TP_COMMAND_ALIAS = "teamtp";
     public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
+    public static final String TP_OPTIONS_COMMAND_ALIAS = "tpoptions";
 
     // Standard Colours
     public static final ChatColor RUNNERS_COLOR = ChatColor.DARK_BLUE;
@@ -59,6 +60,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
         this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(new TeamTpCommand(this));
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand(this));
+        this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand(this));
     }
 
     @Override
