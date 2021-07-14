@@ -48,9 +48,6 @@ public class PlayerDeathListener implements Listener {
         TeamTpCommand.setEligibility(p.getName(), true);
         SelfEliminateCommand.setEligibility(p.getName(), true);
 
-        // TODO: Add canceller for selfelim eligibility in Natural Causes command
-        // TODO: Add canceller for Natural causes command in selfelim
-
         p.spigot().sendMessage(builderDeathConfirmMsg.create());
     }
 

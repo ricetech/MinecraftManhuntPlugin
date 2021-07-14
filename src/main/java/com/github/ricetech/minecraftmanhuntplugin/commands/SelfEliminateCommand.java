@@ -63,6 +63,9 @@ public class SelfEliminateCommand implements CommandExecutor {
         }
 
         eligibility.put(p.getName(), false);
+        // Disable eligibility for /teamtp
+        TeamTpCommand.setEligibility(p.getName(), false);
+
         teamManager.eliminatePlayer(p);
         return true;
     }
