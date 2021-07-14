@@ -126,7 +126,7 @@ public class TeamManager {
         }
     }
 
-    public List<Player> listTeamPlayers(ManhuntTeam team) {
+    public List<Player> listTeamPlayers(ManhuntTeam team, Player targetPlayer) {
         Team targetTeam;
         switch (team) {
             case RUNNERS:
@@ -148,12 +148,16 @@ public class TeamManager {
         ArrayList<Player> players = new ArrayList<>();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (mainScoreboard.getEntryTeam(p.getName()) == targetTeam) {
+            if (mainScoreboard.getEntryTeam(p.getName()) == targetTeam && p != targetPlayer) {
                 players.add(p);
             }
         }
 
         return players;
+    }
+
+    public List<Player> listTeamPlayers(ManhuntTeam team) {
+        return listTeamPlayers(team, null);
     }
 
     public void editTeam(Player p, ManhuntTeam team) {
