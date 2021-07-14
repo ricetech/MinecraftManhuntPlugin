@@ -31,3 +31,6 @@ commands:
   teamtp:
     description: Internal use only.
     usage: /teamtp <target player>
+  tpoptions:
+    description: Internal use only.
+    usage: /tpoptions
