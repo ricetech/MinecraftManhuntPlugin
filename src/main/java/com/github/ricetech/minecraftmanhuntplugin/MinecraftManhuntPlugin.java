@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
 import com.github.ricetech.minecraftmanhuntplugin.commands.*;
+import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
@@ -78,6 +79,36 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         TextComponent errorMsg = new TextComponent("Error: Only players can use this command.");
         errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
         target.spigot().sendMessage(errorMsg);
+    }
+
+    public static ChatColor getBukkitTeamColor(ManhuntTeam team) {
+        switch (team) {
+            case RUNNERS:
+                return RUNNERS_COLOR;
+            case ELIMINATED:
+                return ELIMINATED_COLOR;
+            case HUNTERS:
+                return HUNTERS_COLOR;
+            case SPECTATORS:
+                return SPECTATORS_COLOR;
+            default:
+                return ChatColor.RESET;
+        }
+    }
+
+    public static net.md_5.bungee.api.ChatColor getBungeeCordTeamColor(ManhuntTeam team) {
+        switch (team) {
+            case RUNNERS:
+                return RUNNERS_COLOR_BUNGEE;
+            case ELIMINATED:
+                return ELIMINATED_COLOR_BUNGEE;
+            case HUNTERS:
+                return HUNTERS_COLOR_BUNGEE;
+            case SPECTATORS:
+                return SPECTATORS_COLOR_BUNGEE;
+            default:
+                return net.md_5.bungee.api.ChatColor.RESET;
+        }
     }
 
     public ScoreKeeper getScoreKeeper() {
