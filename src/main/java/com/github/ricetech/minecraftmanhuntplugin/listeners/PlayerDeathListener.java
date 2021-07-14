@@ -40,7 +40,6 @@ public class PlayerDeathListener implements Listener {
         naturalCausesComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS));
 
         builderDeathConfirmMsg
-                .append(" ")
                 .append(naturalCausesComponent)
                 .append(" ")
                 .append(playerComponent);
