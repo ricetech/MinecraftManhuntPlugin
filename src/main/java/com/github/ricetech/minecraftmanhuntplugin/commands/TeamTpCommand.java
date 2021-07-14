@@ -69,6 +69,9 @@ public class TeamTpCommand implements CommandExecutor {
         }
 
         eligibility.put(p.getName(), false);
+        // Disable eligibility for /selfelim
+        SelfEliminateCommand.setEligibility(p.getName(), false);
+
         new TeamTpRunnable(p, target).runTaskLater(this.manhuntPlugin, SAFETY_DELAY_SECONDS * 20L);
 
         // Alert players
