@@ -34,3 +34,6 @@ commands:
   tpoptions:
     description: Internal use only.
     usage: /tpoptions
+  reseteligibility:
+    description: Internal use only.
+    usage: /reseteligibility
