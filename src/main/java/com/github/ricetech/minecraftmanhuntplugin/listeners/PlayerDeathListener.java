@@ -37,7 +37,7 @@ public class PlayerDeathListener implements Listener {
 
         TextComponent naturalCausesComponent = new TextComponent("[Natural Causes]");
         naturalCausesComponent.setColor(ChatColor.DARK_BLUE);
-        naturalCausesComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/"));
+        naturalCausesComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS));
 
         builderDeathConfirmMsg
                 .append(" ")
