@@ -66,7 +66,7 @@ public class PlayerDeathCauseListener implements Listener {
                 // No other actions - teleports are not allowed after a death to another player
             } else {
                 // Ask if this death occurred because of a player or not
-                sendDeathCauseMsg(event.getEntity());
+                sendDeathCauseMsg(victim);
             }
         }
     }
