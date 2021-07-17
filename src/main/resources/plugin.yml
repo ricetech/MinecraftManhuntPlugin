@@ -34,6 +34,9 @@ commands:
   tpoptions:
     description: Internal use only.
     usage: /tpoptions
+  trackn:
+    description: Track a player using a compass.
+    usage: /track <player>
   reseteligibility:
     description: Internal use only.
     usage: /reseteligibility
