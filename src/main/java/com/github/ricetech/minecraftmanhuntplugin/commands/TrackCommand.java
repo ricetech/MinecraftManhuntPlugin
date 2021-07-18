@@ -79,7 +79,7 @@ public class TrackCommand implements CommandExecutor {
             // Same world
             sendTrackMsg(source, sourceLoc, target.getName(), targetLoc);
         }
-
+        // TODO: Handle different worlds
     }
 
     @Override
