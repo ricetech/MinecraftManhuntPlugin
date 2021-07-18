@@ -27,7 +27,6 @@ public class CountdownCommand implements CommandExecutor {
         task = null;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         int seconds;

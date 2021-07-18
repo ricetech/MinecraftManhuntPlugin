@@ -13,7 +13,6 @@ public class StartGameCommand implements CommandExecutor {
         this.manhuntPlugin = manhuntPlugin;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         int seconds;
