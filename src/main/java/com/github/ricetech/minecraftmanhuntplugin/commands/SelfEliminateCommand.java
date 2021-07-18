@@ -3,8 +3,6 @@ package com.github.ricetech.minecraftmanhuntplugin.commands;
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
-import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

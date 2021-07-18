@@ -8,7 +8,6 @@ import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerList
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCauseListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCoordsListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationStorageListener;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
