@@ -48,9 +48,6 @@ public class ResetCommand implements CommandExecutor {
             // Reset scores
             this.scoreKeeper.resetPlayer(p);
 
-            // Reset Death Locations
-            PlayerDeathLocationStorageListener.resetDeathLocations();
-
             // Remove effects
             for (PotionEffect effect : p.getActivePotionEffects()) {
                 p.removePotionEffect(effect.getType());
@@ -120,6 +117,9 @@ public class ResetCommand implements CommandExecutor {
 
         // Revoke all advancements
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a everything");
+
+        // Reset plugin state
+        PlayerDeathLocationStorageListener.resetDeathLocations();
 
         return true;
     }
