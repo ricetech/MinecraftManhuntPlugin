@@ -91,33 +91,23 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     }
 
     public static ChatColor getBukkitTeamColor(ManhuntTeam team) {
-        switch (team) {
-            case RUNNERS:
-                return RUNNERS_COLOR;
-            case ELIMINATED:
-                return ELIMINATED_COLOR;
-            case HUNTERS:
-                return HUNTERS_COLOR;
-            case SPECTATORS:
-                return SPECTATORS_COLOR;
-            default:
-                return ChatColor.RESET;
-        }
+        return switch (team) {
+            case RUNNERS -> RUNNERS_COLOR;
+            case ELIMINATED -> ELIMINATED_COLOR;
+            case HUNTERS -> HUNTERS_COLOR;
+            case SPECTATORS -> SPECTATORS_COLOR;
+            default -> ChatColor.RESET;
+        };
     }
 
     public static net.md_5.bungee.api.ChatColor getBungeeCordTeamColor(ManhuntTeam team) {
-        switch (team) {
-            case RUNNERS:
-                return RUNNERS_COLOR_BUNGEE;
-            case ELIMINATED:
-                return ELIMINATED_COLOR_BUNGEE;
-            case HUNTERS:
-                return HUNTERS_COLOR_BUNGEE;
-            case SPECTATORS:
-                return SPECTATORS_COLOR_BUNGEE;
-            default:
-                return net.md_5.bungee.api.ChatColor.RESET;
-        }
+        return switch (team) {
+            case RUNNERS -> RUNNERS_COLOR_BUNGEE;
+            case ELIMINATED -> ELIMINATED_COLOR_BUNGEE;
+            case HUNTERS -> HUNTERS_COLOR_BUNGEE;
+            case SPECTATORS -> SPECTATORS_COLOR_BUNGEE;
+            default -> net.md_5.bungee.api.ChatColor.RESET;
+        };
     }
 
     public ScoreKeeper getScoreKeeper() {

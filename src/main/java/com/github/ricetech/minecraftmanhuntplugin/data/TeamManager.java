@@ -127,23 +127,13 @@ public class TeamManager {
     }
 
     public List<Player> listTeamPlayers(ManhuntTeam team, Player targetPlayer) {
-        Team targetTeam;
-        switch (team) {
-            case RUNNERS:
-                targetTeam = runners;
-                break;
-            case HUNTERS:
-                targetTeam = hunters;
-                break;
-            case ELIMINATED:
-                targetTeam = eliminated;
-                break;
-            case SPECTATORS:
-                targetTeam = spectators;
-                break;
-            default:
-                targetTeam = null;
-        }
+        Team targetTeam = switch (team) {
+            case RUNNERS -> runners;
+            case HUNTERS -> hunters;
+            case ELIMINATED -> eliminated;
+            case SPECTATORS -> spectators;
+            default -> null;
+        };
 
         ArrayList<Player> players = new ArrayList<>();
 
@@ -162,26 +152,26 @@ public class TeamManager {
 
     public void editTeam(Player p, ManhuntTeam team) {
         switch (team) {
-            case RUNNERS:
+            case RUNNERS -> {
                 runners.addEntry(p.getName());
                 p.setGameMode(GameMode.SURVIVAL);
                 p.sendMessage("You have joined the" + MinecraftManhuntPlugin.RUNNERS_COLOR + " Runners team.");
-                break;
-            case ELIMINATED:
+            }
+            case ELIMINATED -> {
                 eliminated.addEntry(p.getName());
                 p.setGameMode(GameMode.SURVIVAL);
-                p.sendMessage("You have been"+ MinecraftManhuntPlugin.ELIMINATED_COLOR + " eliminated.");
-                break;
-            case HUNTERS:
+                p.sendMessage("You have been" + MinecraftManhuntPlugin.ELIMINATED_COLOR + " eliminated.");
+            }
+            case HUNTERS -> {
                 hunters.addEntry(p.getName());
                 p.setGameMode(GameMode.SURVIVAL);
                 p.sendMessage("You have joined the" + MinecraftManhuntPlugin.HUNTERS_COLOR + " Hunters team.");
-                break;
-            case SPECTATORS:
+            }
+            case SPECTATORS -> {
                 spectators.addEntry(p.getName());
                 p.setGameMode(GameMode.SPECTATOR);
                 p.sendMessage("You have joined the" + MinecraftManhuntPlugin.SPECTATORS_COLOR + " Spectators team.");
-                break;
+            }
         }
     }
 

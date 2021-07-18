@@ -19,18 +19,13 @@ public class PlayerDeathCoordsListener implements Listener {
         Player p = event.getEntity();
         Location pLoc = p.getLocation();
         World world = p.getWorld();
-        String worldEnv = world.getName();
-        switch (world.getEnvironment()) {
-            case NORMAL:
-                worldEnv = "the Overworld";
-                break;
-            case NETHER:
-                worldEnv = "the Nether";
-                break;
-            case THE_END:
-                worldEnv = "The End";
-                break;
-        }
+        world.getName();
+        String worldEnv = switch (world.getEnvironment()) {
+            case NORMAL -> "the Overworld";
+            case NETHER -> "the Nether";
+            case THE_END -> "The End";
+            default -> world.getName();
+        };
         String deathCoords = " died at: " + pLoc.getBlockX() + ", " + pLoc.getBlockY() + ", " + pLoc.getBlockZ() +
                 " in " + worldEnv;
         Bukkit.getLogger().info(p.getName() + deathCoords);
