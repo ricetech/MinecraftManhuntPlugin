@@ -62,7 +62,7 @@ public class TeamTpCommand implements CommandExecutor {
             Location deathLoc = PlayerDeathLocationStorageListener.getLatestDeathLoc(p);
 
             if (deathLoc == null) {
-               sender.sendMessage(ChatColor.RED + "Error: You do not have a valid death location saved.");
+               MinecraftManhuntPlugin.sendErrorMsg(sender, "You do not have a valid death location saved.");
                eligibility.put(p.getName(), false);
                return true;
             }
@@ -84,19 +84,19 @@ public class TeamTpCommand implements CommandExecutor {
             // Get Player object of target player, check if online
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                sender.sendMessage(ChatColor.RED + "Error: Target player does not exist or is offline. Try clicking on another player.");
+                MinecraftManhuntPlugin.sendErrorMsg(sender, "You do not have a valid death location saved.");
                 Bukkit.dispatchCommand(p, MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS);
                 return true;
             }
 
             if (teamManager.getTeam(p) != teamManager.getTeam(target)) {
-                sender.sendMessage(ChatColor.RED + "Error: Target player is not on your team. Try clicking on another player.");
+                MinecraftManhuntPlugin.sendErrorMsg(sender, "Target player is not on your team. Try clicking on another player.");
                 Bukkit.dispatchCommand(p, MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS);
                 return true;
             }
 
             if (!eligibility.getOrDefault(p.getName(), false)) {
-                sender.sendMessage(ChatColor.RED + "Error: You are not eligible to teleport.");
+                MinecraftManhuntPlugin.sendErrorMsg(sender, "You are not eligible to teleport.");
                 return true;
             }
 

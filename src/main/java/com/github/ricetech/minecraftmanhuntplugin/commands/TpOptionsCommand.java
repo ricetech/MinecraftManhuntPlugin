@@ -40,7 +40,7 @@ public class TpOptionsCommand implements CommandExecutor {
 
         // Eligibility
         if (!TeamTpCommand.getEligibility(p.getName())) {
-            sender.sendMessage(ChatColor.RED + "Error: You are not eligible to teleport.");
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "You are not eligible to teleport.");
             return true;
         }
 
