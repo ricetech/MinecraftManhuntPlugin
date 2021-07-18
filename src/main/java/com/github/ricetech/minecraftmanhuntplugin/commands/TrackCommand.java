@@ -61,9 +61,7 @@ public class TrackCommand implements CommandExecutor {
         source.sendMessage(ChatColor.GREEN + "Tracking " + targetName + ": The target is " + heightDiffString + ".");
     }
 
-    public static void trackPlayer(Player source, String targetName) {
-        Player target = Bukkit.getPlayer(targetName);
-
+    public static void trackPlayer(Player source, Player target) {
         // Check if target exists
         if (target == null) {
             // TODO: Offline player location storage
@@ -79,7 +77,7 @@ public class TrackCommand implements CommandExecutor {
 
         if (sourceWorldEnv == targetWorldEnv) {
             // Same world
-            sendTrackMsg(source, sourceLoc, targetName, targetLoc);
+            sendTrackMsg(source, sourceLoc, target.getName(), targetLoc);
         }
 
     }
