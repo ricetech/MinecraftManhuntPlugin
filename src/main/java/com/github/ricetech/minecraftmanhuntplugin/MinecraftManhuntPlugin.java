@@ -84,9 +84,11 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     }
 
     public static void sendOnlyPlayersErrorMsg(CommandSender target) {
-        TextComponent errorMsg = new TextComponent("Error: Only players can use this command.");
-        errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
-        target.spigot().sendMessage(errorMsg);
+        sendErrorMsg(target, "Only players can use this command.");
+    }
+
+    public static void sendErrorMsg(CommandSender target, String message) {
+        target.sendMessage(ChatColor.RED + "Error: " + message);
     }
 
     public static ChatColor getBukkitTeamColor(ManhuntTeam team) {

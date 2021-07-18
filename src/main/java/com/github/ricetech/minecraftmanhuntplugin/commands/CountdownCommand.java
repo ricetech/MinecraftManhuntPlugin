@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
+import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -38,7 +39,7 @@ public class CountdownCommand implements CommandExecutor {
         try {
             seconds = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            sender.sendMessage("Error: " + args[0] + " is not a number");
+            MinecraftManhuntPlugin.sendErrorMsg(sender, args[0] + " is not a number");
             return false;
         }
 

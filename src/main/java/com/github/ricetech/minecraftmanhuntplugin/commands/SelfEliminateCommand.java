@@ -44,21 +44,17 @@ public class SelfEliminateCommand implements CommandExecutor {
         ManhuntTeam team = teamManager.getTeam(p);
 
         if (team == null) {
-            TextComponent errorMsg = new TextComponent("Error: You aren't on a team. Use /"+ MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " to join a team.");
-            errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
-            p.spigot().sendMessage(errorMsg);
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You aren't on a team. Use /"+ MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " to join a team.");
             return true;
         }
 
         if (!eligibility.getOrDefault(p.getName(), false)) {
-            sender.sendMessage(ChatColor.RED + "Error: You are not eligible for elimination.");
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You are not eligible for elimination.");
             return true;
         }
 
         if (team != ManhuntTeam.RUNNERS) {
-            TextComponent errorMsg = new TextComponent("Error: You cannot be eliminated unless you are a Runner.");
-            errorMsg.setColor(net.md_5.bungee.api.ChatColor.RED);
-            p.spigot().sendMessage(errorMsg);
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You cannot be eliminated unless you are a Runner.");
             return true;
         }
 

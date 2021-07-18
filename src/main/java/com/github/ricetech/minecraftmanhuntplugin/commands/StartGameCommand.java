@@ -25,12 +25,12 @@ public class StartGameCommand implements CommandExecutor {
         try {
             seconds = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            sender.sendMessage("Error: " + args[0] + " is not a number");
+            MinecraftManhuntPlugin.sendErrorMsg(sender, args[0] + " is not a number");
             return false;
         }
 
         if (args.length == 2 && !args[1].toLowerCase().matches("^true$|^false$")) {
-            sender.sendMessage("Error: Argument for 'skip reset' must be 'true' or 'false'");
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "Argument for 'reset' must be 'true' or 'false'");
             return false;
         }
 

@@ -81,18 +81,17 @@ public class TeamSwitchCommand implements CommandExecutor {
         }
 
         if (!validTeams.contains(args[0].toUpperCase())) {
-            sender.sendMessage("Error: " + args[0] + " is not a valid team.");
+            MinecraftManhuntPlugin.sendErrorMsg(sender, args[0] + " is not a valid team.");
             return false;
         }
 
         if (manhuntPlugin.isGameInProgress()) {
-            sender.sendMessage(org.bukkit.ChatColor.RED + "Error: You cannot change teams after the game " +
-                    "has started.");
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "You cannot change teams after the game has started.");
             return true;
         }
 
         if (!eligibility.getOrDefault(p.getName(), false)) {
-            sender.sendMessage(org.bukkit.ChatColor.RED + "Error: You are not eligible for team changing.");
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "You are not eligible for team changing.");
             return true;
         }
 
