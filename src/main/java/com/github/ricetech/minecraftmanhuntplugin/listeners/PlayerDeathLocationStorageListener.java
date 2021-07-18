@@ -22,7 +22,7 @@ public class PlayerDeathLocationStorageListener implements Listener {
         return deathLocations.getOrDefault(p.getName(), null);
     }
 
-    public static void resetDeathLocations() {
+    public static void reset() {
         deathLocations = new HashMap<>();
     }
 

@@ -119,7 +119,7 @@ public class ResetCommand implements CommandExecutor {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a everything");
 
         // Reset plugin state
-        PlayerDeathLocationStorageListener.resetDeathLocations();
+        PlayerDeathLocationStorageListener.reset();
         TrackCommand.reset();
 
         return true;
