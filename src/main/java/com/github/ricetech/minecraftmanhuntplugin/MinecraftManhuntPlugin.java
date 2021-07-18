@@ -96,7 +96,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
             case ELIMINATED -> ELIMINATED_COLOR;
             case HUNTERS -> HUNTERS_COLOR;
             case SPECTATORS -> SPECTATORS_COLOR;
-            default -> ChatColor.RESET;
         };
     }
 
@@ -106,7 +105,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
             case ELIMINATED -> ELIMINATED_COLOR_BUNGEE;
             case HUNTERS -> HUNTERS_COLOR_BUNGEE;
             case SPECTATORS -> SPECTATORS_COLOR_BUNGEE;
-            default -> net.md_5.bungee.api.ChatColor.RESET;
         };
     }
 
