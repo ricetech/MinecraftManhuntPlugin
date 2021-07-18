@@ -120,6 +120,7 @@ public class ResetCommand implements CommandExecutor {
 
         // Reset plugin state
         PlayerDeathLocationStorageListener.resetDeathLocations();
+        TrackCommand.reset();
 
         return true;
     }
