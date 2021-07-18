@@ -84,7 +84,35 @@ public class TrackCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        Player p;
+
         sender.sendMessage("Error: Command not implemented");
+
+        if (args.length != 1) {
+            return false;
+        }
+
+        // Ensure sender is a player, then cast sender to Player
+        if (!(sender instanceof Player)) {
+            MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
+            return true;
+        } else {
+            p = ((Player) sender);
+        }
+
+        // Attempt to get target player
+        Player target = Bukkit.getPlayer(args[0]);
+
+        // Check if target exists
+        if (target == null) {
+            // TODO: Offline player location storage
+            MinecraftManhuntPlugin.sendErrorMsg(p, "Target player does not exist.");
+            return true;
+        } else {
+            // Target exists and is online, track normally
+            trackPlayer(p, target);
+        }
+
         return true;
     }
 }
