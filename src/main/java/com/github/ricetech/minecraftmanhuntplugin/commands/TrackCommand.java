@@ -1,14 +1,15 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.CompassMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,6 +62,37 @@ public class TrackCommand implements CommandExecutor {
         source.sendMessage(ChatColor.GREEN + "Tracking " + targetName + ": The target is " + heightDiffString + ".");
     }
 
+    /**
+     * @author @johnzhoudev
+     * @author @ricetech
+     */
+    public static void updateCompass(Player p, Location targetLoc) {
+        PlayerInventory inventory = p.getInventory();
+
+        int compassPosition = inventory.first(Material.COMPASS);
+        if (compassPosition == -1) {
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You used /track without a compass in your inventory.");
+            return;
+        }
+
+        // Get compass metadata
+        ItemStack compass = inventory.getItem(compassPosition);
+
+        if (compass == null) {
+            MinecraftManhuntPlugin.sendErrorMsg(p, "The compass in your inventory is invalid. Please contact the developer.");
+            return;
+        }
+
+        ItemMeta compassMeta = compass.getItemMeta();
+
+        if (compassMeta instanceof CompassMeta trackerCompassMeta) {
+            trackerCompassMeta.setLodestoneTracked(false);
+            trackerCompassMeta.setLodestone(targetLoc);
+
+            compass.setItemMeta(trackerCompassMeta);
+        }
+    }
+
     public static void trackPlayer(Player source, Player target) {
         // Check if target exists
         if (target == null) {
@@ -78,6 +110,7 @@ public class TrackCommand implements CommandExecutor {
         if (sourceWorldEnv == targetWorldEnv) {
             // Same world
             sendTrackMsg(source, sourceLoc, target.getName(), targetLoc);
+            updateCompass(source, targetLoc);
         }
         // TODO: Handle different worlds
     }
