@@ -19,18 +19,18 @@ public class TrackCommand implements CommandExecutor {
     public static final int MEDIUM_Y_THRESHOLD = 25;
     public static final int FAR_Y_THRESHOLD = 50;
 
-    private static Map<String, String> trackingMap = new HashMap<>();
-    private static Map<String, Location> portalEntrances = new HashMap<>();
-    private static Map<String, Location> portalExits = new HashMap<>();
+    private static final Map<String, String> trackingMap = new HashMap<>();
+    private static final Map<String, Location> portalEntrances = new HashMap<>();
+    private static final Map<String, Location> portalExits = new HashMap<>();
 
     public TrackCommand() {
 
     }
 
     public static void reset() {
-        trackingMap = new HashMap<>();
-        portalEntrances = new HashMap<>();
-        portalExits = new HashMap<>();
+        trackingMap.clear();
+        portalEntrances.clear();
+        portalExits.clear();
     }
 
     public static void putPortalEntrance(String playerName, Location location) {
