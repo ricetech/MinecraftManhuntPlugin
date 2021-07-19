@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class PlayerDeathLocationStorageListener implements Listener {
     private final MinecraftManhuntPlugin manhuntPlugin;
-    private static Map<String, Location> deathLocations = new HashMap<>();
+    private static final Map<String, Location> deathLocations = new HashMap<>();
 
     public PlayerDeathLocationStorageListener(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
@@ -23,7 +23,7 @@ public class PlayerDeathLocationStorageListener implements Listener {
     }
 
     public static void reset() {
-        deathLocations = new HashMap<>();
+        deathLocations.clear();
     }
 
     @EventHandler
