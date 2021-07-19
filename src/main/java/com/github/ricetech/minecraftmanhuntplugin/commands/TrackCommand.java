@@ -34,8 +34,6 @@ public class TrackCommand implements CommandExecutor {
     }
 
     private static void sendTrackMsg(Player source, Location sourceLoc, String targetName, Location targetLoc) {
-        // TODO: Update Compass
-
         int sourceY = sourceLoc.getBlockY();
         int targetY = targetLoc.getBlockY();
 
