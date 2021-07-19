@@ -4,10 +4,7 @@ import com.github.ricetech.minecraftmanhuntplugin.commands.*;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
-import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
-import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCauseListener;
-import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathCoordsListener;
-import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationStorageListener;
+import com.github.ricetech.minecraftmanhuntplugin.listeners.*;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
@@ -62,6 +59,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new InventoryHandlerListener(), this);
         manager.registerEvents(new PlayerDeathCauseListener(this), this);
         manager.registerEvents(new PlayerDeathLocationStorageListener(this), this);
+        manager.registerEvents(new PlayerPortalEventListener(this), this);
 
         // Register Commands
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
