@@ -38,6 +38,10 @@ public class TeamSwitchCommand implements CommandExecutor {
         eligibility.put(entry, isEligible);
     }
 
+    public static void reset() {
+        eligibility.clear();
+    }
+
     public static void sendTeamSelectMsg(Player p) {
         ComponentBuilder builderSelectTeamMsg = new ComponentBuilder("Select a team:");
 

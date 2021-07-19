@@ -41,6 +41,10 @@ public class TeamTpCommand implements CommandExecutor {
         eligibility.put(entry, isEligible);
     }
 
+    public static void reset() {
+        eligibility.clear();
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p;
