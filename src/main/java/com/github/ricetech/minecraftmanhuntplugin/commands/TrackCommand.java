@@ -22,6 +22,7 @@ public class TrackCommand implements CommandExecutor {
     private static final Map<String, String> trackingMap = new HashMap<>();
     private static final Map<String, Location> portalEntrances = new HashMap<>();
     private static final Map<String, Location> portalExits = new HashMap<>();
+    private static final Map<String, Location> offlinePlayerLocations = new HashMap<>();
 
     public TrackCommand() {
 
@@ -31,6 +32,7 @@ public class TrackCommand implements CommandExecutor {
         trackingMap.clear();
         portalEntrances.clear();
         portalExits.clear();
+        offlinePlayerLocations.clear();
     }
 
     public static void putPortalEntrance(String playerName, Location location) {
@@ -47,6 +49,14 @@ public class TrackCommand implements CommandExecutor {
 
     public static void clearPortalExit(String playerName) {
         portalExits.remove(playerName);
+    }
+
+    public static void putOfflinePlayerLocation(String playerName, Location location) {
+        offlinePlayerLocations.put(playerName, location);
+    }
+
+    public static void clearOfflinePlayerLocation(String playerName) {
+        offlinePlayerLocations.remove(playerName);
     }
 
     private static void sendTrackMsg(Player source, Location sourceLoc, String targetName, Location targetLoc) {
