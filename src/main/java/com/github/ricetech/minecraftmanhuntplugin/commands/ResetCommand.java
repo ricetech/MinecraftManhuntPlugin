@@ -121,6 +121,9 @@ public class ResetCommand implements CommandExecutor {
         // Reset plugin state
         PlayerDeathLocationStorageListener.reset();
         TrackCommand.reset();
+        SelfEliminateCommand.reset();
+        TeamSwitchCommand.reset();
+        TeamTpCommand.reset();
 
         return true;
     }
