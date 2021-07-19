@@ -33,6 +33,22 @@ public class TrackCommand implements CommandExecutor {
         portalExits = new HashMap<>();
     }
 
+    public static void putPortalEntrance(String playerName, Location location) {
+        portalEntrances.put(playerName, location);
+    }
+
+    public static void clearPortalEntrance(String playerName) {
+        portalEntrances.remove(playerName);
+    }
+
+    public static void putPortalExit(String playerName, Location location) {
+        portalExits.put(playerName, location);
+    }
+
+    public static void clearPortalExit(String playerName) {
+        portalExits.remove(playerName);
+    }
+
     private static void sendTrackMsg(Player source, Location sourceLoc, String targetName, Location targetLoc) {
         int sourceY = sourceLoc.getBlockY();
         int targetY = targetLoc.getBlockY();
