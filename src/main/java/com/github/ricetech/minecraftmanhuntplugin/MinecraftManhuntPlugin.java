@@ -40,18 +40,14 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     // Internal variables
     private boolean gameInProgress = false;
 
-    // Plugin Helper Components
-    private ScoreKeeper scoreKeeper;
-    private TeamManager teamManager;
-
     @SuppressWarnings("ConstantConditions")
     @Override
     public void onEnable() {
         getLogger().info("Manhunt Plugin enabled!");
 
         // Init Managers
-        this.scoreKeeper = new ScoreKeeper();
-        this.teamManager = new TeamManager();
+        ScoreKeeper.init();
+        TeamManager.init();
 
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
@@ -64,14 +60,14 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
         // Register Commands
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
-        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this));
+        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand());
         this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this));
         this.getCommand(NEW_GAME_COMMAND_ALIAS).setExecutor(new NewGameCommand(this));
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
         this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(new TeamTpCommand(this));
-        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand(this));
-        this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand(this));
+        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand());
+        this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand());
         this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setExecutor(new ResetEligibilityCommand(this));
         this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
     }
@@ -105,14 +101,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
             case HUNTERS -> HUNTERS_COLOR_BUNGEE;
             case SPECTATORS -> SPECTATORS_COLOR_BUNGEE;
         };
-    }
-
-    public ScoreKeeper getScoreKeeper() {
-        return scoreKeeper;
-    }
-
-    public TeamManager getTeamManager() {
-        return teamManager;
     }
 
     public boolean isGameInProgress() {

@@ -15,12 +15,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class TpOptionsCommand implements CommandExecutor {
-    private final TeamManager teamManager;
-    private final MinecraftManhuntPlugin manhuntPlugin;
 
-    public TpOptionsCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.manhuntPlugin = manhuntPlugin;
-        this.teamManager = this.manhuntPlugin.getTeamManager();
+    public TpOptionsCommand() {
     }
 
     @Override
@@ -46,7 +42,7 @@ public class TpOptionsCommand implements CommandExecutor {
         }
 
         // Get list of players to tp to
-        List<Player> playerOptions = teamManager.listTeamPlayers(teamManager.getTeam(p), p);
+        List<Player> playerOptions = TeamManager.listTeamPlayers(TeamManager.getTeam(p), p);
 
         if (playerOptions.size() == 0) {
             // Teleport to last death location
@@ -71,7 +67,7 @@ public class TpOptionsCommand implements CommandExecutor {
         } else {
             // Send message with list of tp options
             ComponentBuilder selectPlayerMsg = new ComponentBuilder("Select a teammate to teleport to:");
-            net.md_5.bungee.api.ChatColor teamColor = MinecraftManhuntPlugin.getBungeeCordTeamColor(teamManager.getTeam(p));
+            net.md_5.bungee.api.ChatColor teamColor = MinecraftManhuntPlugin.getBungeeCordTeamColor(TeamManager.getTeam(p));
 
             for (Player playerOption : playerOptions) {
                 TextComponent playerComponent = new TextComponent(playerOption.getName());

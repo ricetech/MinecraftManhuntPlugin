@@ -17,13 +17,9 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class PlayerDeathCauseListener implements Listener {
     private final MinecraftManhuntPlugin manhuntPlugin;
-    private final ScoreKeeper scoreKeeper;
-    private final TeamManager teamManager;
 
     public PlayerDeathCauseListener(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
-        this.scoreKeeper = manhuntPlugin.getScoreKeeper();
-        this.teamManager = manhuntPlugin.getTeamManager();
     }
 
     public void sendDeathCauseMsg(Player p) {
@@ -55,13 +51,13 @@ public class PlayerDeathCauseListener implements Listener {
         if (this.manhuntPlugin.isGameInProgress()) {
             Player victim = event.getEntity();
             Player killer = victim.getKiller();
-            ManhuntTeam victimTeam = this.teamManager.getTeam(victim);
+            ManhuntTeam victimTeam = TeamManager.getTeam(victim);
             if (killer != null) {
                 // Increment killer's kills
-                this.scoreKeeper.addKill(killer);
+                ScoreKeeper.addKill(killer);
                 // Eliminate Runners
                 if (victimTeam == ManhuntTeam.RUNNERS) {
-                    teamManager.eliminatePlayer(victim);
+                    TeamManager.eliminatePlayer(victim);
                 }
                 // No other actions - teleports are not allowed after a death to another player
             } else {

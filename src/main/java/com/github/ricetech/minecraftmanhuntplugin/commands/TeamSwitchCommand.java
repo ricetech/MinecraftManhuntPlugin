@@ -21,14 +21,12 @@ public class TeamSwitchCommand implements CommandExecutor {
     private static final Map<String, Boolean> eligibility = new HashMap<>();
 
     private final MinecraftManhuntPlugin manhuntPlugin;
-    private final TeamManager teamManager;
 
     private final Set<String> validTeams;
 
     public TeamSwitchCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
-        this.teamManager = manhuntPlugin.getTeamManager();
-        this.validTeams = teamManager.getValidTeams();
+        this.validTeams = TeamManager.getValidTeams();
     }
 
     public static boolean getEligibility(String entry) {
@@ -101,7 +99,7 @@ public class TeamSwitchCommand implements CommandExecutor {
         }
 
         eligibility.put(p.getName(), false);
-        teamManager.editTeam(p, ManhuntTeam.valueOf(args[0].toUpperCase()));
+        TeamManager.editTeam(p, ManhuntTeam.valueOf(args[0].toUpperCase()));
 
         return true;
     }

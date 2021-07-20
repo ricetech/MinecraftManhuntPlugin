@@ -25,13 +25,8 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
-    private final ScoreKeeper scoreKeeper;
-    private final TeamManager teamManager;
 
-    public ResetCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.scoreKeeper = manhuntPlugin.getScoreKeeper();
-        this.teamManager = manhuntPlugin.getTeamManager();
-    }
+    public ResetCommand() { }
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
@@ -47,7 +42,7 @@ public class ResetCommand implements CommandExecutor {
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             // Reset scores
-            this.scoreKeeper.resetPlayer(p);
+            ScoreKeeper.resetPlayer(p);
 
             // Remove effects
             for (PotionEffect effect : p.getActivePotionEffects()) {
@@ -61,7 +56,7 @@ public class ResetCommand implements CommandExecutor {
             InventoryHandlerListener.giveCompass(p);
 
             // Set gamemode if necessary
-            team = this.scoreKeeper.getMainScoreboard().getEntryTeam(p.getName());
+            team = ScoreKeeper.getMainScoreboard().getEntryTeam(p.getName());
             if (team == null) {
                 // Add players not on any team to Spectators
                 // Also allow them to still select a team
@@ -74,8 +69,8 @@ public class ResetCommand implements CommandExecutor {
                 alertMsg.setColor(ChatColor.RED);
                 p.spigot().sendMessage(new ComponentBuilder(alertMsg).create());
 
-                this.teamManager.editTeam(p, ManhuntTeam.SPECTATORS);
-            } else if (team == this.teamManager.getSpectators()) {
+                TeamManager.editTeam(p, ManhuntTeam.SPECTATORS);
+            } else if (team == TeamManager.getSpectators()) {
                 p.setGameMode(GameMode.SPECTATOR);
             } else {
                 // Set gamemode to survival
@@ -83,8 +78,8 @@ public class ResetCommand implements CommandExecutor {
             }
 
             // Un-eliminate all eliminated players
-            if (team == this.teamManager.getEliminated()) {
-                this.teamManager.editTeam(p, ManhuntTeam.RUNNERS);
+            if (team == TeamManager.getEliminated()) {
+                TeamManager.editTeam(p, ManhuntTeam.RUNNERS);
             }
 
             // Teleport to spawn
