@@ -1,8 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
-import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
-import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,8 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TrackCommand implements CommandExecutor {
-    private final TeamManager teamManager;
-
     public static final int CLOSE_Y_THRESHOLD = 10;
     public static final int MEDIUM_Y_THRESHOLD = 25;
     public static final int FAR_Y_THRESHOLD = 50;
@@ -29,8 +25,8 @@ public class TrackCommand implements CommandExecutor {
     private static final Map<String, Location> portalExits = new HashMap<>();
     private static final Map<String, Location> offlinePlayerLocations = new HashMap<>();
 
-    public TrackCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.teamManager = manhuntPlugin.getTeamManager();
+    public TrackCommand() {
+
     }
 
     public static void reset() {
