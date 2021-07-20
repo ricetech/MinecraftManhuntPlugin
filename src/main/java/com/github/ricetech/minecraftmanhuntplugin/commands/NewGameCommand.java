@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class NewGameCommand implements CommandExecutor {
     private final MinecraftManhuntPlugin manhuntPlugin;
@@ -16,7 +17,7 @@ public class NewGameCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String labels, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String labels, String[] args) {
         if (args.length != 0) {
             return false;
         }

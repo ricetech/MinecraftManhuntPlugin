@@ -18,6 +18,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.Team;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Reset the world and all players in preparation for starting a new game of Manhunt.
@@ -33,7 +34,7 @@ public class ResetCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length > 0) {
             return false;
         }
