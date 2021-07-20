@@ -164,6 +164,17 @@ public class TrackCommand implements CommandExecutor {
         }
     }
 
+    public static void handleCompassRightClick(Player p) {
+        String trackedPlayer = trackingMap.getOrDefault(p.getName(), null);
+
+        if (trackedPlayer == null) {
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You aren't tracking anyone. Use /" + MinecraftManhuntPlugin.TRACK_COMMAND_ALIAS + "to start tracking.");
+            return;
+        }
+
+        trackPlayer(p, trackedPlayer);
+    }
+
     public static void trackPlayer(Player source, @NotNull String targetName) {
         // Check if target exists
         Player target = Bukkit.getPlayer(targetName);
