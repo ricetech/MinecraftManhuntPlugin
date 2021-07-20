@@ -63,6 +63,13 @@ public class TrackCommand implements CommandExecutor {
     }
 
     private static void sendTrackMsg(@NotNull Player source, @NotNull Location sourceLoc, @NotNull String targetName, @NotNull Location targetLoc) {
+        long distance = 0;
+        try {
+            distance = Math.round(sourceLoc.distance(targetLoc));
+        } catch (IllegalArgumentException e) {
+            MinecraftManhuntPlugin.sendErrorMsg(source, "Locations are in different worlds. Please contact the developer.");
+        }
+
         int sourceY = sourceLoc.getBlockY();
         int targetY = targetLoc.getBlockY();
 
@@ -81,8 +88,26 @@ public class TrackCommand implements CommandExecutor {
                 (sourceTeam == ManhuntTeam.ELIMINATED && targetTeam == ManhuntTeam.RUNNERS)) {
             // Same team, allow precise tracking
             source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + " at " +
-                    "(" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ")");
+                    "(" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + "), " +
+                    distance + " blocks away from you.");
         } else {
+            String distanceString;
+            if (distance > 1000) {
+                // Floor round to nearest 1000
+                long distanceRounded = Math.round(Math.floor((double) distance / 1000) * 1000);
+                distanceString = "over " + distanceRounded + " blocks away from you.";
+            } else if (distance > 500) {
+                distanceString = "over 500 blocks away from you";
+            } else if (distance > 250) {
+                distanceString = "over 250 blocks away from you";
+            } else if (distance > 100) {
+                distanceString = "over 100 blocks away from you";
+            } else if (distance > 50) {
+                distanceString = "over 50 blocks away from you";
+            } else {
+                distanceString = "less than 50 blocks away from you";
+            }
+
             int heightDiff = sourceY - targetY;
             String heightDiffString;
 
@@ -103,7 +128,8 @@ public class TrackCommand implements CommandExecutor {
             } else {
                 heightDiffString = "in an invalid state. Please contact the developer";
             }
-            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ": The target is " + heightDiffString + ".");
+            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ": The target is " +
+                    distanceString + " and " + heightDiffString + ".");
         }
     }
 
