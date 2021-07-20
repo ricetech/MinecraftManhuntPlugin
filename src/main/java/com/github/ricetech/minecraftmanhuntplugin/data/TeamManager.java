@@ -110,7 +110,11 @@ public class TeamManager {
     }
 
     public ManhuntTeam getTeam(Player p) {
-        Team team = mainScoreboard.getEntryTeam(p.getName());
+        return getTeam(p.getName());
+    }
+
+    public ManhuntTeam getTeam(String playerName) {
+        Team team = mainScoreboard.getEntryTeam(playerName);
         if (team == null) {
             return null;
         } else if (team.equals(runners)) {
