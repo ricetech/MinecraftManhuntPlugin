@@ -86,7 +86,7 @@ public class TrackCommand implements CommandExecutor {
         } else {
             heightDiffString = "in an invalid state. Please contact the developer";
         }
-        source.sendMessage(ChatColor.GREEN + "Tracking " + targetName + ": The target is " + heightDiffString + ".");
+        source.sendMessage("Tracking " + targetName + ": The target is " + heightDiffString + ".");
     }
 
     /**
