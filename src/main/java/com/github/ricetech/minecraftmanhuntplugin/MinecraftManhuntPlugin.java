@@ -57,6 +57,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new PlayerDeathLocationStorageListener(this), this);
         manager.registerEvents(new PlayerPortalLocationStorageListener(this), this);
         manager.registerEvents(new PlayerDisconnectLocationStorageListener(this), this);
+        manager.registerEvents(new CompassTrackListener(), this);
 
         // Register Commands
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
