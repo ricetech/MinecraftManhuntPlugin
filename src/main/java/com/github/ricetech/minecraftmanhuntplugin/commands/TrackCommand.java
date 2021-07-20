@@ -1,6 +1,8 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
+import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -134,6 +136,30 @@ public class TrackCommand implements CommandExecutor {
                 MinecraftManhuntPlugin.sendErrorMsg(source, "Target player does not exist.");
                 return;
             }
+        }
+
+        // Check teams
+        ManhuntTeam sourceTeam = TeamManager.getTeam(source.getName());
+        ManhuntTeam targetTeam = TeamManager.getTeam(targetName);
+
+        if (sourceTeam == null) {
+            MinecraftManhuntPlugin.sendErrorMsg(source, "You cannot track players because you are not on a team.");
+            return;
+        }
+
+        if (targetTeam == null) {
+            MinecraftManhuntPlugin.sendErrorMsg(source, "The target must be part of a team in order to be tracked.");
+            return;
+        }
+
+        // Runners can only track other runners/eliminated team members
+        if (sourceTeam != ManhuntTeam.HUNTERS && targetTeam != ManhuntTeam.RUNNERS && targetTeam != ManhuntTeam.ELIMINATED) {
+            MinecraftManhuntPlugin.sendErrorMsg(source, "You can only track players who are Runners or Eliminated.");
+        }
+
+        // Prohibit tracking of Spectators
+        if (targetTeam == ManhuntTeam.SPECTATORS) {
+            MinecraftManhuntPlugin.sendErrorMsg(source, "You cannot track spectators.");
         }
 
         Location sourceLoc = source.getLocation();
