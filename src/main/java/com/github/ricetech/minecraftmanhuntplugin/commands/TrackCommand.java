@@ -66,7 +66,9 @@ public class TrackCommand implements CommandExecutor {
         int sourceY = sourceLoc.getBlockY();
         int targetY = targetLoc.getBlockY();
 
+        ManhuntTeam sourceTeam = TeamManager.getTeam(source);
         ManhuntTeam targetTeam = TeamManager.getTeam(targetName);
+
         ChatColor targetColor;
         if (targetTeam != null) {
             targetColor = MinecraftManhuntPlugin.getBukkitTeamColor(targetTeam);
@@ -74,27 +76,35 @@ public class TrackCommand implements CommandExecutor {
             targetColor = ChatColor.RESET;
         }
 
-        int heightDiff = sourceY - targetY;
-        String heightDiffString;
-
-        if (heightDiff > -CLOSE_Y_THRESHOLD && heightDiff < CLOSE_Y_THRESHOLD) {
-            heightDiffString = "around the same y-level as you";
-        } else if (heightDiff < -CLOSE_Y_THRESHOLD && heightDiff > -MEDIUM_Y_THRESHOLD) {
-            heightDiffString = "slightly below you";
-        } else if (heightDiff < -MEDIUM_Y_THRESHOLD && heightDiff > -FAR_Y_THRESHOLD) {
-            heightDiffString = "a good distance below you";
-        } else if (heightDiff < -FAR_Y_THRESHOLD) {
-            heightDiffString = "very far below you";
-        } else if (heightDiff > CLOSE_Y_THRESHOLD && heightDiff < MEDIUM_Y_THRESHOLD) {
-            heightDiffString = "slightly above you";
-        } else if (heightDiff > MEDIUM_Y_THRESHOLD && heightDiff < FAR_Y_THRESHOLD) {
-            heightDiffString = "a good distance above you";
-        } else if (heightDiff > FAR_Y_THRESHOLD) {
-            heightDiffString = "very far above you";
+        if (sourceTeam == targetTeam ||
+                (sourceTeam == ManhuntTeam.RUNNERS && targetTeam == ManhuntTeam.ELIMINATED) ||
+                (sourceTeam == ManhuntTeam.ELIMINATED && targetTeam == ManhuntTeam.RUNNERS)) {
+            // Same team, allow precise tracking
+            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + " at " +
+                    "(" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ")");
         } else {
-            heightDiffString = "in an invalid state. Please contact the developer";
+            int heightDiff = sourceY - targetY;
+            String heightDiffString;
+
+            if (heightDiff > -CLOSE_Y_THRESHOLD && heightDiff < CLOSE_Y_THRESHOLD) {
+                heightDiffString = "around the same y-level as you";
+            } else if (heightDiff < -CLOSE_Y_THRESHOLD && heightDiff > -MEDIUM_Y_THRESHOLD) {
+                heightDiffString = "slightly below you";
+            } else if (heightDiff < -MEDIUM_Y_THRESHOLD && heightDiff > -FAR_Y_THRESHOLD) {
+                heightDiffString = "a good distance below you";
+            } else if (heightDiff < -FAR_Y_THRESHOLD) {
+                heightDiffString = "very far below you";
+            } else if (heightDiff > CLOSE_Y_THRESHOLD && heightDiff < MEDIUM_Y_THRESHOLD) {
+                heightDiffString = "slightly above you";
+            } else if (heightDiff > MEDIUM_Y_THRESHOLD && heightDiff < FAR_Y_THRESHOLD) {
+                heightDiffString = "a good distance above you";
+            } else if (heightDiff > FAR_Y_THRESHOLD) {
+                heightDiffString = "very far above you";
+            } else {
+                heightDiffString = "in an invalid state. Please contact the developer";
+            }
+            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ": The target is " + heightDiffString + ".");
         }
-        source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ": The target is " + heightDiffString + ".");
     }
 
     /**
