@@ -191,6 +191,12 @@ public class TrackCommand implements CommandExecutor {
         } else {
             // Source is in the overworld, target in Nether/The End. Track the target's entry portal.
             Location targetEntryPortal = portalEntrances.getOrDefault(targetName, null);
+
+            if (targetEntryPortal == null) {
+                MinecraftManhuntPlugin.sendErrorMsg(source, "The target entry portal is invalid and cannot be tracked.");
+                return;
+            }
+
             // Ensure environments match
             World targetEntryPortalWorld = targetEntryPortal.getWorld();
             if (targetEntryPortalWorld == null) {
