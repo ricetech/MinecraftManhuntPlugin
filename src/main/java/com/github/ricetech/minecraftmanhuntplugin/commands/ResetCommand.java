@@ -1,10 +1,9 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands;
 
-import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
-import com.github.ricetech.minecraftmanhuntplugin.listeners.InventoryHandlerListener;
+import com.github.ricetech.minecraftmanhuntplugin.listeners.CompassInventoryHandlerListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationStorageListener;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -53,7 +52,7 @@ public class ResetCommand implements CommandExecutor {
             p.getInventory().clear();
 
             // Give compass
-            InventoryHandlerListener.giveCompass(p);
+            CompassInventoryHandlerListener.giveCompass(p);
 
             // Set gamemode if necessary
             team = ScoreKeeper.getMainScoreboard().getEntryTeam(p.getName());

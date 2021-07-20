@@ -13,7 +13,7 @@ import org.bukkit.inventory.PlayerInventory;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class InventoryHandlerListener implements Listener {
+public class CompassInventoryHandlerListener implements Listener {
     public static void giveCompass(Player player) {
         PlayerInventory inventory = player.getInventory();
 
