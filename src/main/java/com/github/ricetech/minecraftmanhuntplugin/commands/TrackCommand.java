@@ -146,12 +146,63 @@ public class TrackCommand implements CommandExecutor {
         World.Environment sourceWorldEnv = source.getWorld().getEnvironment();
         World.Environment targetWorldEnv = targetLoc.getWorld().getEnvironment();
 
-        if (sourceWorldEnv == targetWorldEnv) {
-            // Same world
+        if (sourceWorldEnv == World.Environment.CUSTOM || targetWorldEnv == World.Environment.CUSTOM) {
+            MinecraftManhuntPlugin.sendErrorMsg(source, "Tracking is not supported in Custom Worlds. Please contact the developer.");
+        } else if (sourceWorldEnv == targetWorldEnv) {
+            // Same world, track normally
             sendTrackMsg(source, sourceLoc, targetName, targetLoc);
             updateCompass(source, targetLoc);
+        } else if ((sourceWorldEnv == World.Environment.NETHER && targetWorldEnv == World.Environment.THE_END) ||
+                (sourceWorldEnv == World.Environment.THE_END && targetWorldEnv == World.Environment.NETHER)) {
+            // Not the same world, not overworld. Track the source player's own exit portal.
+            Location sourceExitPortal = portalExits.getOrDefault(source.getName(), null);
+            if (sourceExitPortal == null) {
+                MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
+            } else {
+                sendTrackMsg(source, sourceLoc, targetName, sourceExitPortal);
+            }
+        } else if (sourceWorldEnv != World.Environment.NORMAL && targetWorldEnv == World.Environment.NORMAL) {
+            // Target in overworld, source not in overworld.
+            // Priority 1: Track target's exit portal
+            Location targetExitPortal = portalExits.getOrDefault(targetName, null);
+            if (targetExitPortal != null) {
+                World targetExitPortalWorld = targetExitPortal.getWorld();
+                if (targetExitPortalWorld == null) {
+                    MinecraftManhuntPlugin.sendErrorMsg(source, "World type is invalid. Please contact the developer.");
+                    return;
+                }
+
+                World.Environment targetExitPortalEnv = targetExitPortalWorld.getEnvironment();
+                // Since portalExits stores both Nether and End portals, need to check for same world first
+                if (targetExitPortalEnv == sourceWorldEnv) {
+                    sendTrackMsg(source, sourceLoc, targetName, targetExitPortal);
+                }
+            } else {
+                // Target exit portal is null
+                // Priority 2: Track source's exit portal
+                Location sourceExitPortal = portalExits.getOrDefault(source.getName(), null);
+                if (sourceExitPortal == null) {
+                    MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
+                } else {
+                    sendTrackMsg(source, sourceLoc, targetName, sourceExitPortal);
+                }
+            }
+        } else {
+            // Source is in the overworld, target in Nether/The End. Track the target's entry portal.
+            Location targetEntryPortal = portalEntrances.getOrDefault(targetName, null);
+            // Ensure environments match
+            World targetEntryPortalWorld = targetEntryPortal.getWorld();
+            if (targetEntryPortalWorld == null) {
+                MinecraftManhuntPlugin.sendErrorMsg(source, "The target portal entrance is invalid. Please contact the developer.");
+                return;
+            }
+            if (targetEntryPortalWorld.getEnvironment() != sourceWorldEnv) {
+                MinecraftManhuntPlugin.sendErrorMsg(source, "The target portal entrance is not in your world. Please contact the developer.");
+                return;
+            }
+
+            sendTrackMsg(source, sourceLoc, targetName, targetEntryPortal);
         }
-        // TODO: Handle different worlds
     }
 
     @Override
