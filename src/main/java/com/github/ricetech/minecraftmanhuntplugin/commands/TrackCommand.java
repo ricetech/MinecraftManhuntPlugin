@@ -117,23 +117,38 @@ public class TrackCommand implements CommandExecutor {
         }
     }
 
-    public static void trackPlayer(Player source, Player target) {
+    public static void trackPlayer(Player source, String targetName) {
         // Check if target exists
-        if (target == null) {
-            // TODO: Offline player location storage
-            MinecraftManhuntPlugin.sendErrorMsg(source, "Target player does not exist.");
-            return;
+        Player target = Bukkit.getPlayer(targetName);
+
+        Location targetLoc;
+
+        if (target != null) {
+            // Player is online
+            targetLoc = target.getLocation();
+        } else {
+            // Player is offline, check offlinePlayerLocation storage
+            targetLoc = offlinePlayerLocations.getOrDefault(targetName, null);
+            if (targetLoc == null) {
+                MinecraftManhuntPlugin.sendErrorMsg(source, "Target player does not exist.");
+                return;
+            }
         }
 
         Location sourceLoc = source.getLocation();
-        Location targetLoc = target.getLocation();
+        World targetWorld = targetLoc.getWorld();
+
+        if (targetWorld == null) {
+            MinecraftManhuntPlugin.sendErrorMsg(source, "The target is in an invalid world. Please contact the developer.");
+            return;
+        }
 
         World.Environment sourceWorldEnv = source.getWorld().getEnvironment();
-        World.Environment targetWorldEnv = target.getWorld().getEnvironment();
+        World.Environment targetWorldEnv = targetLoc.getWorld().getEnvironment();
 
         if (sourceWorldEnv == targetWorldEnv) {
             // Same world
-            sendTrackMsg(source, sourceLoc, target.getName(), targetLoc);
+            sendTrackMsg(source, sourceLoc, targetName, targetLoc);
             updateCompass(source, targetLoc);
         }
         // TODO: Handle different worlds
@@ -167,7 +182,7 @@ public class TrackCommand implements CommandExecutor {
             return true;
         } else {
             // Target exists and is online, track normally
-            trackPlayer(p, target);
+            trackPlayer(p, target.getName());
         }
 
         return true;
