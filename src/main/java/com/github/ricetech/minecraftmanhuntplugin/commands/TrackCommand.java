@@ -66,6 +66,14 @@ public class TrackCommand implements CommandExecutor {
         int sourceY = sourceLoc.getBlockY();
         int targetY = targetLoc.getBlockY();
 
+        ManhuntTeam targetTeam = TeamManager.getTeam(targetName);
+        ChatColor targetColor;
+        if (targetTeam != null) {
+            targetColor = MinecraftManhuntPlugin.getBukkitTeamColor(targetTeam);
+        } else {
+            targetColor = ChatColor.RESET;
+        }
+
         int heightDiff = sourceY - targetY;
         String heightDiffString;
 
@@ -86,7 +94,7 @@ public class TrackCommand implements CommandExecutor {
         } else {
             heightDiffString = "in an invalid state. Please contact the developer";
         }
-        source.sendMessage("Tracking " + targetName + ": The target is " + heightDiffString + ".");
+        source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ": The target is " + heightDiffString + ".");
     }
 
     /**
