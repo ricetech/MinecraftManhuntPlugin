@@ -132,7 +132,6 @@ public class TeamManager {
             case HUNTERS -> hunters;
             case ELIMINATED -> eliminated;
             case SPECTATORS -> spectators;
-            default -> null;
         };
 
         ArrayList<Player> players = new ArrayList<>();
