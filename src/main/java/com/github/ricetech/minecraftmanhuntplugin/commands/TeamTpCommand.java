@@ -26,12 +26,10 @@ public class TeamTpCommand implements CommandExecutor {
 
     private static final Map<String, Boolean> eligibility = new HashMap<>();
 
-    private final TeamManager teamManager;
     private final MinecraftManhuntPlugin manhuntPlugin;
 
     public TeamTpCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
-        this.teamManager = this.manhuntPlugin.getTeamManager();
     }
 
     public static boolean getEligibility(String entry) {
@@ -94,7 +92,7 @@ public class TeamTpCommand implements CommandExecutor {
                 return true;
             }
 
-            if (teamManager.getTeam(p) != teamManager.getTeam(target)) {
+            if (TeamManager.getTeam(p) != TeamManager.getTeam(target)) {
                 MinecraftManhuntPlugin.sendErrorMsg(sender, "Target player is not on your team. Try clicking on another player.");
                 Bukkit.dispatchCommand(p, MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS);
                 return true;

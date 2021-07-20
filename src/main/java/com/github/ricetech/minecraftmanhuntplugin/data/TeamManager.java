@@ -8,23 +8,17 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TeamManager {
-    private final Scoreboard mainScoreboard;
-    private final Set<String> validTeams = new HashSet<>();
-    private Team runners;
-    private Team eliminated;
-    private Team hunters;
-    private Team spectators;
+    private static final Scoreboard mainScoreboard = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
+    private static final Set<String> validTeams = new HashSet<>();
+    private static Team runners;
+    private static Team eliminated;
+    private static Team hunters;
+    private static Team spectators;
 
-    public TeamManager() {
-        //noinspection ConstantConditions
-        this.mainScoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-
+    public static void init() {
         // Get all teams from scoreboard to see if they exist or not
         runners = mainScoreboard.getTeam("runners");
         eliminated = mainScoreboard.getTeam("eliminated");
@@ -89,31 +83,31 @@ public class TeamManager {
         }
     }
 
-    public Set<String> getValidTeams() {
+    public static Set<String> getValidTeams() {
         return validTeams;
     }
 
-    public Team getRunners() {
+    public static Team getRunners() {
         return runners;
     }
 
-    public Team getEliminated() {
+    public static Team getEliminated() {
         return eliminated;
     }
 
-    public Team getHunters() {
+    public static Team getHunters() {
         return hunters;
     }
 
-    public Team getSpectators() {
+    public static Team getSpectators() {
         return spectators;
     }
 
-    public ManhuntTeam getTeam(Player p) {
+    public static ManhuntTeam getTeam(Player p) {
         return getTeam(p.getName());
     }
 
-    public ManhuntTeam getTeam(String playerName) {
+    public static ManhuntTeam getTeam(String playerName) {
         Team team = mainScoreboard.getEntryTeam(playerName);
         if (team == null) {
             return null;
@@ -130,7 +124,7 @@ public class TeamManager {
         }
     }
 
-    public List<Player> listTeamPlayers(ManhuntTeam team, Player targetPlayer) {
+    public static List<Player> listTeamPlayers(ManhuntTeam team, Player targetPlayer) {
         Team targetTeam = switch (team) {
             case RUNNERS -> runners;
             case HUNTERS -> hunters;
@@ -149,11 +143,11 @@ public class TeamManager {
         return players;
     }
 
-    public List<Player> listTeamPlayers(ManhuntTeam team) {
+    public static List<Player> listTeamPlayers(ManhuntTeam team) {
         return listTeamPlayers(team, null);
     }
 
-    public void editTeam(Player p, ManhuntTeam team) {
+    public static void editTeam(Player p, ManhuntTeam team) {
         switch (team) {
             case RUNNERS -> {
                 runners.addEntry(p.getName());
@@ -178,7 +172,7 @@ public class TeamManager {
         }
     }
 
-    public void eliminatePlayer(Player p) {
+    public static void eliminatePlayer(Player p) {
         eliminated.addEntry(p.getName());
         Bukkit.broadcastMessage(ChatColor.BLUE + p.getName() + ChatColor.RESET + " has been " + ChatColor.RED +
                 "eliminated.");

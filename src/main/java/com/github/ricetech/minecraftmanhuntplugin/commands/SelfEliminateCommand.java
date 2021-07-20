@@ -15,10 +15,7 @@ import java.util.Map;
 public class SelfEliminateCommand implements CommandExecutor {
     private static final Map<String, Boolean> eligibility = new HashMap<>();
 
-    private final TeamManager teamManager;
-
-    public SelfEliminateCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.teamManager = manhuntPlugin.getTeamManager();
+    public SelfEliminateCommand() {
     }
 
     public static boolean getEligibility(String entry) {
@@ -44,7 +41,7 @@ public class SelfEliminateCommand implements CommandExecutor {
             p = ((Player) sender);
         }
 
-        ManhuntTeam team = teamManager.getTeam(p);
+        ManhuntTeam team = TeamManager.getTeam(p);
 
         if (team == null) {
             MinecraftManhuntPlugin.sendErrorMsg(p, "You aren't on a team. Use /"+ MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " to join a team.");
@@ -65,7 +62,7 @@ public class SelfEliminateCommand implements CommandExecutor {
         // Disable eligibility for /teamtp
         TeamTpCommand.setEligibility(p.getName(), false);
 
-        teamManager.eliminatePlayer(p);
+        TeamManager.eliminatePlayer(p);
         return true;
     }
 }

@@ -7,38 +7,37 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
+import java.util.Objects;
+
 public class ScoreKeeper {
-    private final Scoreboard mainScoreboard;
-    private Objective kills;
-    private Objective deaths;
+    private static final Scoreboard mainScoreboard = Objects.requireNonNull(Bukkit.getScoreboardManager()).getMainScoreboard();
+    private static Objective kills;
+    private static Objective deaths;
 
-    public ScoreKeeper() {
-        //noinspection ConstantConditions
-        this.mainScoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-
+    public static void init() {
         // Create kills if it doesn't exist already
-        this.kills = mainScoreboard.getObjective("kills");
-        if (this.kills == null) {
-            this.kills = mainScoreboard.registerNewObjective("kills", "dummy", "Kills");
+        kills = mainScoreboard.getObjective("kills");
+        if (kills == null) {
+            kills = mainScoreboard.registerNewObjective("kills", "dummy", "Kills");
         }
         kills.setDisplaySlot(DisplaySlot.PLAYER_LIST);
 
         // Create deaths if it doesn't exist already
-        this.deaths = mainScoreboard.getObjective("deaths");
-        if (this.deaths == null) {
-            this.deaths = mainScoreboard.registerNewObjective("deaths", "deathCount", "Deaths");
+        deaths = mainScoreboard.getObjective("deaths");
+        if (deaths == null) {
+            deaths = mainScoreboard.registerNewObjective("deaths", "deathCount", "Deaths");
         }
         deaths.setDisplaySlot(DisplaySlot.SIDEBAR);
     }
 
-    public Scoreboard getMainScoreboard() {
+    public static Scoreboard getMainScoreboard() {
         return mainScoreboard;
     }
 
     /**
      * Sets the scores of all currently online players to 0.
      */
-    public void resetScores() {
+    public static void resetScores() {
         for (Player p : Bukkit.getOnlinePlayers()) {
             kills.getScore(p.getName()).setScore(0);
             deaths.getScore(p.getName()).setScore(0);
@@ -50,7 +49,7 @@ public class ScoreKeeper {
      *
      * @param p - The player to reset the scores of.
      */
-    public void resetPlayer(Player p) {
+    public static void resetPlayer(Player p) {
         kills.getScore(p.getName()).setScore(0);
         deaths.getScore(p.getName()).setScore(0);
     }
@@ -60,7 +59,7 @@ public class ScoreKeeper {
      *
      * @param p - The player to add a kill to.
      */
-    public void addKill(Player p) {
+    public static void addKill(Player p) {
         Score pKills = kills.getScore(p.getName());
         pKills.setScore(pKills.getScore() + 1);
     }
