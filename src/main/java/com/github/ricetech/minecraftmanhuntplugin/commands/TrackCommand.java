@@ -297,8 +297,6 @@ public class TrackCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         Player p;
 
-        sender.sendMessage("Error: Command not implemented");
-
         if (args.length != 1) {
             return false;
         }
