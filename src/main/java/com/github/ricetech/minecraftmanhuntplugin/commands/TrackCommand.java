@@ -294,7 +294,7 @@ public class TrackCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         Player p;
 
         if (args.length != 1) {
