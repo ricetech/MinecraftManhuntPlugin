@@ -52,11 +52,11 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
-        manager.registerEvents(new InventoryHandlerListener(), this);
-        manager.registerEvents(new PlayerDeathCauseListener(this), this);
+        manager.registerEvents(new CompassInventoryHandlerListener(), this);
+        manager.registerEvents(new PlayerEliminationOnDeathListener(this), this);
         manager.registerEvents(new PlayerDeathLocationStorageListener(this), this);
-        manager.registerEvents(new PlayerPortalEventListener(this), this);
-        manager.registerEvents(new OfflinePlayerLocationListener(this), this);
+        manager.registerEvents(new PlayerPortalLocationStorageListener(this), this);
+        manager.registerEvents(new PlayerDisconnectLocationStorageListener(this), this);
 
         // Register Commands
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));

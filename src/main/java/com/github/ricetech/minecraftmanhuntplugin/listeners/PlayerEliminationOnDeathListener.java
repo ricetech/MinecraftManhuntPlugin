@@ -15,10 +15,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-public class PlayerDeathCauseListener implements Listener {
+public class PlayerEliminationOnDeathListener implements Listener {
     private final MinecraftManhuntPlugin manhuntPlugin;
 
-    public PlayerDeathCauseListener(MinecraftManhuntPlugin manhuntPlugin) {
+    public PlayerEliminationOnDeathListener(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
     }
 

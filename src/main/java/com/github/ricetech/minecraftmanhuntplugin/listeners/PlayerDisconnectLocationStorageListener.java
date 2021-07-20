@@ -7,10 +7,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class OfflinePlayerLocationListener implements Listener {
+public class PlayerDisconnectLocationStorageListener implements Listener {
     private final MinecraftManhuntPlugin manhuntPlugin;
 
-    public OfflinePlayerLocationListener(MinecraftManhuntPlugin manhuntPlugin) {
+    public PlayerDisconnectLocationStorageListener(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
     }
 

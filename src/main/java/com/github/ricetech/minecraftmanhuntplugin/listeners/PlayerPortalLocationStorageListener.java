@@ -9,10 +9,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerPortalEvent;
 
-public class PlayerPortalEventListener implements Listener {
+public class PlayerPortalLocationStorageListener implements Listener {
     private final MinecraftManhuntPlugin manhuntPlugin;
 
-    public PlayerPortalEventListener(MinecraftManhuntPlugin manhuntPlugin) {
+    public PlayerPortalLocationStorageListener(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
     }
 
