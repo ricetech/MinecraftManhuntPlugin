@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.CompassMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -59,7 +60,7 @@ public class TrackCommand implements CommandExecutor {
         offlinePlayerLocations.remove(playerName);
     }
 
-    private static void sendTrackMsg(Player source, Location sourceLoc, String targetName, Location targetLoc) {
+    private static void sendTrackMsg(@NotNull Player source, @NotNull Location sourceLoc, @NotNull String targetName, @NotNull Location targetLoc) {
         int sourceY = sourceLoc.getBlockY();
         int targetY = targetLoc.getBlockY();
 
@@ -90,7 +91,7 @@ public class TrackCommand implements CommandExecutor {
      * @author @johnzhoudev
      * @author @ricetech
      */
-    public static void updateCompass(Player p, Location targetLoc) {
+    public static void updateCompass(Player p, @NotNull Location targetLoc) {
         PlayerInventory inventory = p.getInventory();
 
         int compassPosition = inventory.first(Material.COMPASS);
@@ -117,7 +118,7 @@ public class TrackCommand implements CommandExecutor {
         }
     }
 
-    public static void trackPlayer(Player source, String targetName) {
+    public static void trackPlayer(Player source, @NotNull String targetName) {
         // Check if target exists
         Player target = Bukkit.getPlayer(targetName);
 
@@ -206,7 +207,7 @@ public class TrackCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         Player p;
 
         sender.sendMessage("Error: Command not implemented");
