@@ -177,16 +177,16 @@ public class TrackCommand implements CommandExecutor {
                 // Since portalExits stores both Nether and End portals, need to check for same world first
                 if (targetExitPortalEnv == sourceWorldEnv) {
                     sendTrackMsg(source, sourceLoc, targetName, targetExitPortal);
+                    return;
                 }
+            }
+            // Target exit portal is null
+            // Priority 2: Track source's exit portal
+            Location sourceExitPortal = portalExits.getOrDefault(source.getName(), null);
+            if (sourceExitPortal == null) {
+                MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
             } else {
-                // Target exit portal is null
-                // Priority 2: Track source's exit portal
-                Location sourceExitPortal = portalExits.getOrDefault(source.getName(), null);
-                if (sourceExitPortal == null) {
-                    MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
-                } else {
-                    sendTrackMsg(source, sourceLoc, targetName, sourceExitPortal);
-                }
+                sendTrackMsg(source, sourceLoc, targetName, sourceExitPortal);
             }
         } else {
             // Source is in the overworld, target in Nether/The End. Track the target's entry portal.
