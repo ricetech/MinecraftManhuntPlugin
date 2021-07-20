@@ -233,21 +233,12 @@ public class TrackCommand implements CommandExecutor {
         // Attempt to get target player
         Player target = Bukkit.getPlayer(args[0]);
 
-        // Check if target exists
-        if (target == null) {
-            // See if a location for the offline player exists
-            Location targetLoc = offlinePlayerLocations.getOrDefault(args[0], null);
-            if (targetLoc == null) {
-                MinecraftManhuntPlugin.sendErrorMsg(p, "Target player does not exist.");
-                return true;
-            } else {
-                // Track using cached player location
-                trackPlayer(p, args[0]);
-            }
+        // Check if target is online or, if offline, their last location is cached
+        if (target == null || offlinePlayerLocations.getOrDefault(args[0], null) != null) {
+            trackPlayer(p, args[0]);
             return true;
         } else {
-            // Target exists and is online, track normally
-            trackPlayer(p, target.getName());
+            MinecraftManhuntPlugin.sendErrorMsg(p, "Target player does not exist or is offline.");
         }
 
         return true;
