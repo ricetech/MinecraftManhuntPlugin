@@ -83,13 +83,17 @@ public class TeamSwitchCommand implements CommandExecutor {
             p = ((Player) sender);
         }
 
+        ManhuntTeam currentTeam = TeamManager.getTeam(p);
+
         if (!validTeams.contains(args[0].toUpperCase())) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, args[0] + " is not a valid team.");
             return false;
         }
 
-        if (manhuntPlugin.isGameInProgress()) {
+        // Allow spectators to switch teams even if the game has started provided they are still eligible
+        if (manhuntPlugin.isGameInProgress() && currentTeam != ManhuntTeam.SPECTATORS) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "You cannot change teams after the game has started.");
+            eligibility.put(p.getName(), false);
             return true;
         }
 
