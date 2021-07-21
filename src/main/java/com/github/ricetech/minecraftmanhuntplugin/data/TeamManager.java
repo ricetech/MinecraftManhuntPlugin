@@ -147,6 +147,17 @@ public class TeamManager {
         return listTeamPlayers(team, null);
     }
 
+    public static Set<String> getTeamEntries(ManhuntTeam team) {
+        Team targetTeam = switch (team) {
+            case RUNNERS -> runners;
+            case HUNTERS -> hunters;
+            case ELIMINATED -> eliminated;
+            case SPECTATORS -> spectators;
+        };
+
+        return targetTeam.getEntries();
+    }
+
     public static void editTeam(Player p, ManhuntTeam team) {
         switch (team) {
             case RUNNERS -> {
