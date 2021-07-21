@@ -24,7 +24,7 @@ public class PlayerEliminationOnDeathListener implements Listener {
 
     public void sendDeathCauseMsg(Player p) {
         p.sendMessage("Did you die to natural causes or to a player?");
-        p.sendMessage("Remember, you must select [Player] even if the cause of death was indirect.");
+        p.sendMessage("Remember, you must select [Player] even if a player killed you indirectly.");
         ComponentBuilder builderDeathConfirmMsg = new ComponentBuilder("Pick one: ");
 
         TextComponent playerComponent = new TextComponent("[Player]");
