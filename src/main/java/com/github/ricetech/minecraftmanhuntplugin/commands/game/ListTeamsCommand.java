@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
 public class ListTeamsCommand implements CommandExecutor {
-    public static void listTeams() {
+    public static void listTeams(boolean whisper, CommandSender sender) {
         boolean hasEliminated = false;
         boolean hasSpectators = false;
 
@@ -38,14 +38,26 @@ public class ListTeamsCommand implements CommandExecutor {
             hasSpectators = true;
         }
 
-        Bukkit.broadcastMessage("Teams for this game:");
-        Bukkit.broadcastMessage(runners.toString());
-        Bukkit.broadcastMessage(hunters.toString());
-        if (hasEliminated) {
-            Bukkit.broadcastMessage(eliminated.toString());
-        }
-        if (hasSpectators) {
-            Bukkit.broadcastMessage(spectators.toString());
+        if (whisper && sender != null) {
+            sender.sendMessage("Teams for this game:");
+            sender.sendMessage(runners.toString());
+            sender.sendMessage(hunters.toString());
+            if (hasEliminated) {
+                sender.sendMessage(eliminated.toString());
+            }
+            if (hasSpectators) {
+                sender.sendMessage(spectators.toString());
+            }
+        } else {
+            Bukkit.broadcastMessage("Teams for this game:");
+            Bukkit.broadcastMessage(runners.toString());
+            Bukkit.broadcastMessage(hunters.toString());
+            if (hasEliminated) {
+                Bukkit.broadcastMessage(eliminated.toString());
+            }
+            if (hasSpectators) {
+                Bukkit.broadcastMessage(spectators.toString());
+            }
         }
     }
 
@@ -54,7 +66,7 @@ public class ListTeamsCommand implements CommandExecutor {
             return false;
         }
 
-        listTeams();
+        listTeams(true, sender);
         return true;
     }
 }
