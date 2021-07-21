@@ -188,7 +188,11 @@ public class TrackCommand implements CommandExecutor {
             return;
         }
 
-        trackPlayer(p, trackedPlayer);
+        if (trackedPlayer.equals(PORTAL_NAME_KEY)) {
+            trackPortal(p);
+        } else {
+            trackPlayer(p, trackedPlayer);
+        }
     }
 
     public static void trackPortal(Player p) {
