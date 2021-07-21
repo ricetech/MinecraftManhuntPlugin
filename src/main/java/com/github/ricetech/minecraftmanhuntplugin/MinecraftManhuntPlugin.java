@@ -8,7 +8,7 @@ import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminat
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TpOptionsCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TeamSwitchCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPlayerCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.CountdownCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.ResetCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
@@ -85,7 +85,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand());
         this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand());
         this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setExecutor(new ResetEligibilityCommand(this));
-        this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackPlayerCommand());
+        this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
     }
 
     @Override

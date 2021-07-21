@@ -1,6 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
-import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPlayerCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +16,7 @@ public class CompassTrackListener implements Listener {
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
                 (p.getInventory().getItemInMainHand().getType() == Material.COMPASS ||
                         p.getInventory().getItemInOffHand().getType() == Material.COMPASS)) {
-            TrackPlayerCommand.handleCompassRightClick(p);
+            TrackCommand.handleCompassRightClick(p);
         }
     }
 }
