@@ -180,7 +180,7 @@ public class TrackCommand implements CommandExecutor {
         String trackedPlayer = trackingMap.getOrDefault(p.getName(), null);
 
         if (trackedPlayer == null) {
-            MinecraftManhuntPlugin.sendErrorMsg(p, "You aren't tracking anyone. Use /" + MinecraftManhuntPlugin.TRACK_COMMAND_ALIAS + "to start tracking.");
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You aren't tracking anyone. Use /" + MinecraftManhuntPlugin.TRACK_COMMAND_ALIAS + " to start tracking.");
             return;
         }
 
