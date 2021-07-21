@@ -48,6 +48,10 @@ commands:
     description: Eliminate a player. For use if the game didn't eliminate them automatically. Also kills the player.
     usage: /eliminate <eliminated player> <player who is eliminating/killing the other player>
     permission: mmh.correction
+  uneliminate:
+    description: Un-eliminate a player. Restores them to the Runners team.
+    usage: /uneliminate <eliminated player>
+    permission: mmh.correction
   # Internal use
   reseteligibility:
     description: Internal use only.

@@ -177,4 +177,10 @@ public class TeamManager {
         Bukkit.broadcastMessage(MinecraftManhuntPlugin.RUNNERS_COLOR + p.getName() + ChatColor.RESET + " has been " +
                 MinecraftManhuntPlugin.HUNTERS_COLOR + "eliminated.");
     }
+
+    public static void unEliminatePlayer(Player p) {
+        runners.addEntry(p.getName());
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.ELIMINATED_COLOR + p.getName() + ChatColor.RESET + " has been " +
+                MinecraftManhuntPlugin.RUNNERS_COLOR + "un-eliminated and is now a Runner.");
+    }
 }
