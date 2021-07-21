@@ -32,9 +32,9 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String COUNTDOWN_COMMAND_ALIAS = "countdown";
     public static final String RESET_COMMAND_ALIAS = "reset";
     // Player
+    public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
     public static final String TRACK_COMMAND_ALIAS = "track";
     public static final String TRACK_PORTAL_COMMAND_ALIAS = "trackportal";
-    public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
     // Internal Use
     public static final String RESET_ELIGIBILITY_COMMAND_ALIAS = "reseteligibility";
     public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
@@ -77,18 +77,22 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new FireResistanceOnPortalListener(), this);
 
         // Register Commands
-        this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
-        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand());
-        this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this));
+        // Game Management
         this.getCommand(NEW_GAME_COMMAND_ALIAS).setExecutor(new NewGameCommand(this));
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
-        this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(new TeamTpCommand(this));
-        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand());
-        this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand());
-        this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setExecutor(new ResetEligibilityCommand(this));
+        // Utilities
+        this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
+        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand());
+        // Player
+        this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this));
         this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
         this.getCommand(TRACK_PORTAL_COMMAND_ALIAS).setExecutor(new TrackPortalCommand());
+        // Internal Use
+        this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setExecutor(new ResetEligibilityCommand(this));
+        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand());
+        this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(new TeamTpCommand(this));
+        this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand());
     }
 
     @Override

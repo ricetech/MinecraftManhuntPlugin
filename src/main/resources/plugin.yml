@@ -7,15 +7,7 @@ authors:
   - jonapap
   - OrangeFirefly
 commands:
-  countdown:
-    description: Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
-    usage: /countdown <time in seconds>
-  reset:
-    description: Resets the state of the world and players to prepare for a new game.
-    usage: /reset
-  changeteam:
-    description: Internal use only.
-    usage: /changeteam <runners|eliminated|hunters|spectators>
+  # Game Management
   newgame:
     description: Start a new game.
     usage: /newgame
@@ -25,6 +17,27 @@ commands:
   stopgame:
     description: Stops a manhunt game in progress.
     usage: /stopgame
+  # Utilities
+  countdown:
+    description: Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
+    usage: /countdown <time in seconds>
+  reset:
+    description: Resets the state of the world and players to prepare for a new game.
+    usage: /reset
+  # Player
+  changeteam:
+    description: Internal use only.
+    usage: /changeteam <runners|eliminated|hunters|spectators>
+  track:
+    description: Track a player using a compass.
+    usage: /track <player>
+  trackportal:
+    description: Track the portal you used to enter The Nether.
+    usage: /trackportal
+  # Internal use
+  reseteligibility:
+    description: Internal use only.
+    usage: /reseteligibility
   selfelim:
     description: Internal use only.
     usage: /selfelim
@@ -34,12 +47,3 @@ commands:
   tpoptions:
     description: Internal use only.
     usage: /tpoptions
-  track:
-    description: Track a player using a compass.
-    usage: /track <player>
-  reseteligibility:
-    description: Internal use only.
-    usage: /reseteligibility
-  trackportal:
-    description: Track the portal you used to enter The Nether.
-    usage: /trackportal
