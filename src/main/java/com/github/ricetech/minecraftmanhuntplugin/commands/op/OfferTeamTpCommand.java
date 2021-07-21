@@ -17,7 +17,7 @@ public class OfferTeamTpCommand implements CommandExecutor {
             return false;
         }
 
-        Player p = Bukkit.getPlayer(args[0]);
+        Player p = Bukkit.getPlayerExact(args[0]);
 
         if (p == null) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "Target player does not exist or is offline.");

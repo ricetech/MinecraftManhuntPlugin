@@ -18,8 +18,8 @@ public class EliminatePlayerCommand implements CommandExecutor {
             return false;
         }
 
-        Player victim = Bukkit.getPlayer(args[0]);
-        Player killer = Bukkit.getPlayer(args[1]);
+        Player victim = Bukkit.getPlayerExact(args[0]);
+        Player killer = Bukkit.getPlayerExact(args[1]);
 
         if (victim == null) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "Victim does not exist or is offline.");
