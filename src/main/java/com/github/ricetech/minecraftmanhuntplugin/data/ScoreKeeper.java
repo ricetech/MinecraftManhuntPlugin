@@ -35,12 +35,17 @@ public class ScoreKeeper {
     }
 
     /**
-     * Sets the scores of all scoreboard entries to 0.
+     * Sets the scores of all scoreboard entries to 0. Also remove offline players from the scoreboard.
      */
     public static void resetScores() {
         for (String entry : mainScoreboard.getEntries()) {
-            kills.getScore(entry).setScore(0);
-            deaths.getScore(entry).setScore(0);
+            if (Bukkit.getPlayerExact(entry) == null) {
+                // Remove offline player
+                mainScoreboard.resetScores(entry);
+            } else {
+                kills.getScore(entry).setScore(0);
+                deaths.getScore(entry).setScore(0);
+            }
         }
     }
 
