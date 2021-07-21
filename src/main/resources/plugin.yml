@@ -40,3 +40,6 @@ commands:
   reseteligibility:
     description: Internal use only.
     usage: /reseteligibility
+  trackportal:
+    description: Track the portal you used to enter The Nether.
+    usage: /trackportal

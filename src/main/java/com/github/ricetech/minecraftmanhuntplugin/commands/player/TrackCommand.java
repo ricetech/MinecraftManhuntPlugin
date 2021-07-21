@@ -18,6 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TrackCommand implements CommandExecutor {
+    // Safe keyword since Minecraft usernames cannot contain spaces
+    public static final String PORTAL_NAME_KEY = "your portal";
+
     public static final int CLOSE_Y_THRESHOLD = 10;
     public static final int MEDIUM_Y_THRESHOLD = 25;
     public static final int FAR_Y_THRESHOLD = 50;
@@ -89,7 +92,7 @@ public class TrackCommand implements CommandExecutor {
             targetColor = ChatColor.RESET;
         }
 
-        if (sourceTeam == targetTeam ||
+        if (sourceTeam == targetTeam || targetName.equals(PORTAL_NAME_KEY) ||
                 (sourceTeam == ManhuntTeam.RUNNERS && targetTeam == ManhuntTeam.ELIMINATED) ||
                 (sourceTeam == ManhuntTeam.ELIMINATED && targetTeam == ManhuntTeam.RUNNERS)) {
             // Same team, allow precise tracking
@@ -179,6 +182,31 @@ public class TrackCommand implements CommandExecutor {
         }
 
         trackPlayer(p, trackedPlayer);
+    }
+
+    public static void trackPortal(Player p) {
+        World.Environment playerEnv = p.getWorld().getEnvironment();
+
+        if (playerEnv != World.Environment.NETHER) {
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You can only track portals in The Nether.");
+            return;
+        }
+
+        Location portalLoc = portalExits.getOrDefault(p.getName(), null);
+
+        if (portalLoc == null || portalLoc.getWorld() == null) {
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You do not have a valid portal to track. Try using a portal first.");
+            return;
+        }
+
+        World.Environment portalEnv = portalLoc.getWorld().getEnvironment();
+
+        if (portalEnv != playerEnv) {
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You are not in the same world as your portal.");
+            return;
+        }
+
+        sendTrackMsg(p, p.getLocation(), PORTAL_NAME_KEY, portalLoc);
     }
 
     public static void trackPlayer(Player source, @NotNull String targetName) {
