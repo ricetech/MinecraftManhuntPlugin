@@ -1,4 +1,4 @@
-package com.github.ricetech.minecraftmanhuntplugin.commands;
+package com.github.ricetech.minecraftmanhuntplugin.commands.game;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import org.bukkit.Bukkit;

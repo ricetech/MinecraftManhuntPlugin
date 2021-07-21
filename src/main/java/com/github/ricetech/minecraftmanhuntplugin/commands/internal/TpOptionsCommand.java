@@ -1,6 +1,7 @@
-package com.github.ricetech.minecraftmanhuntplugin.commands;
+package com.github.ricetech.minecraftmanhuntplugin.commands.internal;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
