@@ -9,6 +9,10 @@ authors:
 website: https://github.com/ricetech/MinecraftManhuntPlugin
 commands:
   # Game Management
+  listteams:
+    description: List the teams and the players on each team.
+    usage: /listteams
+    permission: mmh.game
   newgame:
     description: Start a new game.
     usage: /newgame

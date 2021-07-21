@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
+import com.github.ricetech.minecraftmanhuntplugin.commands.game.ListTeamsCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.game.NewGameCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.game.StartGameCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.game.StopGameCommand;
@@ -26,6 +27,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class MinecraftManhuntPlugin extends JavaPlugin {
     // Command Aliases
     // Game Management
+    public static final String LIST_TEAMS_COMMAND_ALIAS = "listteams";
     public static final String NEW_GAME_COMMAND_ALIAS = "newgame";
     public static final String START_GAME_COMMAND_ALIAS = "startgame";
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
@@ -85,6 +87,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
         // Register Commands
         // Game Management
+        this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setExecutor(new ListTeamsCommand());
         this.getCommand(NEW_GAME_COMMAND_ALIAS).setExecutor(new NewGameCommand(this));
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
