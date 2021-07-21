@@ -22,6 +22,12 @@ public class TrackCommand implements CommandExecutor {
     public static final int MEDIUM_Y_THRESHOLD = 25;
     public static final int FAR_Y_THRESHOLD = 50;
 
+    public static final int DISTANCE_THRESHOLD_1 = 50;
+    public static final int DISTANCE_THRESHOLD_2 = 100;
+    public static final int DISTANCE_THRESHOLD_3 = 250;
+    public static final int DISTANCE_THRESHOLD_4 = 500;
+    public static final int DISTANCE_THRESHOLD_5 = 1000;
+
     private static final Map<String, String> trackingMap = new HashMap<>();
     private static final Map<String, Location> portalEntrances = new HashMap<>();
     private static final Map<String, Location> portalExits = new HashMap<>();
@@ -92,17 +98,17 @@ public class TrackCommand implements CommandExecutor {
                     distance + " blocks away from you.");
         } else {
             String distanceString;
-            if (distance > 1000) {
+            if (distance > DISTANCE_THRESHOLD_5) {
                 // Floor round to nearest 1000
-                long distanceRounded = Math.round(Math.floor((double) distance / 1000) * 1000);
+                long distanceRounded = Math.round(Math.floor((double) distance / DISTANCE_THRESHOLD_5) * DISTANCE_THRESHOLD_5);
                 distanceString = "over " + distanceRounded + " blocks away from you.";
-            } else if (distance > 500) {
+            } else if (distance > DISTANCE_THRESHOLD_4) {
                 distanceString = "over 500 blocks away from you";
-            } else if (distance > 250) {
+            } else if (distance > DISTANCE_THRESHOLD_3) {
                 distanceString = "over 250 blocks away from you";
-            } else if (distance > 100) {
+            } else if (distance > DISTANCE_THRESHOLD_2) {
                 distanceString = "over 100 blocks away from you";
-            } else if (distance > 50) {
+            } else if (distance > DISTANCE_THRESHOLD_1) {
                 distanceString = "over 50 blocks away from you";
             } else {
                 distanceString = "less than 50 blocks away from you";
