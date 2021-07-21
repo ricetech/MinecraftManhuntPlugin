@@ -17,7 +17,7 @@ public class PlayerPortalLocationStorageListener implements Listener {
     }
 
     @EventHandler
-    private void storePortalLocation(PlayerPortalEvent event) {
+    public void storePortalLocation(PlayerPortalEvent event) {
         if (manhuntPlugin.isGameInProgress()) {
             Player p = event.getPlayer();
 
