@@ -6,6 +6,7 @@ author: the_ricetech
 authors:
   - jonapap
   - OrangeFirefly
+website: https://github.com/ricetech/MinecraftManhuntPlugin
 commands:
   # Game Management
   newgame:
