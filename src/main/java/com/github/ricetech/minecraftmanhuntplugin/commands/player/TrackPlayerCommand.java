@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TrackCommand implements CommandExecutor {
+public class TrackPlayerCommand implements CommandExecutor {
     public static final int CLOSE_Y_THRESHOLD = 10;
     public static final int MEDIUM_Y_THRESHOLD = 25;
     public static final int FAR_Y_THRESHOLD = 50;
@@ -27,7 +27,7 @@ public class TrackCommand implements CommandExecutor {
     private static final Map<String, Location> portalExits = new HashMap<>();
     private static final Map<String, Location> offlinePlayerLocations = new HashMap<>();
 
-    public TrackCommand() {
+    public TrackPlayerCommand() {
 
     }
 
