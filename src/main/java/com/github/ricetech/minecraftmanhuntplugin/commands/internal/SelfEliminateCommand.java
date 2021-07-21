@@ -3,6 +3,7 @@ package com.github.ricetech.minecraftmanhuntplugin.commands.internal;
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -53,16 +54,14 @@ public class SelfEliminateCommand implements CommandExecutor {
             return true;
         }
 
-        if (team != ManhuntTeam.RUNNERS) {
-            MinecraftManhuntPlugin.sendErrorMsg(p, "You cannot be eliminated unless you are a Runner.");
-            return true;
-        }
-
         eligibility.put(p.getName(), false);
         // Disable eligibility for /teamtp
         TeamTpCommand.setEligibility(p.getName(), false);
 
-        TeamManager.eliminatePlayer(p);
+        if (team == ManhuntTeam.RUNNERS) {
+            TeamManager.eliminatePlayer(p);
+        }
+
         return true;
     }
 }
