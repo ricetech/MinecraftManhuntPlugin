@@ -10,6 +10,6 @@ public class PlayerInventoryStorageListener implements Listener {
     @EventHandler
     public void storeInventoryOnDeath(PlayerDeathEvent event) {
         Player p = event.getEntity();
-        RestoreInventoryCommand.putInventory(p.getName(), p.getInventory());
+        RestoreInventoryCommand.putInventory(p.getName(), p.getInventory().getContents());
     }
 }

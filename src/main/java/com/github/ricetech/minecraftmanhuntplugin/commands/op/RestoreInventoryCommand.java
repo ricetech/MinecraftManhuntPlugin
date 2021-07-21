@@ -6,6 +6,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.jetbrains.annotations.NotNull;
 
@@ -13,14 +16,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RestoreInventoryCommand implements CommandExecutor {
-    private final static Map<String, PlayerInventory> inventories = new HashMap<>();
+    private final static Map<String, ItemStack[]> inventoryContents = new HashMap<>();
 
-    public static PlayerInventory getInventory(String entry) {
-        return inventories.getOrDefault(entry, null);
+    public static ItemStack[] getInventoryContents(String entry) {
+        return inventoryContents.getOrDefault(entry, null);
     }
 
-    public static void putInventory(String entry, PlayerInventory inventory) {
-        inventories.put(entry, inventory);
+    public static void putInventory(String entry, ItemStack[] inventoryContents) {
+        RestoreInventoryCommand.inventoryContents.put(entry, inventoryContents);
     }
 
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
@@ -35,12 +38,15 @@ public class RestoreInventoryCommand implements CommandExecutor {
             return true;
         }
 
-        PlayerInventory inventory = inventories.getOrDefault(p.getName(), null);
+        ItemStack[] inventoryContents = RestoreInventoryCommand.inventoryContents.getOrDefault(p.getName(), null);
 
-        if (inventory == null) {
+        if (inventoryContents == null) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "Target player does not have a stored inventory.");
             return true;
         }
+
+        Inventory inventory = Bukkit.createInventory(null, InventoryType.PLAYER, "Your previous inventory");
+        inventory.setContents(inventoryContents);
 
         p.openInventory(inventory);
 
