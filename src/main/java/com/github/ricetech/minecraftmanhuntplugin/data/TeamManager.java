@@ -135,7 +135,9 @@ public class TeamManager {
         ArrayList<Player> players = new ArrayList<>();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (mainScoreboard.getEntryTeam(p.getName()) == targetTeam && p != targetPlayer) {
+            Team teamToCheck = mainScoreboard.getEntryTeam(p.getName());
+            if ((teamToCheck == targetTeam || (targetTeam == runners && teamToCheck == eliminated) ||
+                    (targetTeam == eliminated && teamToCheck == runners)) && p != targetPlayer) {
                 players.add(p);
             }
         }
