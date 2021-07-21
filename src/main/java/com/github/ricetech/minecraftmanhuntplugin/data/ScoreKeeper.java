@@ -68,4 +68,16 @@ public class ScoreKeeper {
         Score pKills = kills.getScore(p.getName());
         pKills.setScore(pKills.getScore() + 1);
     }
+
+    /**
+     * Add player p if they aren't on the scoreboard already.
+     *
+     * @param p - The player to add.
+     */
+    public static void addNewPlayer(Player p) {
+        Score pDeaths = deaths.getScore(p.getName());
+        if (pDeaths.getScore() == 0) {
+            pDeaths.setScore(0);
+        }
+    }
 }
