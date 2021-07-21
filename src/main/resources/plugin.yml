@@ -12,39 +12,63 @@ commands:
   newgame:
     description: Start a new game.
     usage: /newgame
+    permission: mmh.game
   startgame:
     description: Resets all players and starts a new game with a countdown timer. Set the optional second option to 'true' if you do not want to reset all players.
     usage: /startgame <time in seconds> [(skip reset) true|false]
+    permission: mmh.game
   stopgame:
     description: Stops a manhunt game in progress.
     usage: /stopgame
+    permission: mmh.game
   # Utilities
   countdown:
     description: Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
     usage: /countdown <time in seconds>
+    permission: mmh.player
   reset:
     description: Resets the state of the world and players to prepare for a new game.
     usage: /reset
+    permission: mmh.player
   # Player
   changeteam:
     description: Internal use only.
     usage: /changeteam <runners|eliminated|hunters|spectators>
+    permission: mmh.player
   track:
     description: Track a player using a compass.
     usage: /track <player>
+    permission: mmh.player
   trackportal:
     description: Track the portal you used to enter The Nether.
     usage: /trackportal
+    permission: mmh.player
   # Internal use
   reseteligibility:
     description: Internal use only.
     usage: /reseteligibility
+    permission: mmh.player
   selfelim:
     description: Internal use only.
     usage: /selfelim
+    permission: mmh.player
   teamtp:
     description: Internal use only.
     usage: /teamtp <target player>
+    permission: mmh.player
   tpoptions:
     description: Internal use only.
     usage: /tpoptions
+    permission: mmh.player
+permissions:
+  mmh.player:
+    description: Gives access to commands used by players and spectators.
+    default: true
+  mmh.game:
+    description: Gives access to commands used to start/stop the game.
+    default: true
+  mmh.op:
+    description: >
+      Gives access to commands used to fix game errors such as a player on the wrong team,
+      a player eliminated wrongly, or a player that did not get eliminated when they should have been.
+    default: op
