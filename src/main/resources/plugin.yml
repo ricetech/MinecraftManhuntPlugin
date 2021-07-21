@@ -46,7 +46,7 @@ commands:
   # Operator commands
   eliminate:
     description: Eliminate a player. For use if the game didn't eliminate them automatically. Also kills the player.
-    usage: /eliminate <player>
+    usage: /eliminate <eliminated player> <player who is eliminating/killing the other player>
     permission: mmh.correction
   # Internal use
   reseteligibility:
