@@ -88,7 +88,7 @@ public class TeamTpCommand implements CommandExecutor {
             // Get Player object of target player, check if online
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                MinecraftManhuntPlugin.sendErrorMsg(sender, "You do not have a valid death location saved.");
+                MinecraftManhuntPlugin.sendErrorMsg(sender, "Target player does not exist.");
                 Bukkit.dispatchCommand(p, MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS);
                 return true;
             }
