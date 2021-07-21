@@ -54,6 +54,12 @@ commands:
     description: Eliminate a player. For use if the game didn't eliminate them automatically. Also kills the player.
     usage: /eliminate <eliminated player> <player who is eliminating/killing the other player>
     permission: mmh.correction
+  offerteamtp:
+    description: >
+      Offer the list of teammates to teleport to (or death location if no teammates are available) to a player.
+      Replaces the menu normally provided if a player states they died to natural causes.
+    usage: /offerteamtp <player>
+    permission: mmh.correction
   setplayerteam:
     description: Forcibly change a player's team, whether they are eligible to switch or not.
     usage: /setplayerteam <player> <runners|eliminated|hunters|spectators>
