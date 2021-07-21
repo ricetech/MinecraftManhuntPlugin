@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class MinecraftManhuntPlugin extends JavaPlugin {
     // Command Aliases
     public static final String COUNTDOWN_COMMAND_ALIAS = "countdown";
-    public static final String RESET_COMMAND_ALIAS = "rs";
+    public static final String RESET_COMMAND_ALIAS = "reset";
     public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
     public static final String NEW_GAME_COMMAND_ALIAS = "newgame";
     public static final String START_GAME_COMMAND_ALIAS = "startgame";
@@ -23,7 +23,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
     public static final String TP_OPTIONS_COMMAND_ALIAS = "tpoptions";
     public static final String RESET_ELIGIBILITY_COMMAND_ALIAS = "reseteligibility";
-    public static final String TRACK_COMMAND_ALIAS = "trackn";
+    public static final String TRACK_COMMAND_ALIAS = "track";
 
     // Standard Colours
     public static final ChatColor RUNNERS_COLOR = ChatColor.DARK_BLUE;

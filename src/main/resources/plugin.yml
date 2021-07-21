@@ -10,9 +10,9 @@ commands:
   countdown:
     description: Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
     usage: /countdown <time in seconds>
-  rs:
+  reset:
     description: Resets the state of the world and players to prepare for a new game.
-    usage: /rs
+    usage: /reset
   changeteam:
     description: Internal use only.
     usage: /changeteam <runners|eliminated|hunters|spectators>
@@ -34,7 +34,7 @@ commands:
   tpoptions:
     description: Internal use only.
     usage: /tpoptions
-  trackn:
+  track:
     description: Track a player using a compass.
     usage: /track <player>
   reseteligibility:
