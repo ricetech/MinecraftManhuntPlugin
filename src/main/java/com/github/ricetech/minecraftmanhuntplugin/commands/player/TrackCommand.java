@@ -222,6 +222,11 @@ public class TrackCommand implements CommandExecutor {
     }
 
     public static void trackPlayer(Player source, @NotNull String targetName) {
+        if (targetName.equals(source.getName())) {
+            MinecraftManhuntPlugin.sendErrorMsg(source, "You can't track yourself. Select someone else.");
+            return;
+        }
+
         // Check if target exists
         Player target = Bukkit.getPlayer(targetName);
 
