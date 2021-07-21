@@ -47,7 +47,7 @@ commands:
   eliminate:
     description: Eliminate a player. For use if the game didn't eliminate them automatically. Also kills the player.
     usage: /eliminate <player>
-    permission: mmh.op
+    permission: mmh.correction
   # Internal use
   reseteligibility:
     description: Internal use only.
@@ -72,8 +72,8 @@ permissions:
   mmh.game:
     description: Gives access to commands used to start/stop the game.
     default: true
-  mmh.op:
+  mmh.correction:
     description: >
-      Gives access to commands used to fix game errors such as a player on the wrong team,
+      Gives access to commands used to correct game errors such as a player on the wrong team,
       a player eliminated wrongly, or a player that did not get eliminated when they should have been.
     default: op
