@@ -1,7 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands.internal;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
-import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationStorageListener;
 import org.bukkit.Bukkit;
