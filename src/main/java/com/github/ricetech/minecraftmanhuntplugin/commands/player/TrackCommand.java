@@ -71,7 +71,38 @@ public class TrackCommand implements CommandExecutor {
         offlinePlayerLocations.remove(playerName);
     }
 
-    private static void sendTrackMsg(@NotNull Player source, @NotNull Location sourceLoc, @NotNull String targetName, @NotNull Location targetLoc) {
+    /**
+     * @author @johnzhoudev
+     * @author @ricetech
+     */
+    public static void updateCompass(Player p, @NotNull Location targetLoc) {
+        PlayerInventory inventory = p.getInventory();
+
+        int compassPosition = inventory.first(Material.COMPASS);
+        if (compassPosition == -1) {
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You used /track without a compass in your inventory.");
+            return;
+        }
+
+        // Get compass metadata
+        ItemStack compass = inventory.getItem(compassPosition);
+
+        if (compass == null) {
+            MinecraftManhuntPlugin.sendErrorMsg(p, "The compass in your inventory is invalid. Please contact the developer.");
+            return;
+        }
+
+        ItemMeta compassMeta = compass.getItemMeta();
+
+        if (compassMeta instanceof CompassMeta trackerCompassMeta) {
+            trackerCompassMeta.setLodestoneTracked(false);
+            trackerCompassMeta.setLodestone(targetLoc);
+
+            compass.setItemMeta(trackerCompassMeta);
+        }
+    }
+
+    private static void sendTrackUpdate(@NotNull Player source, @NotNull Location sourceLoc, @NotNull String targetName, @NotNull Location targetLoc) {
         long distance = 0;
         try {
             distance = Math.round(sourceLoc.distance(targetLoc));
@@ -91,6 +122,9 @@ public class TrackCommand implements CommandExecutor {
         } else {
             targetColor = ChatColor.RESET;
         }
+
+        // Update compass
+        updateCompass(source, targetLoc);
 
         if (sourceTeam == targetTeam || targetName.equals(PORTAL_NAME_KEY) ||
                 (sourceTeam == ManhuntTeam.RUNNERS && targetTeam == ManhuntTeam.ELIMINATED) ||
@@ -142,37 +176,6 @@ public class TrackCommand implements CommandExecutor {
         }
     }
 
-    /**
-     * @author @johnzhoudev
-     * @author @ricetech
-     */
-    public static void updateCompass(Player p, @NotNull Location targetLoc) {
-        PlayerInventory inventory = p.getInventory();
-
-        int compassPosition = inventory.first(Material.COMPASS);
-        if (compassPosition == -1) {
-            MinecraftManhuntPlugin.sendErrorMsg(p, "You used /track without a compass in your inventory.");
-            return;
-        }
-
-        // Get compass metadata
-        ItemStack compass = inventory.getItem(compassPosition);
-
-        if (compass == null) {
-            MinecraftManhuntPlugin.sendErrorMsg(p, "The compass in your inventory is invalid. Please contact the developer.");
-            return;
-        }
-
-        ItemMeta compassMeta = compass.getItemMeta();
-
-        if (compassMeta instanceof CompassMeta trackerCompassMeta) {
-            trackerCompassMeta.setLodestoneTracked(false);
-            trackerCompassMeta.setLodestone(targetLoc);
-
-            compass.setItemMeta(trackerCompassMeta);
-        }
-    }
-
     public static void handleCompassRightClick(Player p) {
         String trackedPlayer = trackingMap.getOrDefault(p.getName(), null);
 
@@ -206,7 +209,7 @@ public class TrackCommand implements CommandExecutor {
             return;
         }
 
-        sendTrackMsg(p, p.getLocation(), PORTAL_NAME_KEY, portalLoc);
+        sendTrackUpdate(p, p.getLocation(), PORTAL_NAME_KEY, portalLoc);
     }
 
     public static void trackPlayer(Player source, @NotNull String targetName) {
@@ -267,8 +270,7 @@ public class TrackCommand implements CommandExecutor {
             MinecraftManhuntPlugin.sendErrorMsg(source, "Tracking is not supported in Custom Worlds. Please contact the developer.");
         } else if (sourceWorldEnv == targetWorldEnv) {
             // Same world, track normally
-            sendTrackMsg(source, sourceLoc, targetName, targetLoc);
-            updateCompass(source, targetLoc);
+            sendTrackUpdate(source, sourceLoc, targetName, targetLoc);
         } else if ((sourceWorldEnv == World.Environment.NETHER && targetWorldEnv == World.Environment.THE_END) ||
                 (sourceWorldEnv == World.Environment.THE_END && targetWorldEnv == World.Environment.NETHER)) {
             // Not the same world, not overworld. Track the source player's own exit portal.
@@ -276,7 +278,7 @@ public class TrackCommand implements CommandExecutor {
             if (sourceExitPortal == null) {
                 MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
             } else {
-                sendTrackMsg(source, sourceLoc, targetName, sourceExitPortal);
+                sendTrackUpdate(source, sourceLoc, targetName, sourceExitPortal);
             }
         } else if (sourceWorldEnv != World.Environment.NORMAL && targetWorldEnv == World.Environment.NORMAL) {
             // Target in overworld, source not in overworld.
@@ -292,7 +294,7 @@ public class TrackCommand implements CommandExecutor {
                 World.Environment targetExitPortalEnv = targetExitPortalWorld.getEnvironment();
                 // Since portalExits stores both Nether and End portals, need to check for same world first
                 if (targetExitPortalEnv == sourceWorldEnv) {
-                    sendTrackMsg(source, sourceLoc, targetName, targetExitPortal);
+                    sendTrackUpdate(source, sourceLoc, targetName, targetExitPortal);
                     return;
                 }
             }
@@ -302,7 +304,7 @@ public class TrackCommand implements CommandExecutor {
             if (sourceExitPortal == null) {
                 MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
             } else {
-                sendTrackMsg(source, sourceLoc, targetName, sourceExitPortal);
+                sendTrackUpdate(source, sourceLoc, targetName, sourceExitPortal);
             }
         } else {
             // Source is in the overworld, target in Nether/The End. Track the target's entry portal.
@@ -324,7 +326,7 @@ public class TrackCommand implements CommandExecutor {
                 return;
             }
 
-            sendTrackMsg(source, sourceLoc, targetName, targetEntryPortal);
+            sendTrackUpdate(source, sourceLoc, targetName, targetEntryPortal);
         }
     }
 
