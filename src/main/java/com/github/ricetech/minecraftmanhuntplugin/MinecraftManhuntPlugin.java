@@ -82,6 +82,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
         manager.registerEvents(new AddPlayerToScoreboardListener(), this);
+        manager.registerEvents(new SendTeamSelectOnJoin(this), this);
         manager.registerEvents(new CompassInventoryHandlerListener(), this);
         manager.registerEvents(new CompassTrackListener(), this);
         manager.registerEvents(new FireResistanceOnPortalListener(), this);
