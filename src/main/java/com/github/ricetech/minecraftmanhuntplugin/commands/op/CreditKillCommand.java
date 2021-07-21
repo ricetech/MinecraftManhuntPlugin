@@ -34,7 +34,7 @@ public class CreditKillCommand implements CommandExecutor {
         }
 
         ScoreKeeper.addKill(playerToCredit);
-        playerToCredit.sendMessage(ChatColor.DARK_AQUA + "You have been credited a kill by " + p.getName());
+        playerToCredit.sendMessage(ChatColor.DARK_AQUA + "You have been credited a kill by " + p.getName() + ".");
 
         return true;
     }
