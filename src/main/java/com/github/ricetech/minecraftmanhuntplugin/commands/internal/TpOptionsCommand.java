@@ -20,28 +20,7 @@ public class TpOptionsCommand implements CommandExecutor {
     public TpOptionsCommand() {
     }
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        Player p;
-
-        if (args.length != 0) {
-            return false;
-        }
-
-        // Ensure sender is a player, then cast sender to Player
-        if (!(sender instanceof Player)) {
-            MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
-            return true;
-        } else {
-            p = ((Player) sender);
-        }
-
-        // Eligibility
-        if (!TeamTpCommand.getEligibility(p.getName())) {
-            MinecraftManhuntPlugin.sendErrorMsg(sender, "You are not eligible to teleport.");
-            return true;
-        }
-
+    public static void sendTpOptions(Player p) {
         // Get list of players to tp to
         List<Player> playerOptions = TeamManager.listTeamPlayers(TeamManager.getTeam(p), p);
 
@@ -82,6 +61,31 @@ public class TpOptionsCommand implements CommandExecutor {
             }
             p.spigot().sendMessage(selectPlayerMsg.create());
         }
+    }
+
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        Player p;
+
+        if (args.length != 0) {
+            return false;
+        }
+
+        // Ensure sender is a player, then cast sender to Player
+        if (!(sender instanceof Player)) {
+            MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
+            return true;
+        } else {
+            p = ((Player) sender);
+        }
+
+        // Eligibility
+        if (!TeamTpCommand.getEligibility(p.getName())) {
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "You are not eligible to teleport.");
+            return true;
+        }
+
+        sendTpOptions(p);
 
         return true;
     }
