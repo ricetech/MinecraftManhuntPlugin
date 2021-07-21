@@ -1,7 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
-import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPlayerCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,6 +17,6 @@ public class PlayerDisconnectLocationStorageListener implements Listener {
     @EventHandler
     public void storePlayerDisconnectLocation(PlayerQuitEvent event) {
         Player p = event.getPlayer();
-        TrackCommand.putOfflinePlayerLocation(p.getName(), p.getLocation());
+        TrackPlayerCommand.putOfflinePlayerLocation(p.getName(), p.getLocation());
     }
 }

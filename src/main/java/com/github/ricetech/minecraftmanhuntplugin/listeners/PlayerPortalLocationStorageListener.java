@@ -1,7 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
-import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPlayerCommand;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -37,14 +37,14 @@ public class PlayerPortalLocationStorageListener implements Listener {
             World.Environment fromEnv = from.getWorld().getEnvironment();
 
             if (fromEnv == World.Environment.NORMAL) {
-                TrackCommand.putPortalEntrance(p.getName(), from);
+                TrackPlayerCommand.putPortalEntrance(p.getName(), from);
                 // Store exit portal location so player can track their own portal
-                TrackCommand.putPortalExit(p.getName(), to);
+                TrackPlayerCommand.putPortalExit(p.getName(), to);
             } else {
                 // Player is leaving the Nether/End, so remove their entrance portal location
-                TrackCommand.clearPortalEntrance(p.getName());
+                TrackPlayerCommand.clearPortalEntrance(p.getName());
                 // Store new exit portal location so other players can follow
-                TrackCommand.putPortalExit(p.getName(), from);
+                TrackPlayerCommand.putPortalExit(p.getName(), from);
             }
         }
     }
