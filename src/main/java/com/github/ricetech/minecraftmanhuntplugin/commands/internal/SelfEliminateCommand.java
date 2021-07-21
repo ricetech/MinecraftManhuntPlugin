@@ -58,6 +58,10 @@ public class SelfEliminateCommand implements CommandExecutor {
         // Disable eligibility for /teamtp
         TeamTpCommand.setEligibility(p.getName(), false);
 
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(p)) + p.getName() +
+                MinecraftManhuntPlugin.GAME_MSG_COLOR + "'s death was confirmed to be player-caused and as such, " +
+                "will not be able to teleport.");
+
         if (team == ManhuntTeam.RUNNERS) {
             TeamManager.eliminatePlayer(p);
         }
