@@ -26,7 +26,7 @@ public class TpOptionsCommand implements CommandExecutor {
 
         if (playerOptions.size() == 0) {
             // Teleport to last death location
-            p.sendMessage(ChatColor.GOLD + "Warning: There are no available teammates to teleport to.");
+            p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Warning: There are no available teammates to teleport to.");
             p.sendMessage("You may instead teleport to where you died. You will be given 25 seconds of invincibility " +
                     "to protect you against any mobs located where you died.");
             p.sendMessage(ChatColor.RED + "Make sure you did not die in an unsafe location before teleporting.");
