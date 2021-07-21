@@ -136,47 +136,48 @@ public class TrackCommand implements CommandExecutor {
             // Same team, allow precise tracking
             source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + " at " +
                     "(" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + "), " +
-                    distance + " blocks away from you.");
+                    distance + " blocks away.");
         } else {
             String distanceString;
             if (distance > DISTANCE_THRESHOLD_5) {
                 // Floor round to nearest 1000
                 long distanceRounded = Math.round(Math.floor((double) distance / DISTANCE_THRESHOLD_5) * DISTANCE_THRESHOLD_5);
-                distanceString = "over " + distanceRounded + " blocks away from you.";
+                distanceString = distanceRounded + "+ blocks away";
             } else if (distance > DISTANCE_THRESHOLD_4) {
-                distanceString = "over 500 blocks away from you";
+                distanceString = "500+ blocks away";
             } else if (distance > DISTANCE_THRESHOLD_3) {
-                distanceString = "over 250 blocks away from you";
+                distanceString = "250+ blocks away";
             } else if (distance > DISTANCE_THRESHOLD_2) {
-                distanceString = "over 100 blocks away from you";
+                distanceString = "100+ blocks away";
             } else if (distance > DISTANCE_THRESHOLD_1) {
-                distanceString = "over 50 blocks away from you";
+                distanceString = "50+ blocks away";
             } else {
-                distanceString = "less than 50 blocks away from you";
+                distanceString = "less than 50 blocks away";
             }
 
             int heightDiff = sourceY - targetY;
             String heightDiffString;
 
             if (heightDiff > -CLOSE_Y_THRESHOLD && heightDiff < CLOSE_Y_THRESHOLD) {
-                heightDiffString = "around the same y-level as you";
+                heightDiffString = "Around the same y-level as you";
             } else if (heightDiff < -CLOSE_Y_THRESHOLD && heightDiff > -MEDIUM_Y_THRESHOLD) {
-                heightDiffString = "slightly below you";
+                heightDiffString = "Slightly below you";
             } else if (heightDiff < -MEDIUM_Y_THRESHOLD && heightDiff > -FAR_Y_THRESHOLD) {
-                heightDiffString = "a good distance below you";
+                heightDiffString = "A good distance below you";
             } else if (heightDiff < -FAR_Y_THRESHOLD) {
-                heightDiffString = "very far below you";
+                heightDiffString = "Very far below you";
             } else if (heightDiff > CLOSE_Y_THRESHOLD && heightDiff < MEDIUM_Y_THRESHOLD) {
-                heightDiffString = "slightly above you";
+                heightDiffString = "Slightly above you";
             } else if (heightDiff > MEDIUM_Y_THRESHOLD && heightDiff < FAR_Y_THRESHOLD) {
-                heightDiffString = "a good distance above you";
+                heightDiffString = "A good distance above you";
             } else if (heightDiff > FAR_Y_THRESHOLD) {
-                heightDiffString = "very far above you";
+                heightDiffString = "Very far above you";
             } else {
-                heightDiffString = "in an invalid state. Please contact the developer";
+                heightDiffString = "In an invalid state. Please contact the developer";
             }
-            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ": The target is " +
-                    distanceString + " and " + heightDiffString + ".");
+            source.sendMessage("Tracking " + targetColor + targetName + ".");
+            source.sendMessage("Distance: " + distanceString);
+            source.sendMessage("Height:" + heightDiffString);
         }
     }
 
