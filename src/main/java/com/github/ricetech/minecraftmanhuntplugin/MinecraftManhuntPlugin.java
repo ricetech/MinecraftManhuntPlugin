@@ -7,6 +7,7 @@ import com.github.ricetech.minecraftmanhuntplugin.commands.internal.ResetEligibi
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TpOptionsCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.op.EliminatePlayerCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TeamSwitchCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPortalCommand;
@@ -35,6 +36,8 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
     public static final String TRACK_COMMAND_ALIAS = "track";
     public static final String TRACK_PORTAL_COMMAND_ALIAS = "trackportal";
+    // Operator
+    public static final String ELIMINATE_COMMAND_ALIAS = "eliminate";
     // Internal Use
     public static final String RESET_ELIGIBILITY_COMMAND_ALIAS = "reseteligibility";
     public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
@@ -88,6 +91,8 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this));
         this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
         this.getCommand(TRACK_PORTAL_COMMAND_ALIAS).setExecutor(new TrackPortalCommand());
+        // Operator
+        this.getCommand(ELIMINATE_COMMAND_ALIAS).setExecutor(new EliminatePlayerCommand());
         // Internal Use
         this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setExecutor(new ResetEligibilityCommand(this));
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand());

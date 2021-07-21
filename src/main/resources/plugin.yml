@@ -43,6 +43,11 @@ commands:
     description: Track the portal you used to enter The Nether.
     usage: /trackportal
     permission: mmh.player
+  # Operator commands
+  eliminate:
+    description: Eliminate a player. For use if the game didn't eliminate them automatically. Also kills the player.
+    usage: /eliminate <player>
+    permission: mmh.op
   # Internal use
   reseteligibility:
     description: Internal use only.
