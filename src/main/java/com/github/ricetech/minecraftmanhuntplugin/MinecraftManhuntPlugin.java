@@ -10,6 +10,7 @@ import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TpOptionsCom
 import com.github.ricetech.minecraftmanhuntplugin.commands.op.EliminatePlayerCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.op.SetPlayerTeamCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.op.UnEliminatePlayerCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.op.CreditKillCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TeamSwitchCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPortalCommand;
@@ -39,6 +40,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String TRACK_COMMAND_ALIAS = "track";
     public static final String TRACK_PORTAL_COMMAND_ALIAS = "trackportal";
     // Operator
+    public static final String CREDIT_KILL_COMMAND_ALIAS = "creditkill";
     public static final String ELIMINATE_COMMAND_ALIAS = "eliminate";
     public static final String SET_PLAYER_TEAM_COMMAND_ALIAS = "setplayerteam";
     public static final String UN_ELIMINATE_COMMAND_ALIAS = "uneliminate";
@@ -96,6 +98,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
         this.getCommand(TRACK_PORTAL_COMMAND_ALIAS).setExecutor(new TrackPortalCommand());
         // Operator
+        this.getCommand(CREDIT_KILL_COMMAND_ALIAS).setExecutor(new CreditKillCommand());
         this.getCommand(ELIMINATE_COMMAND_ALIAS).setExecutor(new EliminatePlayerCommand());
         this.getCommand(SET_PLAYER_TEAM_COMMAND_ALIAS).setExecutor(new SetPlayerTeamCommand());
         this.getCommand(UN_ELIMINATE_COMMAND_ALIAS).setExecutor(new UnEliminatePlayerCommand());
