@@ -44,9 +44,6 @@ public class ResetCommand implements CommandExecutor {
         Team team;
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            // Reset scores
-            ScoreKeeper.resetPlayer(p);
-
             // Remove effects
             for (PotionEffect effect : p.getActivePotionEffects()) {
                 p.removePotionEffect(effect.getType());
@@ -123,6 +120,7 @@ public class ResetCommand implements CommandExecutor {
         SelfEliminateCommand.reset();
         TeamSwitchCommand.reset();
         TeamTpCommand.reset();
+        ScoreKeeper.resetScores();
 
         return true;
     }
