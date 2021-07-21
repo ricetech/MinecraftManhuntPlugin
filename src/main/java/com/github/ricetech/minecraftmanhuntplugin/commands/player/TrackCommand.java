@@ -1,4 +1,4 @@
-package com.github.ricetech.minecraftmanhuntplugin.commands;
+package com.github.ricetech.minecraftmanhuntplugin.commands.player;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;

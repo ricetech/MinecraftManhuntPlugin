@@ -1,6 +1,7 @@
-package com.github.ricetech.minecraftmanhuntplugin.commands;
+package com.github.ricetech.minecraftmanhuntplugin.commands.internal;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TeamSwitchCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

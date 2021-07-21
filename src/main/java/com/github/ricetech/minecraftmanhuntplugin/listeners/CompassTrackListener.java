@@ -1,6 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
-import com.github.ricetech.minecraftmanhuntplugin.commands.TrackCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

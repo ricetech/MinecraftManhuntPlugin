@@ -1,5 +1,9 @@
-package com.github.ricetech.minecraftmanhuntplugin.commands;
+package com.github.ricetech.minecraftmanhuntplugin.commands.utility;
 
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TeamSwitchCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;

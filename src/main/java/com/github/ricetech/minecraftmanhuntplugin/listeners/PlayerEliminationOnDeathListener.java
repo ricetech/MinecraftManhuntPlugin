@@ -1,8 +1,8 @@
 package com.github.ricetech.minecraftmanhuntplugin.listeners;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
-import com.github.ricetech.minecraftmanhuntplugin.commands.SelfEliminateCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.TeamTpCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;

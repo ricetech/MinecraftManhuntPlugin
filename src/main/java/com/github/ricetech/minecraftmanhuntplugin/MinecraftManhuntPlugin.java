@@ -1,6 +1,16 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
-import com.github.ricetech.minecraftmanhuntplugin.commands.*;
+import com.github.ricetech.minecraftmanhuntplugin.commands.game.NewGameCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.game.StartGameCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.game.StopGameCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.ResetEligibilityCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TpOptionsCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TeamSwitchCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.utility.CountdownCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.utility.ResetCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
@@ -13,17 +23,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 @SuppressWarnings("unused")
 public class MinecraftManhuntPlugin extends JavaPlugin {
     // Command Aliases
-    public static final String COUNTDOWN_COMMAND_ALIAS = "countdown";
-    public static final String RESET_COMMAND_ALIAS = "reset";
-    public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
+    // Game Management
     public static final String NEW_GAME_COMMAND_ALIAS = "newgame";
     public static final String START_GAME_COMMAND_ALIAS = "startgame";
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
-    public static final String TEAM_TP_COMMAND_ALIAS = "teamtp";
-    public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
-    public static final String TP_OPTIONS_COMMAND_ALIAS = "tpoptions";
-    public static final String RESET_ELIGIBILITY_COMMAND_ALIAS = "reseteligibility";
+    // Utilities
+    public static final String COUNTDOWN_COMMAND_ALIAS = "countdown";
+    public static final String RESET_COMMAND_ALIAS = "reset";
+    // Player
     public static final String TRACK_COMMAND_ALIAS = "track";
+    public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
+    // Internal Use
+    public static final String RESET_ELIGIBILITY_COMMAND_ALIAS = "reseteligibility";
+    public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
+    public static final String TEAM_TP_COMMAND_ALIAS = "teamtp";
+    public static final String TP_OPTIONS_COMMAND_ALIAS = "tpoptions";
 
     // Standard Colours
     public static final ChatColor RUNNERS_COLOR = ChatColor.DARK_BLUE;
