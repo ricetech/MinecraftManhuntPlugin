@@ -13,7 +13,7 @@ public class CompassTrackListener implements Listener {
     public void onCompassRightClick(PlayerInteractEvent event) {
         Player p = event.getPlayer();
 
-        if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
+        if ((event.getAction() == Action.RIGHT_CLICK_AIR) &&
                 (p.getInventory().getItemInMainHand().getType() == Material.COMPASS ||
                         p.getInventory().getItemInOffHand().getType() == Material.COMPASS)) {
             TrackCommand.handleCompassRightClick(p);
