@@ -9,9 +9,6 @@ import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.CompassInventoryHandlerListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationStorageListener;
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -63,11 +60,9 @@ public class ResetCommand implements CommandExecutor {
 
                 TeamSwitchCommand.sendTeamSelectMsg(p);
 
-                TextComponent alertMsg = new TextComponent("Alert: You did not select a team and have therefore " +
-                        "been added to the Spectators team automatically. You can use the message above to join " +
+                p.sendMessage(ChatColor.GOLD + "Alert: You did not select a team and have therefore " +
+                                "been added to the Spectators team automatically. You can use the message above to join " +
                         "a different team.");
-                alertMsg.setColor(ChatColor.RED);
-                p.spigot().sendMessage(new ComponentBuilder(alertMsg).create());
 
                 TeamManager.editTeam(p, ManhuntTeam.SPECTATORS);
             } else if (team == TeamManager.getSpectators()) {
