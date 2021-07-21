@@ -6,6 +6,7 @@ import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -85,6 +86,9 @@ public class TpOptionsCommand implements CommandExecutor {
             return true;
         }
 
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(p)) + p.getName() +
+                MinecraftManhuntPlugin.GAME_MSG_COLOR + "'s death was confirmed to have been caused naturally. " +
+                "They will be able to teleport to their teammate shortly.");
         sendTpOptions(p);
 
         return true;
