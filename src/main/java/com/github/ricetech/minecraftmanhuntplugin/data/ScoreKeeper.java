@@ -35,12 +35,12 @@ public class ScoreKeeper {
     }
 
     /**
-     * Sets the scores of all currently online players to 0.
+     * Sets the scores of all scoreboard entries to 0.
      */
     public static void resetScores() {
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            kills.getScore(p.getName()).setScore(0);
-            deaths.getScore(p.getName()).setScore(0);
+        for (String entry : mainScoreboard.getEntries()) {
+            kills.getScore(entry).setScore(0);
+            deaths.getScore(entry).setScore(0);
         }
     }
 
