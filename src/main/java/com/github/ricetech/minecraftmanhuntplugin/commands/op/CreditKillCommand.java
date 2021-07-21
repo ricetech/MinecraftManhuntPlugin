@@ -25,7 +25,7 @@ public class CreditKillCommand implements CommandExecutor {
             p = ((Player) sender);
         }
 
-        Player playerToCredit = Bukkit.getPlayer(args[0]);
+        Player playerToCredit = Bukkit.getPlayerExact(args[0]);
 
         if (playerToCredit == null) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "Target player does not exist or is offline.");
