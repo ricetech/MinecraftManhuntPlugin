@@ -7,10 +7,7 @@ import com.github.ricetech.minecraftmanhuntplugin.commands.internal.ResetEligibi
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TpOptionsCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.op.EliminatePlayerCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.op.SetPlayerTeamCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.op.UnEliminatePlayerCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.op.CreditKillCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.op.*;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TeamSwitchCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPortalCommand;
@@ -42,6 +39,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     // Operator
     public static final String CREDIT_KILL_COMMAND_ALIAS = "creditkill";
     public static final String ELIMINATE_COMMAND_ALIAS = "eliminate";
+    public static final String OFFER_TEAM_TP_COMMAND_ALIAS = "offerteamtp";
     public static final String SET_PLAYER_TEAM_COMMAND_ALIAS = "setplayerteam";
     public static final String UN_ELIMINATE_COMMAND_ALIAS = "uneliminate";
     // Internal Use
@@ -100,6 +98,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Operator
         this.getCommand(CREDIT_KILL_COMMAND_ALIAS).setExecutor(new CreditKillCommand());
         this.getCommand(ELIMINATE_COMMAND_ALIAS).setExecutor(new EliminatePlayerCommand());
+        this.getCommand(OFFER_TEAM_TP_COMMAND_ALIAS).setExecutor(new OfferTeamTpCommand());
         this.getCommand(SET_PLAYER_TEAM_COMMAND_ALIAS).setExecutor(new SetPlayerTeamCommand());
         this.getCommand(UN_ELIMINATE_COMMAND_ALIAS).setExecutor(new UnEliminatePlayerCommand());
         // Internal Use
