@@ -71,6 +71,10 @@ public class TrackCommand implements CommandExecutor {
         offlinePlayerLocations.remove(playerName);
     }
 
+    public static void putTrackingEntry(String playerName, String tracked) {
+        trackingMap.put(playerName, tracked);
+    }
+
     /**
      * @author @johnzhoudev
      * @author @ricetech

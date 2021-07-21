@@ -23,6 +23,7 @@ public class TrackPortalCommand implements CommandExecutor {
             p = ((Player) sender);
         }
 
+        TrackCommand.putTrackingEntry(p.getName(), TrackCommand.PORTAL_NAME_KEY);
         TrackCommand.trackPortal(p);
         return true;
     }
