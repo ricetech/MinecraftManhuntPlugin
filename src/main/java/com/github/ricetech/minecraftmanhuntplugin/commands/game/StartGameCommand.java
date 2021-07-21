@@ -37,6 +37,7 @@ public class StartGameCommand implements CommandExecutor {
         if (args.length == 1 || args[1].equalsIgnoreCase("false")) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.RESET_COMMAND_ALIAS);
         }
+        ListTeamsCommand.listTeams();
 
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS +
                 " " + seconds);
