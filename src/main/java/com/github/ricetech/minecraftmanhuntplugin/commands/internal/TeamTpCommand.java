@@ -113,9 +113,9 @@ public class TeamTpCommand implements CommandExecutor {
             // Alert players
             String secondsWord = SAFETY_DELAY_SECONDS == 1 ? " second" : " seconds";
 
-            p.sendMessage(ChatColor.YELLOW + "Alert: You will be teleported to " + target.getName() + " in " +
+            p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Alert: You will be teleported to " + target.getName() + " in " +
                     SAFETY_DELAY_SECONDS + secondsWord + ".");
-            target.sendMessage(ChatColor.YELLOW + "Alert: " + p.getName() + " will be teleported to you in " +
+            target.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Alert: " + p.getName() + " will be teleported to you in " +
                     SAFETY_DELAY_SECONDS + secondsWord + ". Make sure you are in a safe location!");
         }
 

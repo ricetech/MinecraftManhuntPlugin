@@ -242,7 +242,7 @@ public class TrackCommand implements CommandExecutor {
                 MinecraftManhuntPlugin.sendErrorMsg(source, "Target player does not exist.");
                 return;
             }
-            source.sendMessage(ChatColor.GOLD + "Warning: The target player is offline. Tracking using their last known location.");
+            source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Warning: The target player is offline. Tracking using their last known location.");
         }
 
         // Check teams

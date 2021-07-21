@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands.utility;
 
+import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TeamSwitchCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpCommand;
@@ -60,7 +61,7 @@ public class ResetCommand implements CommandExecutor {
 
                 TeamSwitchCommand.sendTeamSelectMsg(p);
 
-                p.sendMessage(ChatColor.GOLD + "Alert: You did not select a team and have therefore " +
+                p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Alert: You did not select a team and have therefore " +
                                 "been added to the Spectators team automatically. You can use the message above to join " +
                         "a different team.");
 

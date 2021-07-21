@@ -54,7 +54,7 @@ public class EliminatePlayerCommand implements CommandExecutor {
         // Kill the player to reset them to spawn, just in case they haven't already
         victim.setHealth(0.0D);
 
-        killer.sendMessage(ChatColor.DARK_GRAY + "You have been credited with eliminating " + victim.getName() + ".");
+        killer.sendMessage(MinecraftManhuntPlugin.WHISPER_MSG_COLOR + "You have been credited with eliminating " + victim.getName() + ".");
 
         return true;
     }

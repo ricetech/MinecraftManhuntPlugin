@@ -18,7 +18,7 @@ public class StopGameCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         this.manhuntPlugin.setGameInProgress(false);
-        Bukkit.broadcastMessage(ChatColor.AQUA + "Manhunt: The game has ended.");
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: The game has ended.");
         return true;
     }
 }
