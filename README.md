@@ -9,9 +9,12 @@ Not sure what Minecraft Manhunt is? It's a Minecraft adaptation of Manhunt, wher
 tries to complete an objective without getting killed by the Hunters. Check out the
 [rules](docs/RULES_FULL.md) document for more information on how the game works!
 
-## Rules
+## Rules & How to Play
 
-Check out the [rules](docs/RULES_FULL.md) document for more information on how to play Manhunt.
+For a quick guide on how to play the game and use commands during the game, check out the 
+[how to play](docs/HOW_TO_PLAY.md) guide.
+
+For a full breakdown on the suggested rules to play with, check out the [rules](docs/RULES_FULL.md) document.
 
 ## Installation
 
