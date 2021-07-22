@@ -96,8 +96,8 @@ and are given invincibility for a set period of time (usually 25 seconds).
 - **Dropped Items**: 
   - May be picked up by or destroyed by any player.
 - **Portals**: 
-  - May be trapped using Lava or other means.
-  - Keep in mind that the plugin grants Fire Resistance to players exiting a Nether Portal for a set period of time.
+  - Don't trap portals.
+  - The plugin grants Fire Resistance to players using portals in case lava is near the portal exit.
 - **Restoring Inventories**: 
   - Can be restored by an operator using the `/restoreinventory` command if items were lost to a cause such as lava.
   - All players should agree on the usage of this command before it is used.
