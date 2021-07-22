@@ -22,6 +22,10 @@ public class StartGameCommand implements CommandExecutor {
             return false;
         }
 
+        if (this.manhuntPlugin.isGameInProgress()) {
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "A game is already in progress.");
+        }
+
         try {
             seconds = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
