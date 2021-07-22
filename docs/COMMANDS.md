@@ -1,6 +1,7 @@
 # Commands
 
-This document contains a list of commands and how to use them.
+This document contains a list of commands provided by the 
+[Minecraft Manhunt Plugin](https://github.com/ricetech/MinecraftManhuntPlugin) and how to use them.
 
 ## Permissions
 
