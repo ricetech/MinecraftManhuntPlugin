@@ -33,6 +33,10 @@ public class SelfEliminateCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (args.length != 0) {
+            return false;
+        }
+
         Player p;
 
         if (!(sender instanceof Player)) {
