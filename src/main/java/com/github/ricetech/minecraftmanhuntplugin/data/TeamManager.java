@@ -176,6 +176,12 @@ public class TeamManager {
         }
     }
 
+    public static void resetEliminated() {
+        for (String entry : eliminated.getEntries()) {
+            runners.addEntry(entry);
+        }
+    }
+
     public static void editTeam(Player p, ManhuntTeam team) {
         switch (team) {
             case RUNNERS -> {
