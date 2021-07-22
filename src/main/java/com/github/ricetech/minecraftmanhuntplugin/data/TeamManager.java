@@ -160,6 +160,13 @@ public class TeamManager {
         return targetTeam.getEntries();
     }
 
+    public static void checkRunners() {
+        if (runners.getSize() <= 0) {
+            MinecraftManhuntPlugin.isGameInProgress = false;
+            Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: Game over! Hunters win by elimination.");
+        }
+    }
+
     public static void clearTeams() {
         Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: All teams have been reset.");
         for (String entry : runners.getEntries()) {
@@ -205,12 +212,16 @@ public class TeamManager {
                 p.sendMessage("You have joined the" + MinecraftManhuntPlugin.SPECTATORS_COLOR + " Spectators team.");
             }
         }
+        if (MinecraftManhuntPlugin.isGameInProgress) {
+            checkRunners();
+        }
     }
 
     public static void eliminatePlayer(Player p) {
         eliminated.addEntry(p.getName());
         Bukkit.broadcastMessage(MinecraftManhuntPlugin.RUNNERS_COLOR + p.getName() + ChatColor.RESET + " has been " +
                 MinecraftManhuntPlugin.HUNTERS_COLOR + "eliminated.");
+        checkRunners();
     }
 
     public static void unEliminatePlayer(Player p) {
