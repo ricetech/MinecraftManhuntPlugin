@@ -5,6 +5,10 @@ Thanks for checking out the Minecraft Manhunt Plugin!
 This plugin allows Spigot & Paper-based Minecraft servers to run a version of Manhunt.
 Keep reading to find the rules for this version of manhunt as well as the available helper commands!
 
+Not sure what Minecraft Manhunt is? It's a Minecraft adaptation of Manhunt, where a team of Runners
+tries to complete an objective without getting killed by the Hunters. Check out the
+[rules](docs/RULES_FULL.md) document for more information on how the game works!
+
 ## Rules
 
 Check out the [rules](docs/RULES_FULL.md) document for more information on how to play Manhunt.
