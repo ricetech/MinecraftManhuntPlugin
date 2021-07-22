@@ -262,11 +262,13 @@ public class TrackCommand implements CommandExecutor {
         // Runners can only track other runners/eliminated team members
         if (sourceTeam != ManhuntTeam.HUNTERS && targetTeam != ManhuntTeam.RUNNERS && targetTeam != ManhuntTeam.ELIMINATED) {
             MinecraftManhuntPlugin.sendErrorMsg(source, "You can only track players who are Runners or Eliminated.");
+            return;
         }
 
         // Prohibit tracking of Spectators
         if (targetTeam == ManhuntTeam.SPECTATORS) {
             MinecraftManhuntPlugin.sendErrorMsg(source, "You cannot track spectators.");
+            return;
         }
 
         Location sourceLoc = source.getLocation();
