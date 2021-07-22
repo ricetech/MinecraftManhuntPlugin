@@ -22,7 +22,7 @@ public class TeamTpCommand implements CommandExecutor {
     public static final String SELF_TP_ARG = "$elf";
 
     private static final long SAFETY_DELAY_SECONDS = 5L;
-    private static final int INVINCIBILITY_DURATION_SECONDS = 25;
+    private static final int INVINCIBILITY_DURATION_SECONDS = 25 * 20;
 
     private static final Map<String, Boolean> eligibility = new HashMap<>();
 
@@ -75,7 +75,7 @@ public class TeamTpCommand implements CommandExecutor {
             SelfEliminateCommand.setEligibility(p.getName(), false);
 
             // Make player invincible for 25 seconds
-            p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, INVINCIBILITY_DURATION_SECONDS, 5));
+            p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, INVINCIBILITY_DURATION_SECONDS, 255));
 
             // Announce TP
             Bukkit.broadcastMessage(MinecraftManhuntPlugin.RUNNERS_COLOR + p.getName() + "is teleporting to their " +
