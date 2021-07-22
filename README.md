@@ -20,7 +20,7 @@ Coming soon!
 
 ## Commands
 
-Coming soon! For now, use `/help` in game to find a list of commands.
+Check out the [commands](docs/COMMANDS.md) document for more information on available commands.
 
 ## Contributing
 
