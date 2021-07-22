@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class NewGameCommand implements CommandExecutor {
+public class MakeTeamsCommand implements CommandExecutor {
     private final MinecraftManhuntPlugin manhuntPlugin;
 
-    public NewGameCommand(MinecraftManhuntPlugin manhuntPlugin) {
+    public MakeTeamsCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
     }
 

@@ -26,7 +26,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     // Game Management
     public static final String CLEAR_TEAMS_COMMAND_ALIAS = "clearteams";
     public static final String LIST_TEAMS_COMMAND_ALIAS = "listteams";
-    public static final String NEW_GAME_COMMAND_ALIAS = "newgame";
+    public static final String MAKE_TEAMS_COMMAND_ALIAS = "maketeams";
     public static final String START_GAME_COMMAND_ALIAS = "startgame";
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
     // Utilities
@@ -95,7 +95,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Game Management
         this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setExecutor(new ClearTeamsCommand(this));
         this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setExecutor(new ListTeamsCommand());
-        this.getCommand(NEW_GAME_COMMAND_ALIAS).setExecutor(new NewGameCommand(this));
+        this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setExecutor(new MakeTeamsCommand(this));
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
         // Utilities
