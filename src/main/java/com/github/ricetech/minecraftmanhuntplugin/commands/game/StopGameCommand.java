@@ -8,23 +8,17 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class StopGameCommand implements CommandExecutor {
-    private final MinecraftManhuntPlugin manhuntPlugin;
-
-    public StopGameCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.manhuntPlugin = manhuntPlugin;
-    }
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length != 0) {
             return false;
         }
 
-        if (!this.manhuntPlugin.isGameInProgress()) {
+        if (!MinecraftManhuntPlugin.isGameInProgress) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "There is no game to stop.");
         }
 
-        this.manhuntPlugin.setGameInProgress(false);
+        MinecraftManhuntPlugin.isGameInProgress = false;
         Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: The game has ended.");
         return true;
     }

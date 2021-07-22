@@ -10,13 +10,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class ResetEligibilityCommand implements CommandExecutor {
-    @SuppressWarnings("FieldCanBeLocal")
-    private final MinecraftManhuntPlugin manhuntPlugin;
-
-    public ResetEligibilityCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.manhuntPlugin = manhuntPlugin;
-    }
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length != 0) {
