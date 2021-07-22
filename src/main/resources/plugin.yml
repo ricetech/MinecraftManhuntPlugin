@@ -9,6 +9,10 @@ authors:
 website: https://github.com/ricetech/MinecraftManhuntPlugin
 commands:
   # Game Management
+  clearteams:
+    description: Remove all players from all teams.
+    usage: /clearteams
+    permission: mmh.game
   listteams:
     description: List the teams and the players on each team.
     usage: /listteams
