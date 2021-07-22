@@ -33,7 +33,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String RESET_COMMAND_ALIAS = "reset";
     // Player
     public static final String LIST_TEAMS_COMMAND_ALIAS = "listteams";
-    public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
     public static final String TRACK_COMMAND_ALIAS = "track";
     public static final String TRACK_PORTAL_COMMAND_ALIAS = "trackportal";
     // Operator
@@ -44,6 +43,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String SET_PLAYER_TEAM_COMMAND_ALIAS = "setplayerteam";
     public static final String UN_ELIMINATE_COMMAND_ALIAS = "uneliminate";
     // Internal Use
+    public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
     public static final String RESET_ELIGIBILITY_COMMAND_ALIAS = "reseteligibility";
     public static final String SELF_ELIMINATE_COMMAND_ALIAS = "selfelim";
     public static final String TEAM_TP_COMMAND_ALIAS = "teamtp";
@@ -102,7 +102,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand());
         // Player
         this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setExecutor(new ListTeamsCommand());
-        this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand());
         this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
         this.getCommand(TRACK_PORTAL_COMMAND_ALIAS).setExecutor(new TrackPortalCommand());
         // Operator
@@ -113,6 +112,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(SET_PLAYER_TEAM_COMMAND_ALIAS).setExecutor(new SetPlayerTeamCommand());
         this.getCommand(UN_ELIMINATE_COMMAND_ALIAS).setExecutor(new UnEliminatePlayerCommand());
         // Internal Use
+        this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand());
         this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setExecutor(new ResetEligibilityCommand());
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand());
         this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(new TeamTpCommand(this));
