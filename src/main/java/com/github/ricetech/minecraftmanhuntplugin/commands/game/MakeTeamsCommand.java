@@ -28,7 +28,9 @@ public class MakeTeamsCommand implements CommandExecutor {
             return false;
         }
 
-        this.manhuntPlugin.setGameInProgress(false);
+        if (this.manhuntPlugin.isGameInProgress()) {
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "Cannot make teams while game is in progress.");
+        }
 
         if (args.length == 0 || args[0].equalsIgnoreCase("SELECT")) {
             // Select own teams
