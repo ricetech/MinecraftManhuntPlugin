@@ -147,12 +147,12 @@ public class TrackCommand implements CommandExecutor {
                 distanceString = "500+ blocks away";
             } else if (distance > DISTANCE_THRESHOLD_3) {
                 distanceString = "250+ blocks away";
-            } else if (distance > DISTANCE_THRESHOLD_2) {
-                distanceString = "100+ blocks away";
-            } else if (distance > DISTANCE_THRESHOLD_1) {
-                distanceString = "50+ blocks away";
+//            } else if (distance > DISTANCE_THRESHOLD_2) {
+//                distanceString = "100+ blocks away";
+//            } else if (distance > DISTANCE_THRESHOLD_1) {
+//                distanceString = "50+ blocks away";
             } else {
-                distanceString = "less than 50 blocks away";
+                distanceString = "less than 250 blocks away";
             }
 
             int heightDiff = sourceY - targetY;
