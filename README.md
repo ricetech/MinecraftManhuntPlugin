@@ -20,11 +20,43 @@ Check out the [rules](docs/RULES_FULL.md) document for more information on how t
 
 2. Place the `.jar` file into your server's `plugins` folder.
 
-3. Restart your server and enjoy!
+3. Restart your server and enjoy!.
 
 ## Commands
 
 Check out the [commands](docs/COMMANDS.md) document for more information on available commands.
+
+## Plugin Features
+
+- Player-tracking compass
+  - Has "exact location" and "rough location" modes
+  - Allows Hunters to have a rough idea of where a Runner is located without giving away
+    their exact location
+  - Tracks players anywhere, even through Nether and End portals
+  - Can even track offline players!
+  - Easy to use - use the command once, and simply right-click with the compass to refresh!
+- Portal-tracking compass
+  - Who hasn't gotten lost in The Nether before?
+- Countdown command
+- Reset command
+  - Easily prepare the world for a new game of Manhunt
+  - Resets things such as time, health and hunger with just one command
+- Team Management
+  - Pre-made Runners, Hunters, Eliminated and Spectators teams
+  - Includes commands and interactive messages to switch teams
+  - Includes a command to generate random teams if you're feeling indecisive
+- Game Management
+  - Commands to start and stop the game
+  - Automatically stops the game if all Runners are eliminated
+  - Prevents game-related message spam when a game isn't running
+- Death & Teleport Handling
+  - Automatically eliminates Runners who die to a Hunter
+  - Asks players if they died to a Player or Natural Causes
+  - Allows players who died to Natural Causes to teleport to their teammates with one click
+  - Doesn't require granting permission to use the `/tp` command
+- Inventory Management
+  - Restore the inventory of a player
+  - Useful if someone takes an accidental trip into a lava pool
 
 ## Contributing
 
