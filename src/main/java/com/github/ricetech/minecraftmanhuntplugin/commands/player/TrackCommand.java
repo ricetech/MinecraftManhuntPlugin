@@ -320,6 +320,8 @@ public class TrackCommand implements CommandExecutor {
             if (sourceExitPortal == null) {
                 MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
             } else {
+                source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Warning: The target doesn't have a valid " +
+                        "exit portal. Tracking your exit portal instead.");
                 sendTrackUpdate(source, sourceLoc, targetName, sourceExitPortal);
             }
         } else {
