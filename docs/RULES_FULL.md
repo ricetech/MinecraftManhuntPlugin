@@ -6,6 +6,9 @@ This document outlines the rules that go with the game to be played using the
 Minecraft Manhunt is a game played with at least 2 players split into 2 teams - Hunters and Runners.
 In the case of an odd number of players, the extra player is generally given to the Hunters team.
 
+For more information on how to play, also check out the
+[how to play guide](./HOW_TO_PLAY.md).
+
 **NOTE:** In these rules, "natural causes" refers to any death not caused by another player. This includes:
 - Fall damage
 - Environmental damage, including fire, suffocation & lava

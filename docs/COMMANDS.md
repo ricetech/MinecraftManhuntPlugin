@@ -3,6 +3,9 @@
 This document contains a list of commands provided by the 
 [Minecraft Manhunt Plugin](https://github.com/ricetech/MinecraftManhuntPlugin) and how to use them.
 
+For more information on how to use these commands in the context of the game,
+check out the [How to Play guide](./HOW_TO_PLAY.md).
+
 ## Permissions
 
 You don't need a permissions plugin to use the Manhunt plugin. However, if you're using a permissions plugin like
