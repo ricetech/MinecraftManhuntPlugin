@@ -19,15 +19,6 @@ import java.util.Set;
 public class TeamSwitchCommand implements CommandExecutor {
     private static final Map<String, Boolean> eligibility = new HashMap<>();
 
-    private final MinecraftManhuntPlugin manhuntPlugin;
-
-    private final Set<String> validTeams;
-
-    public TeamSwitchCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.manhuntPlugin = manhuntPlugin;
-        this.validTeams = TeamManager.getValidTeams();
-    }
-
     public static boolean getEligibility(String entry) {
         return eligibility.getOrDefault(entry, false);
     }
@@ -84,13 +75,13 @@ public class TeamSwitchCommand implements CommandExecutor {
 
         ManhuntTeam currentTeam = TeamManager.getTeam(p);
 
-        if (!validTeams.contains(args[0].toUpperCase())) {
+        if (!TeamManager.getValidTeams().contains(args[0].toUpperCase())) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, args[0] + " is not a valid team.");
             return false;
         }
 
         // Allow spectators to switch teams even if the game has started provided they are still eligible
-        if (manhuntPlugin.isGameInProgress() && currentTeam != ManhuntTeam.SPECTATORS) {
+        if (MinecraftManhuntPlugin.isGameInProgress && currentTeam != ManhuntTeam.SPECTATORS) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "You cannot change teams after the game has started.");
             eligibility.put(p.getName(), false);
             return true;

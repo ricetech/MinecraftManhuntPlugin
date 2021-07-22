@@ -16,19 +16,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class MakeTeamsCommand implements CommandExecutor {
-    private final MinecraftManhuntPlugin manhuntPlugin;
-
-    public MakeTeamsCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.manhuntPlugin = manhuntPlugin;
-    }
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String labels, String[] args) {
         if (args.length != 1 && args.length != 0) {
             return false;
         }
 
-        if (this.manhuntPlugin.isGameInProgress()) {
+        if (MinecraftManhuntPlugin.isGameInProgress) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "Cannot make teams while game is in progress.");
         }
 

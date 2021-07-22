@@ -66,7 +66,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final net.md_5.bungee.api.ChatColor SPECTATORS_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.GOLD;
 
     // Internal variables
-    private boolean gameInProgress = false;
+    public static boolean isGameInProgress = false;
 
     @SuppressWarnings("ConstantConditions")
     @Override
@@ -80,29 +80,29 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
         manager.registerEvents(new AddPlayerToScoreboardListener(), this);
-        manager.registerEvents(new SendTeamSelectOnJoin(this), this);
+        manager.registerEvents(new SendTeamSelectOnJoin(), this);
         manager.registerEvents(new CompassInventoryHandlerListener(), this);
         manager.registerEvents(new CompassTrackListener(), this);
         manager.registerEvents(new FireResistanceOnPortalListener(), this);
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
-        manager.registerEvents(new PlayerDeathLocationStorageListener(this), this);
+        manager.registerEvents(new PlayerDeathLocationStorageListener(), this);
         manager.registerEvents(new PlayerDisconnectLocationStorageListener(this), this);
-        manager.registerEvents(new PlayerEliminationOnDeathListener(this), this);
+        manager.registerEvents(new PlayerEliminationOnDeathListener(), this);
         manager.registerEvents(new PlayerInventoryStorageListener(), this);
         manager.registerEvents(new PlayerPortalLocationStorageListener(this), this);
 
         // Register Commands
         // Game Management
-        this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setExecutor(new ClearTeamsCommand(this));
+        this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setExecutor(new ClearTeamsCommand());
         this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setExecutor(new ListTeamsCommand());
-        this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setExecutor(new MakeTeamsCommand(this));
-        this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
-        this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand(this));
+        this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setExecutor(new MakeTeamsCommand());
+        this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand());
+        this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand());
         // Utilities
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
-        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this));
+        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand());
         // Player
-        this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand(this));
+        this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand());
         this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
         this.getCommand(TRACK_PORTAL_COMMAND_ALIAS).setExecutor(new TrackPortalCommand());
         // Operator
@@ -113,7 +113,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(SET_PLAYER_TEAM_COMMAND_ALIAS).setExecutor(new SetPlayerTeamCommand());
         this.getCommand(UN_ELIMINATE_COMMAND_ALIAS).setExecutor(new UnEliminatePlayerCommand());
         // Internal Use
-        this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setExecutor(new ResetEligibilityCommand(this));
+        this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setExecutor(new ResetEligibilityCommand());
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand());
         this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(new TeamTpCommand(this));
         this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand());
@@ -148,13 +148,5 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
             case HUNTERS -> HUNTERS_COLOR_BUNGEE;
             case SPECTATORS -> SPECTATORS_COLOR_BUNGEE;
         };
-    }
-
-    public boolean isGameInProgress() {
-        return gameInProgress;
-    }
-
-    public void setGameInProgress(boolean gameInProgress) {
-        this.gameInProgress = gameInProgress;
     }
 }

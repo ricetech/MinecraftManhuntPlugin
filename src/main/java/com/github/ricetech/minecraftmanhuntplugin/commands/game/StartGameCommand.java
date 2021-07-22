@@ -8,12 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class StartGameCommand implements CommandExecutor {
-    private final MinecraftManhuntPlugin manhuntPlugin;
-
-    public StartGameCommand(MinecraftManhuntPlugin manhuntPlugin) {
-        this.manhuntPlugin = manhuntPlugin;
-    }
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         int seconds;
@@ -22,7 +16,7 @@ public class StartGameCommand implements CommandExecutor {
             return false;
         }
 
-        if (this.manhuntPlugin.isGameInProgress()) {
+        if (MinecraftManhuntPlugin.isGameInProgress) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "A game is already in progress.");
         }
 
@@ -46,7 +40,7 @@ public class StartGameCommand implements CommandExecutor {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS +
                 " " + seconds);
 
-        this.manhuntPlugin.setGameInProgress(true);
+        MinecraftManhuntPlugin.isGameInProgress = true;
         return true;
     }
 }

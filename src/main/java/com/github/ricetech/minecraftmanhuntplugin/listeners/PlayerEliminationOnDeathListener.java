@@ -16,12 +16,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class PlayerEliminationOnDeathListener implements Listener {
-    private final MinecraftManhuntPlugin manhuntPlugin;
-
-    public PlayerEliminationOnDeathListener(MinecraftManhuntPlugin manhuntPlugin) {
-        this.manhuntPlugin = manhuntPlugin;
-    }
-
     public void sendDeathCauseMsg(Player p) {
         p.sendMessage("Did you die to natural causes or to a player?");
         p.sendMessage("Remember, you must select [Player] even if a player killed you indirectly.");
@@ -48,7 +42,7 @@ public class PlayerEliminationOnDeathListener implements Listener {
 
     @EventHandler
     public void eliminationMsgOnDeath(PlayerDeathEvent event) {
-        if (this.manhuntPlugin.isGameInProgress()) {
+        if (MinecraftManhuntPlugin.isGameInProgress) {
             Player victim = event.getEntity();
             Player killer = victim.getKiller();
             ManhuntTeam victimTeam = TeamManager.getTeam(victim);
