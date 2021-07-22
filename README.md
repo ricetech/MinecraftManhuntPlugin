@@ -58,6 +58,12 @@ Check out the [commands](docs/COMMANDS.md) document for more information on avai
   - Restore the inventory of a player
   - Useful if someone takes an accidental trip into a lava pool
 
+## Credits
+
+Thanks to [johnzhoudev](https://github.com/johnzhoudev) for the original plugin idea and for allowing me to use
+some of his code. You can find his original version of this plugin 
+[here](https://github.com/johnzhoudev/CompassTrackerMinecraft).
+
 ## Contributing
 
 If you'd like to directly contribute to the plugin, feel free to open a pull request!
