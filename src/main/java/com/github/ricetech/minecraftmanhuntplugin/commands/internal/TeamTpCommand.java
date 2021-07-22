@@ -113,9 +113,10 @@ public class TeamTpCommand implements CommandExecutor {
             String secondsWord = SAFETY_DELAY_SECONDS == 1 ? " second" : " seconds";
 
             Bukkit.broadcastMessage(
-                    MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(p)) + p.getName() +
+                    MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(p)) + p.getName() + ChatColor.RESET +
                             " is teleporting to " +
-                    MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(target)) + target.getName() + ".");
+                    MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(target)) + target.getName() +
+                            ChatColor.RESET +".");
 
             p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Alert: You will be teleported to " + target.getName() + " in " +
                     SAFETY_DELAY_SECONDS + secondsWord + ".");
