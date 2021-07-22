@@ -120,12 +120,7 @@ public class TrackCommand implements CommandExecutor {
         ManhuntTeam sourceTeam = TeamManager.getTeam(source);
         ManhuntTeam targetTeam = TeamManager.getTeam(targetName);
 
-        ChatColor targetColor;
-        if (targetTeam != null) {
-            targetColor = MinecraftManhuntPlugin.getBukkitTeamColor(targetTeam);
-        } else {
-            targetColor = ChatColor.RESET;
-        }
+        ChatColor targetColor = MinecraftManhuntPlugin.getBukkitTeamColor(targetTeam);
 
         // Update compass
         updateCompass(source, targetLoc);
