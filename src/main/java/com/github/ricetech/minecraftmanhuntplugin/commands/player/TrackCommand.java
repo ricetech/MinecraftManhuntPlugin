@@ -364,7 +364,7 @@ public class TrackCommand implements CommandExecutor {
         Player target = Bukkit.getPlayerExact(args[0]);
 
         // Check if target is online or, if offline, their last location is cached
-        if (target == null || offlinePlayerLocations.getOrDefault(args[0], null) != null) {
+        if (target != null || offlinePlayerLocations.getOrDefault(args[0], null) != null) {
             trackPlayer(p, args[0]);
             trackingMap.put(p.getName(), args[0]);
             return true;
