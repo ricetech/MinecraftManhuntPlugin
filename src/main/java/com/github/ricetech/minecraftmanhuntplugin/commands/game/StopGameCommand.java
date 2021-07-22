@@ -20,6 +20,10 @@ public class StopGameCommand implements CommandExecutor {
             return false;
         }
 
+        if (!this.manhuntPlugin.isGameInProgress()) {
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "There is no game to stop.");
+        }
+
         this.manhuntPlugin.setGameInProgress(false);
         Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: The game has ended.");
         return true;
