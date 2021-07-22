@@ -13,10 +13,6 @@ commands:
     description: Remove all players from all teams.
     usage: /clearteams
     permission: mmh.game
-  listteams:
-    description: List the teams and the players on each team.
-    usage: /listteams
-    permission: mmh.game
   maketeams:
     description: >
       Generate teams for a new game. If provided, the "random" argument will randomize the teams. Otherwise, the default if no argument
@@ -41,9 +37,9 @@ commands:
     usage: /reset
     permission: mmh.player
   # Player
-  changeteam:
-    description: Internal use only.
-    usage: /changeteam <runners|eliminated|hunters|spectators>
+  listteams:
+    description: List the teams and the players on each team.
+    usage: /listteams
     permission: mmh.player
   track:
     description: Track a player using a compass.
@@ -85,6 +81,10 @@ commands:
     usage: /uneliminate <eliminated player>
     permission: mmh.correction
   # Internal use
+  changeteam:
+    description: Internal use only.
+    usage: /changeteam <runners|eliminated|hunters|spectators>
+    permission: mmh.player
   reseteligibility:
     description: Internal use only.
     usage: /reseteligibility

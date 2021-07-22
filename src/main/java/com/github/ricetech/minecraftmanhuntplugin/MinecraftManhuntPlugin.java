@@ -25,7 +25,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     // Command Aliases
     // Game Management
     public static final String CLEAR_TEAMS_COMMAND_ALIAS = "clearteams";
-    public static final String LIST_TEAMS_COMMAND_ALIAS = "listteams";
     public static final String MAKE_TEAMS_COMMAND_ALIAS = "maketeams";
     public static final String START_GAME_COMMAND_ALIAS = "startgame";
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
@@ -33,6 +32,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String COUNTDOWN_COMMAND_ALIAS = "countdown";
     public static final String RESET_COMMAND_ALIAS = "reset";
     // Player
+    public static final String LIST_TEAMS_COMMAND_ALIAS = "listteams";
     public static final String TEAM_SWITCH_COMMAND_ALIAS = "changeteam";
     public static final String TRACK_COMMAND_ALIAS = "track";
     public static final String TRACK_PORTAL_COMMAND_ALIAS = "trackportal";
@@ -94,7 +94,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Register Commands
         // Game Management
         this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setExecutor(new ClearTeamsCommand());
-        this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setExecutor(new ListTeamsCommand());
         this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setExecutor(new MakeTeamsCommand());
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand());
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand());
@@ -102,6 +101,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
         this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand());
         // Player
+        this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setExecutor(new ListTeamsCommand());
         this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setExecutor(new TeamSwitchCommand());
         this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
         this.getCommand(TRACK_PORTAL_COMMAND_ALIAS).setExecutor(new TrackPortalCommand());
