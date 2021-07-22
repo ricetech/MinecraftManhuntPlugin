@@ -17,9 +17,9 @@ commands:
     description: List the teams and the players on each team.
     usage: /listteams
     permission: mmh.game
-  newgame:
+  maketeams:
     description: >
-      Start a new game. If provided, the "random" argument will randomize the teams. Otherwise, the default if no argument
+      Generate teams for a new game. If provided, the "random" argument will randomize the teams. Otherwise, the default if no argument
       is provided allows each player to select their team.
     usage: /newgame [random|select]
     permission: mmh.game
