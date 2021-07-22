@@ -26,13 +26,20 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
+    private final MinecraftManhuntPlugin manhuntPlugin;
 
-    public ResetCommand() { }
+    public ResetCommand(MinecraftManhuntPlugin manhuntPlugin) {
+        this.manhuntPlugin = manhuntPlugin;
+    }
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length > 0) {
             return false;
+        }
+
+        if (this.manhuntPlugin.isGameInProgress()) {
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "Cannot reset while game is in progress.");
         }
 
         World overworld = Bukkit.getServer().getWorlds().get(0);
