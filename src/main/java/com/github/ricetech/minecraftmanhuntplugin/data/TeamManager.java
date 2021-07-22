@@ -160,6 +160,22 @@ public class TeamManager {
         return targetTeam.getEntries();
     }
 
+    public static void clearTeams() {
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: All teams have been reset.");
+        for (String entry : runners.getEntries()) {
+            runners.removeEntry(entry);
+        }
+        for (String entry : hunters.getEntries()) {
+            hunters.removeEntry(entry);
+        }
+        for (String entry : eliminated.getEntries()) {
+            eliminated.removeEntry(entry);
+        }
+        for (String entry : spectators.getEntries()) {
+            spectators.removeEntry(entry);
+        }
+    }
+
     public static void editTeam(Player p, ManhuntTeam team) {
         switch (team) {
             case RUNNERS -> {
