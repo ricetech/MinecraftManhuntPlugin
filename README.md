@@ -7,7 +7,7 @@ Keep reading to find the rules for this version of manhunt as well as the availa
 
 ## Rules
 
-Coming soon!
+Check out the [rules](docs/RULES_FULL.md) document for more information on how to play Manhunt.
 
 ## Installation
 
