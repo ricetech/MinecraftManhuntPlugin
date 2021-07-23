@@ -1,6 +1,6 @@
 name: MinecraftManhuntPlugin
 description: Play Manhunt on your Spigot/Paper Minecraft server!
-version: 1.0.0-pre.8
+version: 1.0.0-pre.9
 main: com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin
 api-version: 1.17
 author: the_ricetech
@@ -9,6 +9,10 @@ authors:
   - OrangeFirefly
 website: https://github.com/ricetech/MinecraftManhuntPlugin
 commands:
+  manhuntversion:
+    description: Returns the version of this plugin.
+    usage: /manhuntversion
+    permission: mmh.player
   # Game Management
   clearteams:
     description: Remove all players from all teams.
