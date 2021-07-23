@@ -20,7 +20,7 @@ public class VersionCommand implements CommandExecutor {
 
         String version = this.manhuntPlugin.getDescription().getVersion();
 
-        sender.sendMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Minecraft Manhunt Plugin " + version);
+        sender.sendMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Minecraft Manhunt Plugin v" + version);
         return true;
     }
 }
