@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands.game;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import com.github.ricetech.minecraftmanhuntplugin.commands.utility.ResetCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -33,7 +34,7 @@ public class StartGameCommand implements CommandExecutor {
         }
 
         if (args.length == 1 || args[1].equalsIgnoreCase("false")) {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.RESET_COMMAND_ALIAS);
+            ResetCommand.runReset();
         }
         ListTeamsCommand.listTeams(false, null);
 

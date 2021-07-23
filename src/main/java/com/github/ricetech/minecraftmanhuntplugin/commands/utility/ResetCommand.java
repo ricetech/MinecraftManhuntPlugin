@@ -26,16 +26,7 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (args.length > 0) {
-            return false;
-        }
-
-        if (MinecraftManhuntPlugin.isGameInProgress) {
-            MinecraftManhuntPlugin.sendErrorMsg(sender, "Cannot reset while game is in progress.");
-        }
-
+    public static void runReset() {
         World overworld = Bukkit.getServer().getWorlds().get(0);
 
         Location spawnLocation = overworld.getSpawnLocation();
@@ -63,7 +54,7 @@ public class ResetCommand implements CommandExecutor {
                 TeamSwitchCommand.sendTeamSelectMsg(p);
 
                 p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Alert: You did not select a team and have therefore " +
-                                "been added to the Spectators team automatically. You can use the message above to join " +
+                        "been added to the Spectators team automatically. You can use the message above to join " +
                         "a different team.");
 
                 TeamManager.editTeam(p, ManhuntTeam.SPECTATORS);
@@ -121,6 +112,19 @@ public class ResetCommand implements CommandExecutor {
         TeamSwitchCommand.reset();
         TeamTpCommand.reset();
         ScoreKeeper.resetScores();
+    }
+
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (args.length > 0) {
+            return false;
+        }
+
+        if (MinecraftManhuntPlugin.isGameInProgress) {
+            MinecraftManhuntPlugin.sendErrorMsg(sender, "Cannot reset while game is in progress.");
+        }
+
+        runReset();
 
         return true;
     }
