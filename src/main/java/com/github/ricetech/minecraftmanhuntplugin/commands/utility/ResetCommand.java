@@ -40,7 +40,7 @@ public class ResetCommand implements CommandExecutor {
 
         Location spawnLocation = overworld.getSpawnLocation();
 
-        Team team;
+        ManhuntTeam team;
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             // Remove effects
@@ -55,7 +55,7 @@ public class ResetCommand implements CommandExecutor {
             CompassInventoryHandlerListener.giveCompass(p);
 
             // Set gamemode if necessary
-            team = ScoreKeeper.getMainScoreboard().getEntryTeam(p.getName());
+            team = TeamManager.getTeam(p);
             if (team == null) {
                 // Add players not on any team to Spectators
                 // Also allow them to still select a team
@@ -67,7 +67,7 @@ public class ResetCommand implements CommandExecutor {
                         "a different team.");
 
                 TeamManager.editTeam(p, ManhuntTeam.SPECTATORS);
-            } else if (team == TeamManager.getSpectators()) {
+            } else if (team == ManhuntTeam.SPECTATORS) {
                 p.setGameMode(GameMode.SPECTATOR);
             } else {
                 // Set gamemode to survival
@@ -75,7 +75,7 @@ public class ResetCommand implements CommandExecutor {
             }
 
             // Un-eliminate all eliminated players
-            if (team == TeamManager.getEliminated()) {
+            if (team == ManhuntTeam.ELIMINATED) {
                 TeamManager.editTeam(p, ManhuntTeam.RUNNERS);
             }
 
