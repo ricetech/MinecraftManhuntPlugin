@@ -1,5 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
+import com.github.ricetech.minecraftmanhuntplugin.commands.VersionCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.game.*;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.ResetEligibilityCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
@@ -23,6 +24,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 @SuppressWarnings("unused")
 public class MinecraftManhuntPlugin extends JavaPlugin {
     // Command Aliases
+    public static final String VERSION_COMMAND_ALIAS = "manhuntversion";
     // Game Management
     public static final String CLEAR_TEAMS_COMMAND_ALIAS = "clearteams";
     public static final String MAKE_TEAMS_COMMAND_ALIAS = "maketeams";
@@ -92,6 +94,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new PlayerPortalLocationStorageListener(this), this);
 
         // Register Commands
+        this.getCommand(VERSION_COMMAND_ALIAS).setExecutor(new VersionCommand(this));
         // Game Management
         this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setExecutor(new ClearTeamsCommand());
         this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setExecutor(new MakeTeamsCommand());
