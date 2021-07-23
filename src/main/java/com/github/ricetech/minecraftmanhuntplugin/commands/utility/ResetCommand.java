@@ -102,9 +102,6 @@ public class ResetCommand implements CommandExecutor {
         // Revoke all advancements
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a everything");
 
-        // Move eliminated players back to Runners
-        TeamManager.resetEliminated();
-
         // Reset plugin state
         PlayerDeathLocationStorageListener.reset();
         TrackCommand.reset();
