@@ -37,6 +37,8 @@ public class StartGameCommand implements CommandExecutor {
         }
         ListTeamsCommand.listTeams(false, null);
 
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: A new game is starting now!");
+
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS +
                 " " + seconds);
 

@@ -1,5 +1,5 @@
 name: MinecraftManhuntPlugin
-version: v1.0.0-pre.6
+version: 1.0.0-pre.7
 main: com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin
 api-version: 1.17
 author: the_ricetech
