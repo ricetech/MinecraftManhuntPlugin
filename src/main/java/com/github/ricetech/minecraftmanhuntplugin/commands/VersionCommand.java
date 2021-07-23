@@ -6,7 +6,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-public record VersionCommand(MinecraftManhuntPlugin manhuntPlugin) implements CommandExecutor {
+public class VersionCommand implements CommandExecutor {
+    private final MinecraftManhuntPlugin manhuntPlugin;
+
+    public VersionCommand(MinecraftManhuntPlugin manhuntPlugin){
+        this.manhuntPlugin = manhuntPlugin;
+    }
+
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length != 0) {
             return false;
