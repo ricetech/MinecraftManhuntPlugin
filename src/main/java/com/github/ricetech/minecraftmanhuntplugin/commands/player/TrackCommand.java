@@ -126,6 +126,7 @@ public class TrackCommand implements CommandExecutor {
         // Update compass
         updateCompass(source, targetLoc);
 
+        // Tracking for teammates
         if (sourceTeam == targetTeam || targetName.equals(PORTAL_NAME_KEY) ||
                 (sourceTeam == ManhuntTeam.RUNNERS && targetTeam == ManhuntTeam.ELIMINATED) ||
                 (sourceTeam == ManhuntTeam.ELIMINATED && targetTeam == ManhuntTeam.RUNNERS)) {
@@ -133,6 +134,7 @@ public class TrackCommand implements CommandExecutor {
             source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + " at " +
                     "(" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + "), " +
                     distance + " blocks away.");
+        // Tracking for enemies
         } else {
             String distanceString;
             if (distance > DISTANCE_THRESHOLD_5) {
