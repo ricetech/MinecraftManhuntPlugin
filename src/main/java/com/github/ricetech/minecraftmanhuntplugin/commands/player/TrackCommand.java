@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 public class TrackCommand implements CommandExecutor {
     // Safe keyword since Minecraft usernames cannot contain spaces
@@ -153,22 +154,21 @@ public class TrackCommand implements CommandExecutor {
             int heightDiff = sourceY - targetY;
             String heightDiffString;
 
-            if (heightDiff > -CLOSE_Y_THRESHOLD && heightDiff < CLOSE_Y_THRESHOLD) {
+            if (heightDiff >= -CLOSE_Y_THRESHOLD && heightDiff <= CLOSE_Y_THRESHOLD) {
                 heightDiffString = "Around the same y-level as you";
-            } else if (heightDiff < -CLOSE_Y_THRESHOLD && heightDiff > -MEDIUM_Y_THRESHOLD) {
+            } else if (heightDiff > CLOSE_Y_THRESHOLD && heightDiff <= MEDIUM_Y_THRESHOLD) {
                 heightDiffString = "Slightly below you";
-            } else if (heightDiff < -MEDIUM_Y_THRESHOLD && heightDiff > -FAR_Y_THRESHOLD) {
+            } else if (heightDiff > MEDIUM_Y_THRESHOLD && heightDiff <= FAR_Y_THRESHOLD) {
                 heightDiffString = "A good distance below you";
-            } else if (heightDiff < -FAR_Y_THRESHOLD) {
-                heightDiffString = "Very far below you";
-            } else if (heightDiff > CLOSE_Y_THRESHOLD && heightDiff < MEDIUM_Y_THRESHOLD) {
-                heightDiffString = "Slightly above you";
-            } else if (heightDiff > MEDIUM_Y_THRESHOLD && heightDiff < FAR_Y_THRESHOLD) {
-                heightDiffString = "A good distance above you";
             } else if (heightDiff > FAR_Y_THRESHOLD) {
-                heightDiffString = "Very far above you";
+                heightDiffString = "Very far below you";
+            } else if (heightDiff >= -MEDIUM_Y_THRESHOLD) {
+                heightDiffString = "Slightly above you";
+            } else if (heightDiff >= -FAR_Y_THRESHOLD) {
+                heightDiffString = "A good distance above you";
             } else {
-                heightDiffString = "In an invalid state. Please contact the developer";
+                heightDiffString = "Very far above you";
+                Bukkit.getLogger().log(Level.INFO, "Else triggered, diff " + heightDiff);
             }
             source.sendMessage("Tracking " + targetColor + targetName + ".");
             source.sendMessage("Distance: " + distanceString);
