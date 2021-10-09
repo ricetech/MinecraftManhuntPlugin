@@ -6,7 +6,7 @@
 
     <groupId>com.github.ricetech</groupId>
     <artifactId>MinecraftManhuntPlugin</artifactId>
-    <version>1.0.0-pre.11</version>
+    <version>1.0.0-pre.12</version>
     <build>
         <plugins>
             <plugin>
