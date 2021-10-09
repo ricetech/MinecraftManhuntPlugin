@@ -172,7 +172,7 @@ public class TrackCommand implements CommandExecutor {
             }
             source.sendMessage("Tracking " + targetColor + targetName + ".");
             source.sendMessage("Distance: " + distanceString);
-            source.sendMessage("Height:" + heightDiffString);
+            source.sendMessage("Height: " + heightDiffString);
         }
     }
 
