@@ -22,7 +22,7 @@ commands:
     description: >
       Generate teams for a new game. If provided, the "random" argument will randomize the teams. Otherwise, the default if no argument
       is provided allows each player to select their team.
-    usage: /newgame [random|select]
+    usage: /maketeams [random|select]
     permission: mmh.game
   startgame:
     description: Resets all players and starts a new game with a countdown timer. Set the optional second option to 'true' if you do not want to reset all players.
