@@ -61,6 +61,10 @@ Check out the [commands](docs/COMMANDS.md) document for more information on avai
   - Restore the inventory of a player
   - Useful if someone takes an accidental trip into a lava pool
 
+## Roadmap
+
+To see if any features will be added to the plugin soon, check out the [GitHub Projects page](https://github.com/ricetech/MinecraftManhuntPlugin/projects/1).
+
 ## Credits
 
 Thanks to [johnzhoudev](https://github.com/johnzhoudev) for the original plugin idea and for allowing me to use
