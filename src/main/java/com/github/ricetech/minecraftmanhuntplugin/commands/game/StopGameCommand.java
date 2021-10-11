@@ -16,6 +16,7 @@ public class StopGameCommand implements CommandExecutor {
 
         if (!MinecraftManhuntPlugin.isGameInProgress) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "There is no game to stop.");
+            return true;
         }
 
         MinecraftManhuntPlugin.isGameInProgress = false;

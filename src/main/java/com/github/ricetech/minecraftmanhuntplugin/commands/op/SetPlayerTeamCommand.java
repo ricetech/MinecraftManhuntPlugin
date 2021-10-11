@@ -29,6 +29,7 @@ public class SetPlayerTeamCommand implements CommandExecutor {
 
         if (!TeamManager.getValidTeams().contains(teamString.toUpperCase())) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, args[1] + " is not a valid team.");
+            return true;
         }
 
         TeamManager.editTeam(p, ManhuntTeam.valueOf(args[1].toUpperCase()));

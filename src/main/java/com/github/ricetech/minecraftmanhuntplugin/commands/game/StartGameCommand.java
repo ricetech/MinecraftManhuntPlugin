@@ -19,6 +19,7 @@ public class StartGameCommand implements CommandExecutor {
 
         if (MinecraftManhuntPlugin.isGameInProgress) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "A game is already in progress.");
+            return true;
         }
 
         try {
