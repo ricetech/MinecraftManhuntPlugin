@@ -118,6 +118,8 @@ public class TrackCommand implements CommandExecutor {
         int sourceY = sourceLoc.getBlockY();
         int targetY = targetLoc.getBlockY();
 
+        int heightDiff = sourceY - targetY;
+
         ManhuntTeam sourceTeam = TeamManager.getTeam(source);
         ManhuntTeam targetTeam = TeamManager.getTeam(targetName);
 
@@ -126,15 +128,23 @@ public class TrackCommand implements CommandExecutor {
         // Update compass
         updateCompass(source, targetLoc);
 
-        // Tracking for teammates
+        // Tracking for teammates (Precise location)
         if (sourceTeam == targetTeam || targetName.equals(PORTAL_NAME_KEY) ||
                 (sourceTeam == ManhuntTeam.RUNNERS && targetTeam == ManhuntTeam.ELIMINATED) ||
                 (sourceTeam == ManhuntTeam.ELIMINATED && targetTeam == ManhuntTeam.RUNNERS)) {
-            // Same team, allow precise tracking
-            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + " at " +
-                    "(" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + "), " +
-                    distance + " blocks away.");
-        // Tracking for enemies
+            String heightDiffString;
+
+            if (heightDiff > 0) {
+                heightDiffString = "+";
+            } else {
+                heightDiffString = "";
+            }
+
+            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ".\n" +
+                    "Coordinates: (" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ").\n" +
+                    "Horizontal Distance: " + distance + " blocks." +
+                    "Vertical Distance: " + heightDiffString + heightDiff + "blocks.");
+        // Tracking for enemies (Approx location)
         } else {
             String distanceString;
             if (distance > DISTANCE_THRESHOLD_5) {
@@ -153,7 +163,6 @@ public class TrackCommand implements CommandExecutor {
                 distanceString = "Less than 250 blocks away";
             }
 
-            int heightDiff = sourceY - targetY;
             String heightDiffString;
 
             if (heightDiff >= -CLOSE_Y_THRESHOLD && heightDiff <= CLOSE_Y_THRESHOLD) {
