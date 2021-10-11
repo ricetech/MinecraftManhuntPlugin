@@ -129,8 +129,8 @@ public class TrackCommand implements CommandExecutor {
         // Update compass
         updateCompass(source, targetLoc);
 
-        // Tracking for teammates (Precise location)
-        if (sourceTeam == targetTeam || targetName.equals(PORTAL_NAME_KEY) ||
+        // Tracking for teammates and Spectators (Precise location)
+        if (sourceTeam == targetTeam || sourceTeam == ManhuntTeam.SPECTATORS || targetName.equals(PORTAL_NAME_KEY) ||
                 (sourceTeam == ManhuntTeam.RUNNERS && targetTeam == ManhuntTeam.ELIMINATED) ||
                 (sourceTeam == ManhuntTeam.ELIMINATED && targetTeam == ManhuntTeam.RUNNERS)) {
             String heightDiffString;
@@ -267,13 +267,13 @@ public class TrackCommand implements CommandExecutor {
         }
 
         // Runners can only track other runners/eliminated team members
-        if (sourceTeam != ManhuntTeam.HUNTERS && targetTeam != ManhuntTeam.RUNNERS && targetTeam != ManhuntTeam.ELIMINATED) {
+        if (sourceTeam != ManhuntTeam.HUNTERS && sourceTeam != ManhuntTeam.SPECTATORS && targetTeam != ManhuntTeam.RUNNERS && targetTeam != ManhuntTeam.ELIMINATED) {
             MinecraftManhuntPlugin.sendErrorMsg(source, "You can only track players who are Runners or Eliminated.");
             return;
         }
 
         // Prohibit tracking of Spectators
-        if (targetTeam == ManhuntTeam.SPECTATORS) {
+        if (sourceTeam != ManhuntTeam.SPECTATORS && targetTeam == ManhuntTeam.SPECTATORS) {
             MinecraftManhuntPlugin.sendErrorMsg(source, "You cannot track spectators.");
             return;
         }
