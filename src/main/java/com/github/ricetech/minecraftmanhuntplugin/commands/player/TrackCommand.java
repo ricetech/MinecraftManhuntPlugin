@@ -258,6 +258,8 @@ public class TrackCommand implements CommandExecutor {
 
         if (sourceTeam == null) {
             MinecraftManhuntPlugin.sendErrorMsg(source, "You cannot track players because you are not on a team.");
+            TeamSwitchCommand.setEligibility(source.getName(), true);
+            TeamSwitchCommand.sendTeamSelectMsg(source);
             return;
         }
 
