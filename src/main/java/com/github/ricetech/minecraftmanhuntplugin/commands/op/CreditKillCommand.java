@@ -16,13 +16,9 @@ public class CreditKillCommand implements CommandExecutor {
             return false;
         }
 
-        Player p;
-
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player p)) {
             MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
             return true;
-        } else {
-            p = ((Player) sender);
         }
 
         Player playerToCredit = Bukkit.getPlayerExact(args[0]);

@@ -37,13 +37,9 @@ public class SelfEliminateCommand implements CommandExecutor {
             return false;
         }
 
-        Player p;
-
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player p)) {
             MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
             return true;
-        } else {
-            p = ((Player) sender);
         }
 
         ManhuntTeam team = TeamManager.getTeam(p);
