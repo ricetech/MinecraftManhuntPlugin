@@ -144,7 +144,7 @@ public class TrackCommand implements CommandExecutor {
             source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ".\n" +
                     "Coordinates: (" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ").\n" +
                     "Horizontal Distance: " + distance + " blocks." +
-                    "Vertical Distance: " + heightDiffString + heightDiff + "blocks.");
+                    "Vertical Distance: " + heightDiffString + heightDiff + " blocks.");
         // Tracking for enemies (Approx location)
         } else {
             String distanceString;
@@ -268,13 +268,13 @@ public class TrackCommand implements CommandExecutor {
 
         // Runners can only track other runners/eliminated team members
         if (sourceTeam != ManhuntTeam.HUNTERS && sourceTeam != ManhuntTeam.SPECTATORS && targetTeam != ManhuntTeam.RUNNERS && targetTeam != ManhuntTeam.ELIMINATED) {
-            MinecraftManhuntPlugin.sendErrorMsg(source, "You can only track players who are Runners or Eliminated.");
+            MinecraftManhuntPlugin.sendErrorMsg(source, "You can only track your teammates (Runners or Eliminated).");
             return;
         }
 
         // Prohibit tracking of Spectators
         if (sourceTeam != ManhuntTeam.SPECTATORS && targetTeam == ManhuntTeam.SPECTATORS) {
-            MinecraftManhuntPlugin.sendErrorMsg(source, "You cannot track spectators.");
+            MinecraftManhuntPlugin.sendErrorMsg(source, "You cannot track Spectators.");
             return;
         }
 
