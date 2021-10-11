@@ -119,6 +119,7 @@ public class ResetCommand implements CommandExecutor {
 
         if (MinecraftManhuntPlugin.isGameInProgress) {
             MinecraftManhuntPlugin.sendErrorMsg(sender, "Cannot reset while game is in progress.");
+            return true;
         }
 
         runReset();

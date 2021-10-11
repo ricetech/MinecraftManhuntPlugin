@@ -108,11 +108,12 @@ public class TrackCommand implements CommandExecutor {
     }
 
     private static void sendTrackUpdate(@NotNull Player source, @NotNull Location sourceLoc, @NotNull String targetName, @NotNull Location targetLoc) {
-        long distance = 0;
+        long distance;
         try {
             distance = Math.round(sourceLoc.distance(targetLoc));
         } catch (IllegalArgumentException e) {
             MinecraftManhuntPlugin.sendErrorMsg(source, "Locations are in different worlds. Please contact the developer.");
+            return;
         }
 
         int sourceY = sourceLoc.getBlockY();
