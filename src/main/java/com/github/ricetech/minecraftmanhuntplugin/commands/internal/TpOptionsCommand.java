@@ -66,18 +66,14 @@ public class TpOptionsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        Player p;
-
         if (args.length != 0) {
             return false;
         }
 
         // Ensure sender is a player, then cast sender to Player
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player p)) {
             MinecraftManhuntPlugin.sendOnlyPlayersErrorMsg(sender);
             return true;
-        } else {
-            p = ((Player) sender);
         }
 
         // Eligibility
