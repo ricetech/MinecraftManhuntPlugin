@@ -7,14 +7,15 @@ Keep reading to find the rules for this version of manhunt as well as the availa
 
 Not sure what Minecraft Manhunt is? It's a Minecraft adaptation of Manhunt, where a team of Runners
 tries to complete an objective without getting killed by the Hunters. Check out the
-[rules](docs/RULES_FULL.md) document for more information on how the game works!
+[How to Play](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/How-to-Play) page for more information on how the game works!
 
 ## Rules & How to Play
 
 For a quick guide on how to play the game and use commands during the game, check out the 
-[how to play](docs/HOW_TO_PLAY.md) guide.
+[How to Play](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/How-to-Play) guide.
 
-For a full breakdown on the suggested rules to play with, check out the [rules](docs/RULES_FULL.md) document.
+For a full breakdown on the suggested rules to play with, check out the
+[Rules](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Full-Rules) page.
 
 ## Installation
 
@@ -27,7 +28,8 @@ For a full breakdown on the suggested rules to play with, check out the [rules](
 
 ## Commands
 
-Check out the [commands](docs/COMMANDS.md) document for more information on available commands.
+Check out the [Commands](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Commands)
+page for more information on available commands.
 
 ## Plugin Features
 
@@ -63,7 +65,8 @@ Check out the [commands](docs/COMMANDS.md) document for more information on avai
 
 ## Roadmap
 
-To see if any features will be added to the plugin soon, check out the [GitHub Projects page](https://github.com/ricetech/MinecraftManhuntPlugin/projects/1).
+To see if any features will be added to the plugin soon, check out the 
+[GitHub Projects page](https://github.com/ricetech/MinecraftManhuntPlugin/projects/1).
 
 ## Credits
 
