@@ -10,6 +10,7 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,13 +48,20 @@ public class PlayerEliminationOnDeathListener implements Listener {
             Player killer = victim.getKiller();
             ManhuntTeam victimTeam = TeamManager.getTeam(victim);
             if (killer != null) {
-                // Increment killer's kills
-                ScoreKeeper.addKill(killer);
-                // Eliminate Runners
-                if (victimTeam == ManhuntTeam.RUNNERS) {
-                    TeamManager.eliminatePlayer(victim);
+                // Kill Spectators who decide to kill non-spectators
+                if (TeamManager.getTeam(killer) == ManhuntTeam.SPECTATORS && victimTeam != ManhuntTeam.SPECTATORS) {
+                    killer.setHealth(0);
+                    ScoreKeeper.removeDeath(victim);
+                    Bukkit.broadcastMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Spectators are not allowed to kill other players!");
+                } else {
+                    // Increment killer's kills
+                    ScoreKeeper.addKill(killer);
+                    // Eliminate Runners
+                    if (victimTeam == ManhuntTeam.RUNNERS) {
+                        TeamManager.eliminatePlayer(victim);
+                    }
+                    // No other actions - teleports are not allowed after a death to another player
                 }
-                // No other actions - teleports are not allowed after a death to another player
             } else {
                 // Ask if this death occurred because of a player or not
                 sendDeathCauseMsg(victim);
