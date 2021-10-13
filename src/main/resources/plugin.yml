@@ -71,6 +71,11 @@ commands:
       Replaces the menu normally provided if a player states they died to natural causes.
     usage: /offerteamtp <player>
     permission: mmh.correction
+  removedeath:
+    description: >
+      Remove a death from a player's Death counter.
+    usage: /removedeath <player>
+    permission: mmh.correction
   restoreinventory:
     description: >
       Offer a player's previous inventory (stored at the point where they died) to the player to allow them to

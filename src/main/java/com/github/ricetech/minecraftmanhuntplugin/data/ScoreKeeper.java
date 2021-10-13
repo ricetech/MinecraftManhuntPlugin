@@ -70,6 +70,16 @@ public class ScoreKeeper {
     }
 
     /**
+     * Decrements the Player p's death counter by 1.
+     *
+     * @param p - The player to add a kill to.
+     */
+    public static void removeDeath(Player p) {
+        Score pDeaths = deaths.getScore(p.getName());
+        pDeaths.setScore(pDeaths.getScore() - 1);
+    }
+
+    /**
      * Add player p if they aren't on the scoreboard already.
      *
      * @param p - The player to add.
