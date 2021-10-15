@@ -21,7 +21,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "DuplicatedCode"})
 public class MinecraftManhuntPlugin extends JavaPlugin {
     // Command Aliases
     public static final String VERSION_COMMAND_ALIAS = "manhuntversion";
@@ -122,6 +122,35 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setExecutor(new SelfEliminateCommand());
         this.getCommand(TEAM_TP_COMMAND_ALIAS).setExecutor(new TeamTpCommand(this));
         this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand());
+
+        // Set Tab Completers
+        this.getCommand(VERSION_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        // Game Management
+        this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(START_GAME_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(STOP_GAME_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        // Utilities
+        this.getCommand(COUNTDOWN_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(RESET_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        // Player
+        this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(TRACK_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(TRACK_PORTAL_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        // Operator
+        this.getCommand(CREDIT_KILL_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(ELIMINATE_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(OFFER_TEAM_TP_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(REMOVE_DEATH_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(RESTORE_INVENTORY_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(SET_PLAYER_TEAM_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(UN_ELIMINATE_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        // Internal Use
+        this.getCommand(TEAM_SWITCH_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(RESET_ELIGIBILITY_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(TEAM_TP_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
     }
 
     @Override
