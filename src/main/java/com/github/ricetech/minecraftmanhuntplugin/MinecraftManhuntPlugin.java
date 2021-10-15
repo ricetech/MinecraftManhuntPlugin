@@ -1,6 +1,6 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
-import com.github.ricetech.minecraftmanhuntplugin.commands.VersionCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.utility.VersionCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.game.*;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.ResetEligibilityCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
@@ -95,7 +95,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new PlayerPortalLocationStorageListener(this), this);
 
         // Register Commands
-        this.getCommand(VERSION_COMMAND_ALIAS).setExecutor(new VersionCommand(this));
         // Game Management
         this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setExecutor(new ClearTeamsCommand());
         this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setExecutor(new MakeTeamsCommand());
@@ -104,6 +103,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Utilities
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
         this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand());
+        this.getCommand(VERSION_COMMAND_ALIAS).setExecutor(new VersionCommand(this));
         // Player
         this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setExecutor(new ListTeamsCommand());
         this.getCommand(TRACK_COMMAND_ALIAS).setExecutor(new TrackCommand());
@@ -124,7 +124,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setExecutor(new TpOptionsCommand());
 
         // Set Tab Completers
-        this.getCommand(VERSION_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         // Game Management
         this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
@@ -133,6 +132,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Utilities
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(RESET_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(VERSION_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         // Player
         this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(TRACK_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
