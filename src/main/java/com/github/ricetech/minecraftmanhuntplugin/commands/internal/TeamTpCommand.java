@@ -79,7 +79,7 @@ public class TeamTpCommand implements CommandExecutor {
             p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, INVINCIBILITY_DURATION_SECONDS, 255));
 
             // Announce TP
-            Bukkit.broadcastMessage(MinecraftManhuntPlugin.RUNNERS_COLOR + p.getName() + "is teleporting to their " +
+            Bukkit.broadcastMessage(MinecraftManhuntPlugin.RUNNERS_COLOR + p.getName() + " is teleporting to their " +
                     "death location and will be" + ChatColor.RED + " invincible " + ChatColor.RESET + "for 25 seconds.");
 
             // Teleport to death location
