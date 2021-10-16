@@ -57,6 +57,11 @@ public class TeamTpCommand implements CommandExecutor {
         }
 
         if (args[0].equals(SELF_TP_ARG)) { // Teleport to last death location
+            if (!eligibility.getOrDefault(p.getName(), false)) {
+                MinecraftManhuntPlugin.sendErrorMsg(sender, "You are not eligible to teleport.");
+                return true;
+            }
+
             // Attempt to get last death location
             Location deathLoc = PlayerDeathLocationStorageListener.getLatestDeathLoc(p);
 
