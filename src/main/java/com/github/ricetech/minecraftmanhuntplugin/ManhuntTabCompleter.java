@@ -66,7 +66,7 @@ public class ManhuntTabCompleter implements TabCompleter {
         int argNum = args.length > 0 ? args.length - 1 : 0;
 
         // Catch if user tries to autocomplete a command with no arguments or if they autocomplete more arguments
-        if (argNum >= tabComplete.get(argNum).size()) {
+        if (argNum >= tabComplete.size()) {
             return Collections.emptyList();
         }
 
