@@ -45,6 +45,7 @@ public class ManhuntTabCompleter implements TabCompleter {
             case MinecraftManhuntPlugin.ELIMINATE_COMMAND_ALIAS -> tabComplete = Arrays.asList(players, players);
             case MinecraftManhuntPlugin.OFFER_TEAM_TP_COMMAND_ALIAS -> tabComplete = List.of(players);
             case MinecraftManhuntPlugin.REMOVE_DEATH_COMMAND_ALIAS -> tabComplete = List.of(players);
+            case MinecraftManhuntPlugin.RESTORE_INVENTORY_COMMAND_ALIAS -> tabComplete = List.of(players);
             case MinecraftManhuntPlugin.SET_PLAYER_TEAM_COMMAND_ALIAS -> tabComplete = Arrays.asList(players, TeamManager.getValidTeams().stream().toList());
             case MinecraftManhuntPlugin.UN_ELIMINATE_COMMAND_ALIAS -> tabComplete = List.of(players);
             // Player
