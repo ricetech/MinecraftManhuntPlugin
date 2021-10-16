@@ -21,6 +21,11 @@ public class SendTeamSelectOnJoin implements Listener {
                     "feel free to use the message below to join a team. You can also continue watching as a spectator " +
                     "without selecting a team.");
             TeamSwitchCommand.sendTeamSelectMsg(p);
+        } else if (MinecraftManhuntPlugin.isTeamSelectInProgress) {
+            p.sendMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Welcome to Manhunt!");
+            p.sendMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Team Select is currently in progress. " +
+                    "Please join a team using the message below.");
+            TeamSwitchCommand.sendTeamSelectMsg(p);
         }
 
     }

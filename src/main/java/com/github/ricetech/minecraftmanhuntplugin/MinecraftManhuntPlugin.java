@@ -75,6 +75,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
     // Internal variables
     public static boolean isGameInProgress = false;
+    public static boolean isTeamSelectInProgress = false;
 
     @SuppressWarnings("ConstantConditions")
     @Override

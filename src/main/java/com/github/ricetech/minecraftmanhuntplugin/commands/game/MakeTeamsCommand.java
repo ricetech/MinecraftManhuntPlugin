@@ -30,6 +30,7 @@ public class MakeTeamsCommand implements CommandExecutor {
         if (args.length == 0 || args[0].equalsIgnoreCase("SELECT")) {
             // Select own teams
             Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: Please select your teams for the next game.");
+            MinecraftManhuntPlugin.isTeamSelectInProgress = true;
 
             for (Player p : Bukkit.getOnlinePlayers()) {
                 TeamSwitchCommand.sendTeamSelectMsg(p);
@@ -40,6 +41,7 @@ public class MakeTeamsCommand implements CommandExecutor {
             Collections.shuffle(onlinePlayers);
 
             Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: The teams for the next game have been randomized.");
+            MinecraftManhuntPlugin.isTeamSelectInProgress = true;
 
             for (int i = 0; i < onlinePlayers.size(); i++) {
                 // Give extra players to Hunters
