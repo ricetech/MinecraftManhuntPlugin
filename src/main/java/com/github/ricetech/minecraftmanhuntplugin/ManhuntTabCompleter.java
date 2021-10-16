@@ -72,7 +72,7 @@ public class ManhuntTabCompleter implements TabCompleter {
         }
 
         return new ArrayList<>(tabComplete.get(argNum)).stream()
-                .filter(option -> (partialArg.isEmpty() || option.startsWith(partialArg.toLowerCase())))
+                .filter(option -> (partialArg.isEmpty() || option.toLowerCase().startsWith(partialArg.toLowerCase())))
                 .collect(Collectors.toList());
     }
 }
