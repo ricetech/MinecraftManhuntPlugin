@@ -7,6 +7,7 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -124,13 +125,16 @@ public class TeamManager {
         }
     }
 
-    public static List<Player> listTeamPlayers(ManhuntTeam targetTeam, Player targetPlayer) {
+    public static List<Player> listTeamPlayers(ManhuntTeam targetTeam, @Nullable Player targetPlayer) {
         ArrayList<Player> players = new ArrayList<>();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            ManhuntTeam teamToCheck = getTeam(p.getName());
-            if ((teamToCheck == targetTeam || (targetTeam == ManhuntTeam.RUNNERS && teamToCheck == ManhuntTeam.ELIMINATED) ||
-                    (targetTeam == ManhuntTeam.ELIMINATED && teamToCheck == ManhuntTeam.RUNNERS)) && p != targetPlayer) {
+            ManhuntTeam teamToCheck = targetPlayer == null ? null : getTeam(p.getName());
+            if (
+                    (teamToCheck == null || teamToCheck == targetTeam ||
+                    (targetTeam == ManhuntTeam.RUNNERS && teamToCheck == ManhuntTeam.ELIMINATED) ||
+                    (targetTeam == ManhuntTeam.ELIMINATED && teamToCheck == ManhuntTeam.RUNNERS)
+            ) && p != targetPlayer) {
                 players.add(p);
             }
         }
