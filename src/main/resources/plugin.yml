@@ -9,10 +9,6 @@ authors:
   - OrangeFirefly
 website: https://github.com/ricetech/MinecraftManhuntPlugin
 commands:
-  manhuntversion:
-    description: Returns the version of this plugin.
-    usage: /manhuntversion
-    permission: mmh.player
   # Game Management
   clearteams:
     description: Remove all players from all teams.
@@ -40,6 +36,10 @@ commands:
   reset:
     description: Resets the state of the world and players to prepare for a new game.
     usage: /reset
+    permission: mmh.player
+  manhuntversion:
+    description: Returns the version of this plugin.
+    usage: /manhuntversion
     permission: mmh.player
   # Player
   listteams:
