@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class StartGameCommand implements CommandExecutor {
@@ -56,7 +57,10 @@ public class StartGameCommand implements CommandExecutor {
 
         ListTeamsCommand.listTeams(false, null);
 
-        Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: A new game is starting now!");
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt is starting now!", "Get ready!",
+                    MinecraftManhuntPlugin.TITLE_FADE_IN, MinecraftManhuntPlugin.TITLE_STAY, MinecraftManhuntPlugin.TITLE_FADE_OUT);
+        }
 
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS +
                 " " + seconds + " " + freezeHunters); // true for restrictHunters arg
