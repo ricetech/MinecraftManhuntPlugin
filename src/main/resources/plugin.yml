@@ -12,104 +12,104 @@ commands:
   # Game Management
   clearteams:
     description: Remove all players from all teams.
-    usage: /clearteams
+    usage: "Usage: /clearteams"
     permission: mmh.game
   maketeams:
     description: >
       Generate teams for a new game. If provided, the "random" argument will randomize the teams. Otherwise, the default if no argument
       is provided allows each player to select their team.
-    usage: /maketeams [random|select]
+    usage: "Usage: /maketeams [random|select]"
     permission: mmh.game
   startgame:
     description: Resets all players and starts a new game with a countdown timer. Set the optional second option to 'true' if you do not want to reset all players.
-    usage: /startgame <time in seconds> [(skip reset) true|false]
+    usage: "Usage: /startgame <time in seconds> [(skip reset) true|false]"
     permission: mmh.game
   stopgame:
     description: Stops a manhunt game in progress.
-    usage: /stopgame
+    usage: "Usage: /stopgame"
     permission: mmh.game
   # Utilities
   countdown:
     description: Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
-    usage: /countdown <time in seconds>
+    usage: "Usage: /countdown <time in seconds>"
     permission: mmh.player
   reset:
     description: Resets the state of the world and players to prepare for a new game.
-    usage: /reset
+    usage: "Usage: /reset"
     permission: mmh.player
   manhuntversion:
     description: Returns the version of this plugin.
-    usage: /manhuntversion
+    usage: "Usage: /manhuntversion"
     permission: mmh.player
   # Player
   listteams:
     description: List the teams and the players on each team.
-    usage: /listteams
+    usage: "Usage: /listteams"
     permission: mmh.player
   track:
     description: Track a player using a compass.
-    usage: /track <player>
+    usage: "Usage: /track <player>"
     permission: mmh.player
   trackportal:
     description: Track the portal you used to enter The Nether.
-    usage: /trackportal
+    usage: "Usage: /trackportal"
     permission: mmh.player
   # Operator commands
   creditkill:
     description: >
       Credit a kill to another player. Useful if the game says a player died to natural causes even if another player
       killed them.
-    usage: creditkill <player>
+    usage: "Usage: /creditkill <player>"
     permission: mmh.correction
   eliminate:
     description: Eliminate a player. For use if the game didn't eliminate them automatically. Also kills the player.
-    usage: /eliminate <eliminated player> <player who is eliminating/killing the other player>
+    usage: "Usage: /eliminate <eliminated player> <player who is eliminating/killing the other player>"
     permission: mmh.correction
   offerteamtp:
     description: >
       Offer the list of teammates to teleport to (or death location if no teammates are available) to a player.
       Replaces the menu normally provided if a player states they died to natural causes.
-    usage: /offerteamtp <player>
+    usage: "Usage: /offerteamtp <player>"
     permission: mmh.correction
   removedeath:
     description: >
       Remove a death from a player's Death counter.
-    usage: /removedeath <player>
+    usage: "Usage: /removedeath <player>"
     permission: mmh.correction
   restoreinventory:
     description: >
       Offer a player's previous inventory (stored at the point where they died) to the player to allow them to
       select items to restore.
-    usage: /restoreinventory <player>
+    usage: "Usage: /restoreinventory <player>"
     permission: mmh.correction
   setplayerteam:
     description: Forcibly change a player's team, whether they are eligible to switch or not.
-    usage: /setplayerteam <player> <runners|eliminated|hunters|spectators>
+    usage: "Usage: /setplayerteam <player> <runners|eliminated|hunters|spectators>"
     permission: mmh.correction
   uneliminate:
     description: Un-eliminate a player. Restores them to the Runners team.
-    usage: /uneliminate <eliminated player>
+    usage: "Usage: /uneliminate <eliminated player>"
     permission: mmh.correction
   # Internal use
   changeteam:
     description: Internal use only.
-    usage: /changeteam <runners|eliminated|hunters|spectators>
+    usage: "Usage: /changeteam <runners|eliminated|hunters|spectators>"
     permission: mmh.player
   reseteligibility:
     description: Internal use only.
-    usage: /reseteligibility
+    usage: "Usage: /reseteligibility"
     permission: mmh.player
   selfelim:
     description: Internal use only.
-    usage: /selfelim
+    usage: "Usage: /selfelim"
     permission: mmh.player
   teamtp:
     description: Internal use only.
-    usage: /teamtp <target player>
+    usage: "Usage: /teamtp <target player>"
     permission: mmh.player
   tpoptions:
     description: Internal use only.
-    usage: /tpoptions
+    usage: "Usage: /tpoptions"
     permission: mmh.player
 permissions:
   mmh.player:
