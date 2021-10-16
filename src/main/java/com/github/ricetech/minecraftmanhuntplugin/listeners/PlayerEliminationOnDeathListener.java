@@ -47,6 +47,7 @@ public class PlayerEliminationOnDeathListener implements Listener {
             Player victim = event.getEntity();
             Player killer = victim.getKiller();
             ManhuntTeam victimTeam = TeamManager.getTeam(victim);
+            ScoreKeeper.addDeath(victim);
             if (killer != null) {
                 // Kill Spectators who decide to kill non-spectators
                 if (TeamManager.getTeam(killer) == ManhuntTeam.SPECTATORS && victimTeam != ManhuntTeam.SPECTATORS) {

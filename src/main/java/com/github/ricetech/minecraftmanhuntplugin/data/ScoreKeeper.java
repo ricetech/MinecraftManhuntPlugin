@@ -25,7 +25,7 @@ public class ScoreKeeper {
         // Create deaths if it doesn't exist already
         deaths = mainScoreboard.getObjective("deaths");
         if (deaths == null) {
-            deaths = mainScoreboard.registerNewObjective("deaths", "deathCount", "Deaths");
+            deaths = mainScoreboard.registerNewObjective("deaths", "dummy", "Deaths");
         }
         deaths.setDisplaySlot(DisplaySlot.SIDEBAR);
     }
@@ -67,6 +67,16 @@ public class ScoreKeeper {
     public static void addKill(Player p) {
         Score pKills = kills.getScore(p.getName());
         pKills.setScore(pKills.getScore() + 1);
+    }
+
+    /**
+     * Increments the Player p's death counter by 1.
+     *
+     * @param p - The player to add a kill to.
+     */
+    public static void addDeath(Player p) {
+        Score pDeaths = deaths.getScore(p.getName());
+        pDeaths.setScore(pDeaths.getScore() + 1);
     }
 
     /**
