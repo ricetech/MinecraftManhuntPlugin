@@ -25,6 +25,7 @@ public class StopGameCommand implements CommandExecutor {
             p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Game Over!", "The game was stopped manually.",
                     MinecraftManhuntPlugin.TITLE_FADE_IN, MinecraftManhuntPlugin.TITLE_STAY, MinecraftManhuntPlugin.TITLE_FADE_OUT);
         }
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: Game Over! The game was stopped manually.");
         return true;
     }
 }

@@ -164,6 +164,7 @@ public class TeamManager {
                 p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Game Over!", "Hunters win by elimination.",
                         MinecraftManhuntPlugin.TITLE_FADE_IN, MinecraftManhuntPlugin.TITLE_STAY, MinecraftManhuntPlugin.TITLE_FADE_OUT);
             }
+            Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: Game Over! Hunters win by elimination.");
         }
     }
 
