@@ -60,7 +60,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
     public static final ChatColor GAME_MSG_COLOR = ChatColor.AQUA;
     public static final ChatColor WARNING_MSG_COLOR = ChatColor.YELLOW;
-    public static final ChatColor WHISPER_MSG_COLOR = ChatColor.DARK_GRAY;
+    public static final ChatColor WHISPER_MSG_COLOR = ChatColor.GRAY;
 
     // Bungee Colours (Keep in sync with the colours above!)
     public static final net.md_5.bungee.api.ChatColor RUNNERS_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.DARK_BLUE;
