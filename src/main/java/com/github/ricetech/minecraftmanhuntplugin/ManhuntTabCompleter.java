@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class ManhuntTabCompleter implements TabCompleter {
             case MinecraftManhuntPlugin.CLEAR_TEAMS_COMMAND_ALIAS -> tabComplete = null;
             case MinecraftManhuntPlugin.LIST_TEAMS_COMMAND_ALIAS -> tabComplete = null;
             case MinecraftManhuntPlugin.MAKE_TEAMS_COMMAND_ALIAS -> tabComplete = List.of(Arrays.asList("random", "select"));
-            case MinecraftManhuntPlugin.START_GAME_COMMAND_ALIAS -> tabComplete = Arrays.asList(Arrays.asList("random", "select"), null);
+            case MinecraftManhuntPlugin.START_GAME_COMMAND_ALIAS -> tabComplete = Arrays.asList(Arrays.asList("random", "select"), Collections.emptyList());
             case MinecraftManhuntPlugin.STOP_GAME_COMMAND_ALIAS -> tabComplete = null;
             // Internal
             case MinecraftManhuntPlugin.RESET_ELIGIBILITY_COMMAND_ALIAS -> tabComplete = null;
@@ -58,7 +59,7 @@ public class ManhuntTabCompleter implements TabCompleter {
         }
 
         if (tabComplete == null) {
-            return null;
+            return Collections.emptyList();
         }
 
         String partialArg = args.length > 0 ? args[args.length - 1] : "";
