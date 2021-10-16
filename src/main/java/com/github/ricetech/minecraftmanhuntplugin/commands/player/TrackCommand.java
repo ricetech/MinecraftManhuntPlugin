@@ -3,6 +3,7 @@ package com.github.ricetech.minecraftmanhuntplugin.commands.player;
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
+import com.github.ricetech.minecraftmanhuntplugin.listeners.CompassInventoryHandlerListener;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -85,7 +86,11 @@ public class TrackCommand implements CommandExecutor {
 
         int compassPosition = inventory.first(Material.COMPASS);
         if (compassPosition == -1) {
-            MinecraftManhuntPlugin.sendErrorMsg(p, "You used /track without a compass in your inventory.");
+            CompassInventoryHandlerListener.giveCompass(p);
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You used /track without a compass in your inventory. " +
+                    "We attempted to give you another compass - please try tracking again. " +
+                    "If you see this error again, make sure that your inventory isn't full. " +
+                    "Otherwise, please contact the developer.");
             return;
         }
 
