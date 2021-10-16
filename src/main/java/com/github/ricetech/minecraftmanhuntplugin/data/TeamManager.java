@@ -124,20 +124,13 @@ public class TeamManager {
         }
     }
 
-    public static List<Player> listTeamPlayers(ManhuntTeam team, Player targetPlayer) {
-        Team targetTeam = switch (team) {
-            case RUNNERS -> runners;
-            case HUNTERS -> hunters;
-            case ELIMINATED -> eliminated;
-            case SPECTATORS -> spectators;
-        };
-
+    public static List<Player> listTeamPlayers(ManhuntTeam targetTeam, Player targetPlayer) {
         ArrayList<Player> players = new ArrayList<>();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            Team teamToCheck = mainScoreboard.getEntryTeam(p.getName());
-            if ((teamToCheck == targetTeam || (targetTeam == runners && teamToCheck == eliminated) ||
-                    (targetTeam == eliminated && teamToCheck == runners)) && p != targetPlayer) {
+            ManhuntTeam teamToCheck = getTeam(p.getName());
+            if ((teamToCheck == targetTeam || (targetTeam == ManhuntTeam.RUNNERS && teamToCheck == ManhuntTeam.ELIMINATED) ||
+                    (targetTeam == ManhuntTeam.ELIMINATED && teamToCheck == ManhuntTeam.RUNNERS)) && p != targetPlayer) {
                 players.add(p);
             }
         }
