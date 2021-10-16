@@ -33,7 +33,7 @@ public class ManhuntTabCompleter implements TabCompleter {
             case MinecraftManhuntPlugin.CLEAR_TEAMS_COMMAND_ALIAS -> tabComplete = null;
             case MinecraftManhuntPlugin.LIST_TEAMS_COMMAND_ALIAS -> tabComplete = null;
             case MinecraftManhuntPlugin.MAKE_TEAMS_COMMAND_ALIAS -> tabComplete = List.of(Arrays.asList("random", "select"));
-            case MinecraftManhuntPlugin.START_GAME_COMMAND_ALIAS -> tabComplete = Arrays.asList(Collections.emptyList(), Arrays.asList("true", "false"));
+            case MinecraftManhuntPlugin.START_GAME_COMMAND_ALIAS -> tabComplete = Arrays.asList(Collections.emptyList(), Arrays.asList("true", "false"), Arrays.asList("true", "false"));
             case MinecraftManhuntPlugin.STOP_GAME_COMMAND_ALIAS -> tabComplete = null;
             // Internal
             case MinecraftManhuntPlugin.RESET_ELIGIBILITY_COMMAND_ALIAS -> tabComplete = null;
@@ -53,7 +53,7 @@ public class ManhuntTabCompleter implements TabCompleter {
             case MinecraftManhuntPlugin.TRACK_COMMAND_ALIAS -> tabComplete = List.of(players);
             case MinecraftManhuntPlugin.TRACK_PORTAL_COMMAND_ALIAS -> tabComplete = null;
             // Util
-            case MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS -> tabComplete = null;
+            case MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS -> tabComplete = List.of(Arrays.asList("true", "false"));
             case MinecraftManhuntPlugin.RESET_COMMAND_ALIAS -> tabComplete = null;
             case MinecraftManhuntPlugin.VERSION_COMMAND_ALIAS -> tabComplete = null;
             default -> tabComplete = null;

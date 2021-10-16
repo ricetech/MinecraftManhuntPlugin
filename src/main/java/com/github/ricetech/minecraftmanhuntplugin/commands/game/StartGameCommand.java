@@ -12,8 +12,10 @@ public class StartGameCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         int seconds;
+        boolean reset = true;
+        boolean freezeHunters = true;
 
-        if (args.length < 1 || args.length > 2) {
+        if (args.length < 1 || args.length > 3) {
             return false;
         }
 
@@ -29,20 +31,35 @@ public class StartGameCommand implements CommandExecutor {
             return false;
         }
 
-        if (args.length == 2 && !args[1].toLowerCase().matches("^true$|^false$")) {
-            MinecraftManhuntPlugin.sendErrorMsg(sender, "Argument for 'reset' must be 'true' or 'false'");
-            return false;
+        // Handle Reset arg
+        if (args.length > 1) {
+            if (!args[1].toLowerCase().matches("^true$|^false$")) {
+                MinecraftManhuntPlugin.sendErrorMsg(sender, "Argument for 'don't reset' must be 'true' or 'false'");
+                return false;
+            } else {
+                reset = !Boolean.parseBoolean(args[1]);
+            }
         }
 
-        if (args.length == 1 || args[1].equalsIgnoreCase("false")) {
+        if (args.length > 2) {
+            if (!args[2].toLowerCase().matches("^true$|^false$")) {
+                MinecraftManhuntPlugin.sendErrorMsg(sender, "Argument for 'don't freeze/reset Hunters' must be 'true' or 'false'");
+                return false;
+            } else {
+                freezeHunters = !Boolean.parseBoolean(args[2]);
+            }
+        }
+
+        if (reset) {
             ResetCommand.runReset();
         }
+
         ListTeamsCommand.listTeams(false, null);
 
         Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: A new game is starting now!");
 
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS +
-                " " + seconds);
+                " " + seconds + " " + freezeHunters); // true for restrictHunters arg
 
         MinecraftManhuntPlugin.isGameInProgress = true;
         return true;

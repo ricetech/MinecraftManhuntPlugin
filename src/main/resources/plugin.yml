@@ -21,8 +21,11 @@ commands:
     usage: "Usage: /maketeams [random|select]"
     permission: mmh.game
   startgame:
-    description: Resets all players and starts a new game with a countdown timer. Set the optional second option to 'true' if you do not want to reset all players.
-    usage: "Usage: /startgame <time in seconds> [(skip reset) true|false]"
+    description: >
+      Resets all players and starts a new game with a countdown timer.
+      Set the optional second option to 'true' if you do not want to reset all players.
+      Set the optional third option to 'true' if you do not want to freeze & reset all hunters.
+    usage: "Usage: /startgame <time in seconds> [(don't reset) true|false] [(don't freeze/reset Hunters) true|false]"
     permission: mmh.game
   stopgame:
     description: Stops a manhunt game in progress.
@@ -30,8 +33,10 @@ commands:
     permission: mmh.game
   # Utilities
   countdown:
-    description: Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
-    usage: "Usage: /countdown <time in seconds>"
+    description: >
+      Starts a simple countdown timer. Useful for giving speedrunners a head start in Manhunt.
+      If the optional second argument is true, the Hunters will be frozen in place and sent back to spawn post-countdown.
+    usage: "Usage: /countdown <time in seconds> [(freeze/reset Hunters) true|false]"
     permission: mmh.player
   reset:
     description: Resets the state of the world and players to prepare for a new game.
