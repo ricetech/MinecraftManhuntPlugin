@@ -63,7 +63,7 @@ public class StartGameCommand implements CommandExecutor {
         }
 
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS +
-                " " + seconds + " " + freezeHunters); // true for restrictHunters arg
+                " " + seconds + " " + freezeHunters);
 
         MinecraftManhuntPlugin.isGameInProgress = true;
         return true;
