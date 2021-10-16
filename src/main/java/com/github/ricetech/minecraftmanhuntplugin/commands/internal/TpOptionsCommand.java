@@ -47,11 +47,11 @@ public class TpOptionsCommand implements CommandExecutor {
             p.spigot().sendMessage(teleportMsg.create());
         } else {
             // Send message with list of tp options
-            ComponentBuilder selectPlayerMsg = new ComponentBuilder("Select a teammate to teleport to:");
+            ComponentBuilder selectPlayerMsg = new ComponentBuilder("Click on a teammate to teleport to:");
             net.md_5.bungee.api.ChatColor teamColor = MinecraftManhuntPlugin.getBungeeCordTeamColor(TeamManager.getTeam(p));
 
             for (Player playerOption : playerOptions) {
-                TextComponent playerComponent = new TextComponent(playerOption.getName());
+                TextComponent playerComponent = new TextComponent("[" + playerOption.getName() + "]");
                 playerComponent.setColor(teamColor);
                 playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" +
                         MinecraftManhuntPlugin.TEAM_TP_COMMAND_ALIAS + " " + playerOption.getName()));
