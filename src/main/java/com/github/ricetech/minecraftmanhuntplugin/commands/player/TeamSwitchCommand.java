@@ -32,7 +32,7 @@ public class TeamSwitchCommand implements CommandExecutor {
     }
 
     public static void sendTeamSelectMsg(Player p) {
-        ComponentBuilder builderSelectTeamMsg = new ComponentBuilder("Select a team:");
+        ComponentBuilder builderSelectTeamMsg = new ComponentBuilder("Click a team to join it:");
 
         TextComponent runnersComponent = new TextComponent("[RUNNERS]");
         runnersComponent.setColor(MinecraftManhuntPlugin.RUNNERS_COLOR_BUNGEE);
