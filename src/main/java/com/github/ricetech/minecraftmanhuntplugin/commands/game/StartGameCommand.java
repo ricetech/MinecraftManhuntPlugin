@@ -58,7 +58,7 @@ public class StartGameCommand implements CommandExecutor {
         ListTeamsCommand.listTeams(false, null);
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt is starting now!", "Get ready!",
+            p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt is starting!", "Get ready!",
                     MinecraftManhuntPlugin.TITLE_FADE_IN, MinecraftManhuntPlugin.TITLE_STAY, MinecraftManhuntPlugin.TITLE_FADE_OUT);
         }
 
