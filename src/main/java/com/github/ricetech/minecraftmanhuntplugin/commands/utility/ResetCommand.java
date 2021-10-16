@@ -18,7 +18,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -26,62 +25,62 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
+    public static void resetPlayer(Player p) {
+        // Remove effects
+        for (PotionEffect effect : p.getActivePotionEffects()) {
+            p.removePotionEffect(effect.getType());
+        }
+
+        // Clear inventory
+        p.getInventory().clear();
+
+        // Give compass
+        CompassInventoryHandlerListener.giveCompass(p);
+
+        // Set gamemode if necessary
+        ManhuntTeam team = TeamManager.getTeam(p);
+        if (team == null) {
+            // Add players not on any team to Spectators
+            // Also allow them to still select a team
+
+            TeamSwitchCommand.sendTeamSelectMsg(p);
+
+            p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Alert: You did not select a team and have therefore " +
+                    "been added to the Spectators team automatically. You can use the message above to join " +
+                    "a different team.");
+
+            TeamManager.editTeam(p, ManhuntTeam.SPECTATORS);
+        } else if (team == ManhuntTeam.SPECTATORS) {
+            p.setGameMode(GameMode.SPECTATOR);
+        } else {
+            // Set gamemode to survival
+            p.setGameMode(GameMode.SURVIVAL);
+        }
+
+        // Un-eliminate all eliminated players
+        if (team == ManhuntTeam.ELIMINATED) {
+            TeamManager.editTeam(p, ManhuntTeam.RUNNERS);
+        }
+
+        // Teleport to spawn
+        p.teleport(Bukkit.getServer().getWorlds().get(0).getSpawnLocation());
+
+        // Reset health, food, saturation and exhaustion
+        p.setHealth(20);
+        p.setFoodLevel(20);
+        p.setSaturation(20);
+        p.setExhaustion(0);
+
+        // Reset XP
+        p.setExp(0);
+        p.setLevel(0);
+    }
+
     public static void runReset() {
         World overworld = Bukkit.getServer().getWorlds().get(0);
 
-        Location spawnLocation = overworld.getSpawnLocation();
-
-        ManhuntTeam team;
-
         for (Player p : Bukkit.getOnlinePlayers()) {
-            // Remove effects
-            for (PotionEffect effect : p.getActivePotionEffects()) {
-                p.removePotionEffect(effect.getType());
-            }
-
-            // Clear inventory
-            p.getInventory().clear();
-
-            // Give compass
-            CompassInventoryHandlerListener.giveCompass(p);
-
-            // Set gamemode if necessary
-            team = TeamManager.getTeam(p);
-            if (team == null) {
-                // Add players not on any team to Spectators
-                // Also allow them to still select a team
-
-                TeamSwitchCommand.sendTeamSelectMsg(p);
-
-                p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Alert: You did not select a team and have therefore " +
-                        "been added to the Spectators team automatically. You can use the message above to join " +
-                        "a different team.");
-
-                TeamManager.editTeam(p, ManhuntTeam.SPECTATORS);
-            } else if (team == ManhuntTeam.SPECTATORS) {
-                p.setGameMode(GameMode.SPECTATOR);
-            } else {
-                // Set gamemode to survival
-                p.setGameMode(GameMode.SURVIVAL);
-            }
-
-            // Un-eliminate all eliminated players
-            if (team == ManhuntTeam.ELIMINATED) {
-                TeamManager.editTeam(p, ManhuntTeam.RUNNERS);
-            }
-
-            // Teleport to spawn
-            p.teleport(spawnLocation);
-
-            // Reset health, food, saturation and exhaustion
-            p.setHealth(20);
-            p.setFoodLevel(20);
-            p.setSaturation(20);
-            p.setExhaustion(0);
-
-            // Reset XP
-            p.setExp(0);
-            p.setLevel(0);
+            resetPlayer(p);
         }
 
         // Set time to 0 & enable daylight cycle
