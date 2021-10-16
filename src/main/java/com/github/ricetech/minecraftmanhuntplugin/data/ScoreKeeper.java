@@ -86,7 +86,7 @@ public class ScoreKeeper {
      */
     public static void removeDeath(Player p) {
         Score pDeaths = deaths.getScore(p.getName());
-        pDeaths.setScore(pDeaths.getScore() - 1);
+        pDeaths.setScore(pDeaths.getScore() < 1 ? 0 : pDeaths.getScore() - 1);
     }
 
     /**
