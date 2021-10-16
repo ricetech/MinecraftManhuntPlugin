@@ -160,7 +160,10 @@ public class TeamManager {
     public static void checkRunners() {
         if (runners.getSize() <= 0) {
             MinecraftManhuntPlugin.isGameInProgress = false;
-            Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: Game over! Hunters win by elimination.");
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Game Over!", "Hunters win by elimination.",
+                        MinecraftManhuntPlugin.TITLE_FADE_IN, MinecraftManhuntPlugin.TITLE_STAY, MinecraftManhuntPlugin.TITLE_FADE_OUT);
+            }
         }
     }
 
