@@ -143,7 +143,7 @@ public class TrackCommand implements CommandExecutor {
 
             source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ".\n" +
                     "Coordinates: (" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ").\n" +
-                    "Horizontal Distance: " + distance + " blocks." +
+                    "Horizontal Distance: " + distance + " blocks.\n" +
                     "Vertical Distance: " + heightDiffString + heightDiff + " blocks.");
         // Tracking for enemies (Approx location)
         } else {
