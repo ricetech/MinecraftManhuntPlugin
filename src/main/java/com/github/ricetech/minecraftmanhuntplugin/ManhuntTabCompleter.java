@@ -53,7 +53,7 @@ public class ManhuntTabCompleter implements TabCompleter {
             case MinecraftManhuntPlugin.TRACK_COMMAND_ALIAS -> tabComplete = List.of(players);
             case MinecraftManhuntPlugin.TRACK_PORTAL_COMMAND_ALIAS -> tabComplete = null;
             // Util
-            case MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS -> tabComplete = List.of(Arrays.asList("true", "false"));
+            case MinecraftManhuntPlugin.COUNTDOWN_COMMAND_ALIAS -> tabComplete = Arrays.asList(Collections.emptyList(), Arrays.asList("true", "false"));
             case MinecraftManhuntPlugin.RESET_COMMAND_ALIAS -> tabComplete = null;
             case MinecraftManhuntPlugin.VERSION_COMMAND_ALIAS -> tabComplete = null;
             default -> tabComplete = null;
