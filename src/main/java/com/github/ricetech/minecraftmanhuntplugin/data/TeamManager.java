@@ -129,9 +129,9 @@ public class TeamManager {
         ArrayList<Player> players = new ArrayList<>();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            ManhuntTeam teamToCheck = targetPlayer == null ? null : getTeam(p.getName());
+            ManhuntTeam teamToCheck = getTeam(p.getName());
             if (
-                    (teamToCheck == null || teamToCheck == targetTeam ||
+                    (teamToCheck == targetTeam ||
                     (targetTeam == ManhuntTeam.RUNNERS && teamToCheck == ManhuntTeam.ELIMINATED) ||
                     (targetTeam == ManhuntTeam.ELIMINATED && teamToCheck == ManhuntTeam.RUNNERS)
             ) && p != targetPlayer) {
