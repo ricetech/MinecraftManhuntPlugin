@@ -39,6 +39,11 @@ public class PlayerEliminationOnDeathListener implements Listener {
         playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.SELF_ELIMINATE_COMMAND_ALIAS));
         playerComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click if you died to a player")));
 
+        TextComponent intentionalComponent = new TextComponent("[Intentional]");
+        intentionalComponent.setColor(ChatColor.DARK_PURPLE);
+        intentionalComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.RESET_ELIGIBILITY_COMMAND_ALIAS));
+        intentionalComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click if you died intentionally")));
+
         TextComponent naturalCausesComponent = new TextComponent("[Natural Causes]");
         naturalCausesComponent.setColor(ChatColor.DARK_BLUE);
         naturalCausesComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS));
@@ -46,6 +51,8 @@ public class PlayerEliminationOnDeathListener implements Listener {
 
         builderDeathConfirmMsg
                 .append(playerComponent)
+                .append(" ")
+                .append(intentionalComponent)
                 .append(" ")
                 .append(naturalCausesComponent);
 
