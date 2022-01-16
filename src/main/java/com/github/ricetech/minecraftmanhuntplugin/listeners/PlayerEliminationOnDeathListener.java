@@ -20,9 +20,19 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class PlayerEliminationOnDeathListener implements Listener {
     public void sendDeathCauseMsg(Player p) {
-        p.sendMessage("Did you die to natural causes or to a player?");
-        p.sendMessage("Remember, you must select [Player] even if a player killed you indirectly.");
-        ComponentBuilder builderDeathConfirmMsg = new ComponentBuilder("Pick one: ");
+        p.sendMessage("What did you die to?");
+        ComponentBuilder builderGuideMsg = new ComponentBuilder(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Check the ");
+
+        TextComponent linkComponent = new TextComponent(ChatColor.UNDERLINE + "" + MinecraftManhuntPlugin.GAME_MSG_COLOR + "Guide for Players");
+        linkComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to open the Guide for Players")));
+        linkComponent.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Guide-for-Players"));
+
+        TextComponent guideMsg2Component = new TextComponent(ChatColor.RESET + "" + MinecraftManhuntPlugin.GAME_MSG_COLOR + " if you aren't sure what to select.");
+
+        builderGuideMsg.append(linkComponent).append(guideMsg2Component);
+        p.spigot().sendMessage(builderGuideMsg.create());
+
+        ComponentBuilder builderDeathConfirmMsg = new ComponentBuilder("Click one: ");
 
         TextComponent playerComponent = new TextComponent("[Player]");
         playerComponent.setColor(ChatColor.RED);
