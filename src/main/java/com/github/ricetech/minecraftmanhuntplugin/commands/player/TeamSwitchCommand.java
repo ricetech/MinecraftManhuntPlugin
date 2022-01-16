@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class TeamSwitchCommand implements CommandExecutor {
     private static final Map<String, Boolean> eligibility = new HashMap<>();

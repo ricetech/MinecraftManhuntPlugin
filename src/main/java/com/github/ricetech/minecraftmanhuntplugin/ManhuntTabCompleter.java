@@ -1,8 +1,5 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
-import com.github.ricetech.minecraftmanhuntplugin.commands.game.ClearTeamsCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.game.MakeTeamsCommand;
-import com.github.ricetech.minecraftmanhuntplugin.commands.game.StartGameCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

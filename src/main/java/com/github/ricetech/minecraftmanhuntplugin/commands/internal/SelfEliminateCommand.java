@@ -45,7 +45,7 @@ public class SelfEliminateCommand implements CommandExecutor {
         ManhuntTeam team = TeamManager.getTeam(p);
 
         if (team == null) {
-            MinecraftManhuntPlugin.sendErrorMsg(p, "You aren't on a team. Use /"+ MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " to join a team.");
+            MinecraftManhuntPlugin.sendErrorMsg(p, "You aren't on a team. Use /" + MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " to join a team.");
             return true;
         }
 

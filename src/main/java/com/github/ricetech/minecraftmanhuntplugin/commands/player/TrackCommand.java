@@ -150,7 +150,7 @@ public class TrackCommand implements CommandExecutor {
                     "Coordinates: (" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ").\n" +
                     "Horizontal Distance: " + distance + " blocks.\n" +
                     "Vertical Distance: " + heightDiffString + heightDiff + " blocks.");
-        // Tracking for enemies (Approx location)
+            // Tracking for enemies (Approx location)
         } else {
             String distanceString;
             if (distance > DISTANCE_THRESHOLD_5) {
