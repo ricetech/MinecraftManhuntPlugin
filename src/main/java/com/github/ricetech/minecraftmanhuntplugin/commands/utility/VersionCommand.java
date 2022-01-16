@@ -1,6 +1,9 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands.utility;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,6 +24,15 @@ public class VersionCommand implements CommandExecutor {
         String version = this.manhuntPlugin.getDescription().getVersion();
 
         sender.sendMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Minecraft Manhunt Plugin v" + version);
+
+        ComponentBuilder builder = new ComponentBuilder(MinecraftManhuntPlugin.GAME_MSG_COLOR_BUNGEE + "Plugin website: ");
+        TextComponent websiteLink = new TextComponent("https://github.com/ricetech/MinecraftManhuntPlugin");
+        websiteLink.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/ricetech/MinecraftManhuntPlugin"));
+        websiteLink.setColor(MinecraftManhuntPlugin.GAME_MSG_COLOR_BUNGEE);
+
+        builder.append(websiteLink);
+
+        sender.spigot().sendMessage(builder.create());
         return true;
     }
 }
