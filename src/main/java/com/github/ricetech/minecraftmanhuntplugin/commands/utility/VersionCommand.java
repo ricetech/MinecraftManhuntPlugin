@@ -3,7 +3,9 @@ package com.github.ricetech.minecraftmanhuntplugin.commands.utility;
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,6 +31,7 @@ public class VersionCommand implements CommandExecutor {
         TextComponent websiteLink = new TextComponent("https://github.com/ricetech/MinecraftManhuntPlugin");
         websiteLink.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/ricetech/MinecraftManhuntPlugin"));
         websiteLink.setColor(MinecraftManhuntPlugin.GAME_MSG_COLOR_BUNGEE);
+        websiteLink.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Open the Plugin website")));
 
         builder.append(websiteLink);
 
