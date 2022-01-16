@@ -68,6 +68,10 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final net.md_5.bungee.api.ChatColor HUNTERS_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.RED;
     public static final net.md_5.bungee.api.ChatColor SPECTATORS_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.GOLD;
 
+    public static final net.md_5.bungee.api.ChatColor GAME_MSG_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.AQUA;
+    public static final net.md_5.bungee.api.ChatColor WARNING_MSG_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.YELLOW;
+    public static final net.md_5.bungee.api.ChatColor WHISPER_MSG_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.GRAY;
+
     // Title settings
     public static final int TITLE_FADE_IN = 10;
     public static final int TITLE_STAY = 70;
