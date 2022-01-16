@@ -9,7 +9,9 @@ import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,10 +27,12 @@ public class PlayerEliminationOnDeathListener implements Listener {
         TextComponent playerComponent = new TextComponent("[Player]");
         playerComponent.setColor(ChatColor.RED);
         playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.SELF_ELIMINATE_COMMAND_ALIAS));
+        playerComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click if you died to a player")));
 
         TextComponent naturalCausesComponent = new TextComponent("[Natural Causes]");
         naturalCausesComponent.setColor(ChatColor.DARK_BLUE);
         naturalCausesComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS));
+        naturalCausesComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click if you died to natural causes")));
 
         builderDeathConfirmMsg
                 .append(playerComponent)

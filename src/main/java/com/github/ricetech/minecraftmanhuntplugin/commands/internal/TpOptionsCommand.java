@@ -5,7 +5,9 @@ import com.github.ricetech.minecraftmanhuntplugin.commands.internal.TeamTpComman
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -38,9 +40,11 @@ public class TpOptionsCommand implements CommandExecutor {
             yes.setColor(net.md_5.bungee.api.ChatColor.GREEN);
             yes.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TEAM_TP_COMMAND_ALIAS
                     + " " + TeamTpCommand.SELF_TP_ARG));
+            yes.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to teleport to your death location")));
             TextComponent no = new TextComponent("[No]");
             no.setColor(net.md_5.bungee.api.ChatColor.RED);
             no.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.RESET_ELIGIBILITY_COMMAND_ALIAS));
+            no.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to continue playing without teleporting")));
 
             teleportMsg.append(" ").append(yes).append(" ").append(no);
 
@@ -55,6 +59,9 @@ public class TpOptionsCommand implements CommandExecutor {
                 playerComponent.setColor(teamColor);
                 playerComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" +
                         MinecraftManhuntPlugin.TEAM_TP_COMMAND_ALIAS + " " + playerOption.getName()));
+                playerComponent.setHoverEvent(
+                        new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to teleport to " + teamColor + playerOption.getName()))
+                );
 
                 // Append to message builder
                 selectPlayerMsg.append(" ");

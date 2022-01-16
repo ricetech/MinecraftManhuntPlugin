@@ -5,7 +5,10 @@ import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -37,14 +40,17 @@ public class TeamSwitchCommand implements CommandExecutor {
         TextComponent runnersComponent = new TextComponent("[RUNNERS]");
         runnersComponent.setColor(MinecraftManhuntPlugin.RUNNERS_COLOR_BUNGEE);
         runnersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " runners"));
+        runnersComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to join the" + MinecraftManhuntPlugin.RUNNERS_COLOR + " RUNNERS " + ChatColor.RESET + "team")));
 
         TextComponent huntersComponent = new TextComponent("[HUNTERS]");
         huntersComponent.setColor(MinecraftManhuntPlugin.HUNTERS_COLOR_BUNGEE);
         huntersComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " hunters"));
+        huntersComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to join the" + MinecraftManhuntPlugin.HUNTERS_COLOR + " HUNTERS " + ChatColor.RESET + "team")));
 
         TextComponent spectatorsComponent = new TextComponent("[SPECTATORS]");
         spectatorsComponent.setColor(MinecraftManhuntPlugin.SPECTATORS_COLOR_BUNGEE);
         spectatorsComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + MinecraftManhuntPlugin.TEAM_SWITCH_COMMAND_ALIAS + " spectators"));
+        spectatorsComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to join the" + MinecraftManhuntPlugin.SPECTATORS_COLOR + " SPECTATORS " + ChatColor.RESET + "team")));
 
         builderSelectTeamMsg
                 .append(" ")
