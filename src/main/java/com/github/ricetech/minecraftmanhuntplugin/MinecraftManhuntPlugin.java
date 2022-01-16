@@ -1,6 +1,5 @@
 package com.github.ricetech.minecraftmanhuntplugin;
 
-import com.github.ricetech.minecraftmanhuntplugin.commands.utility.VersionCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.game.*;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.ResetEligibilityCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.internal.SelfEliminateCommand;
@@ -12,6 +11,7 @@ import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPortalCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.CountdownCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.ResetCommand;
+import com.github.ricetech.minecraftmanhuntplugin.commands.utility.VersionCommand;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;

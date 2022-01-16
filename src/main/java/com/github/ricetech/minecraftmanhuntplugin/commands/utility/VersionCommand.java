@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class VersionCommand implements CommandExecutor {
     private final MinecraftManhuntPlugin manhuntPlugin;
 
-    public VersionCommand(MinecraftManhuntPlugin manhuntPlugin){
+    public VersionCommand(MinecraftManhuntPlugin manhuntPlugin) {
         this.manhuntPlugin = manhuntPlugin;
     }
 

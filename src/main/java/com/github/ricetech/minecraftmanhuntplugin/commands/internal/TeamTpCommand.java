@@ -66,9 +66,9 @@ public class TeamTpCommand implements CommandExecutor {
             Location deathLoc = PlayerDeathLocationStorageListener.getLatestDeathLoc(p);
 
             if (deathLoc == null) {
-               MinecraftManhuntPlugin.sendErrorMsg(sender, "You do not have a valid death location saved.");
-               eligibility.put(p.getName(), false);
-               return true;
+                MinecraftManhuntPlugin.sendErrorMsg(sender, "You do not have a valid death location saved.");
+                eligibility.put(p.getName(), false);
+                return true;
             }
 
             eligibility.put(p.getName(), false);
@@ -116,8 +116,8 @@ public class TeamTpCommand implements CommandExecutor {
             Bukkit.broadcastMessage(
                     MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(p)) + p.getName() + ChatColor.RESET +
                             " is teleporting to " +
-                    MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(target)) + target.getName() +
-                            ChatColor.RESET +".");
+                            MinecraftManhuntPlugin.getBukkitTeamColor(TeamManager.getTeam(target)) + target.getName() +
+                            ChatColor.RESET + ".");
 
             p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Alert: You will be teleported to " + target.getName() + " in " +
                     SAFETY_DELAY_SECONDS + secondsWord + ".");

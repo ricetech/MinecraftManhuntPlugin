@@ -132,9 +132,9 @@ public class TeamManager {
             ManhuntTeam teamToCheck = getTeam(p.getName());
             if (
                     (teamToCheck == targetTeam ||
-                    (targetTeam == ManhuntTeam.RUNNERS && teamToCheck == ManhuntTeam.ELIMINATED) ||
-                    (targetTeam == ManhuntTeam.ELIMINATED && teamToCheck == ManhuntTeam.RUNNERS)
-            ) && p != targetPlayer) {
+                            (targetTeam == ManhuntTeam.RUNNERS && teamToCheck == ManhuntTeam.ELIMINATED) ||
+                            (targetTeam == ManhuntTeam.ELIMINATED && teamToCheck == ManhuntTeam.RUNNERS)
+                    ) && p != targetPlayer) {
                 players.add(p);
             }
         }
