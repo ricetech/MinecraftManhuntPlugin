@@ -7,12 +7,14 @@ Keep reading to find the rules for this version of manhunt as well as the availa
 
 Not sure what Minecraft Manhunt is? It's a Minecraft adaptation of Manhunt, where a team of Runners
 tries to complete an objective without getting killed by the Hunters. Check out the
-[How to Play](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Guide-for-Players) page for more information on how the game works!
+[Guide for Players](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Guide-for-Players) for more information on how the game works!
+
+Note: This plugin does not work on Bukkit servers. You need to use either Spigot or Paper.
 
 ## Rules & How to Play
 
 To find out how to play and see the rules, check out the 
-[How to Play](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Guide-for-Players) guide.
+[Guide for Players](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Guide-for-Players).
 
 ## Installation
 
