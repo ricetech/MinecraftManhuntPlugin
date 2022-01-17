@@ -43,7 +43,7 @@ commands:
     usage: "Usage: /reset"
     permission: mmh.player
   manhuntversion:
-    description: Returns the version of this plugin.
+    description: Shows the version and website of this plugin.
     usage: "Usage: /manhuntversion"
     permission: mmh.player
   # Player

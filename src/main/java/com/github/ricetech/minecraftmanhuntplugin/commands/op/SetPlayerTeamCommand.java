@@ -37,7 +37,7 @@ public class SetPlayerTeamCommand implements CommandExecutor {
         ManhuntTeam newTeam = TeamManager.getTeam(p);
         ChatColor newTeamColor = MinecraftManhuntPlugin.getBukkitTeamColor(newTeam);
 
-        Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + p.getName() + " has been switched to the " + newTeamColor +
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + p.getName() + " has been moved to the " + newTeamColor +
                 newTeam.name().toLowerCase() + " team.");
 
         return true;
