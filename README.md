@@ -11,11 +11,8 @@ tries to complete an objective without getting killed by the Hunters. Check out 
 
 ## Rules & How to Play
 
-For a quick guide on how to play the game and use commands during the game, check out the 
+To find out how to play and see the rules, check out the 
 [How to Play](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Guide-for-Players) guide.
-
-For a full breakdown on the suggested rules to play with, check out the
-[Rules](https://github.com/ricetech/MinecraftManhuntPlugin/wiki/Full-Rules) page.
 
 ## Installation
 
