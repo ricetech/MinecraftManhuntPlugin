@@ -76,7 +76,7 @@ public class TeamTpCommand implements CommandExecutor {
             SelfEliminateCommand.setEligibility(p.getName(), false);
 
             // Make player invincible for 25 seconds
-            p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, INVINCIBILITY_DURATION_SECONDS, 255));
+            p.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, INVINCIBILITY_DURATION_SECONDS, 255));
 
             // Announce TP
             Bukkit.broadcastMessage(MinecraftManhuntPlugin.RUNNERS_COLOR + p.getName() + " is teleporting to their " +

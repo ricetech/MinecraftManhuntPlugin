@@ -2,7 +2,7 @@ name: MinecraftManhuntPlugin
 description: Play Manhunt on your Spigot/Paper Minecraft server!
 version: 1.0.2
 main: com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin
-api-version: 1.18
+api-version: 1.21.1
 author: the_ricetech
 authors:
   - jonapap
