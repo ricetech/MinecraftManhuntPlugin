@@ -185,7 +185,6 @@ public class TrackCommand implements CommandExecutor {
                 heightDiffString = "A good distance above you";
             } else {
                 heightDiffString = "Very far above you";
-                Bukkit.getLogger().log(Level.INFO, "Else triggered, diff " + heightDiff);
             }
             source.sendMessage("Tracking " + targetColor + targetName + ".");
             source.sendMessage("Distance: " + distanceString);
