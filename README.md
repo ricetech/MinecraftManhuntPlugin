@@ -45,6 +45,7 @@ page for more information on available commands.
 - Reset command
   - Easily prepare the world for a new game of Manhunt
   - Resets things such as time, health and hunger with just one command
+- Automatic Night Vision for all players
 - Team Management
   - Pre-made Runners, Hunters, Eliminated and Spectators teams
   - Includes commands and interactive messages to switch teams

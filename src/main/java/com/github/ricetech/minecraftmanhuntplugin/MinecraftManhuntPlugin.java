@@ -97,6 +97,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new CompassInventoryHandlerListener(), this);
         manager.registerEvents(new CompassTrackListener(), this);
         manager.registerEvents(new FireResistanceOnPortalListener(), this);
+        manager.registerEvents(new NightVisionListener(), this);
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
         manager.registerEvents(new PlayerDeathLocationStorageListener(), this);
         manager.registerEvents(new PlayerDisconnectLocationStorageListener(this), this);
