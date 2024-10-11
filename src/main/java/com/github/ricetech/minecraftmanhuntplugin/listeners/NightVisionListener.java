@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 @SuppressWarnings("unused")
 public class NightVisionListener implements Listener {
     public static void applyNightVision(Player player) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0, false, false));
     }
 
     @EventHandler
