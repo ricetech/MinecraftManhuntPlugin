@@ -81,12 +81,6 @@ commands:
       Remove a death from a player's Death counter.
     usage: "Usage: /removedeath <player>"
     permission: mmh.correction
-  restoreinventory:
-    description: >
-      Offer a player's previous inventory (stored at the point where they died) to the player to allow them to
-      select items to restore.
-    usage: "Usage: /restoreinventory <player>"
-    permission: mmh.correction
   setplayerteam:
     description: Forcibly change a player's team, whether they are eligible to switch or not.
     usage: "Usage: /setplayerteam <player> <runners|eliminated|hunters|spectators>"

@@ -42,7 +42,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String ELIMINATE_COMMAND_ALIAS = "eliminate";
     public static final String OFFER_TEAM_TP_COMMAND_ALIAS = "offerteamtp";
     public static final String REMOVE_DEATH_COMMAND_ALIAS = "removedeath";
-    public static final String RESTORE_INVENTORY_COMMAND_ALIAS = "restoreinventory";
     public static final String SET_PLAYER_TEAM_COMMAND_ALIAS = "setplayerteam";
     public static final String UN_ELIMINATE_COMMAND_ALIAS = "uneliminate";
     // Internal Use
@@ -102,7 +101,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new PlayerDeathLocationStorageListener(), this);
         manager.registerEvents(new PlayerDisconnectLocationStorageListener(this), this);
         manager.registerEvents(new PlayerEliminationOnDeathListener(), this);
-        manager.registerEvents(new PlayerInventoryStorageListener(), this);
         manager.registerEvents(new PlayerPortalLocationStorageListener(this), this);
 
         // Register Commands
@@ -124,7 +122,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(ELIMINATE_COMMAND_ALIAS).setExecutor(new EliminatePlayerCommand());
         this.getCommand(OFFER_TEAM_TP_COMMAND_ALIAS).setExecutor(new OfferTeamTpCommand());
         this.getCommand(REMOVE_DEATH_COMMAND_ALIAS).setExecutor(new RemoveDeathCommand());
-        this.getCommand(RESTORE_INVENTORY_COMMAND_ALIAS).setExecutor(new RestoreInventoryCommand());
         this.getCommand(SET_PLAYER_TEAM_COMMAND_ALIAS).setExecutor(new SetPlayerTeamCommand());
         this.getCommand(UN_ELIMINATE_COMMAND_ALIAS).setExecutor(new UnEliminatePlayerCommand());
         // Internal Use
@@ -153,7 +150,6 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(ELIMINATE_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(OFFER_TEAM_TP_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(REMOVE_DEATH_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
-        this.getCommand(RESTORE_INVENTORY_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(SET_PLAYER_TEAM_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(UN_ELIMINATE_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         // Internal Use
