@@ -124,7 +124,7 @@ public class TrackCommand implements CommandExecutor {
         int sourceY = sourceLoc.getBlockY();
         int targetY = targetLoc.getBlockY();
 
-        int heightDiff = sourceY - targetY;
+        int heightDiff = targetY - sourceY;
 
         ManhuntTeam sourceTeam = TeamManager.getTeam(source);
         ManhuntTeam targetTeam = TeamManager.getTeam(targetName);
@@ -171,20 +171,20 @@ public class TrackCommand implements CommandExecutor {
 
             String heightDiffString;
 
-            if (heightDiff >= -CLOSE_Y_THRESHOLD && heightDiff <= CLOSE_Y_THRESHOLD) {
-                heightDiffString = "Around the same y-level as you";
-            } else if (heightDiff > CLOSE_Y_THRESHOLD && heightDiff <= MEDIUM_Y_THRESHOLD) {
-                heightDiffString = "Slightly below you";
-            } else if (heightDiff > MEDIUM_Y_THRESHOLD && heightDiff <= FAR_Y_THRESHOLD) {
-                heightDiffString = "A good distance below you";
-            } else if (heightDiff > FAR_Y_THRESHOLD) {
-                heightDiffString = "Very far below you";
-            } else if (heightDiff >= -MEDIUM_Y_THRESHOLD) {
-                heightDiffString = "Slightly above you";
-            } else if (heightDiff >= -FAR_Y_THRESHOLD) {
-                heightDiffString = "A good distance above you";
-            } else {
+            if (heightDiff > FAR_Y_THRESHOLD) {
                 heightDiffString = "Very far above you";
+            } else if (heightDiff > MEDIUM_Y_THRESHOLD) {
+                heightDiffString = "A good distance above you";
+            } else if (heightDiff > CLOSE_Y_THRESHOLD) {
+                heightDiffString = "Slightly above you";
+            } else if (heightDiff > -CLOSE_Y_THRESHOLD) {
+                heightDiffString = "Around the same y-level as you";
+            } else if (heightDiff > -MEDIUM_Y_THRESHOLD) {
+                heightDiffString = "Slightly below you";
+            } else if (heightDiff > -FAR_Y_THRESHOLD) {
+                heightDiffString = "A good distance below you";
+            } else {
+                heightDiffString = "Very far below you";
             }
             source.sendMessage("Tracking " + targetColor + targetName + ".");
             source.sendMessage("Distance: " + distanceString);
