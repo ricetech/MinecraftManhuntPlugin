@@ -21,6 +21,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -31,7 +32,9 @@ public class ResetCommand implements CommandExecutor {
     public static void resetPlayer(Player p) {
         // Remove effects
         for (PotionEffect effect : p.getActivePotionEffects()) {
-            p.removePotionEffect(effect.getType());
+            if (effect.getType() != PotionEffectType.NIGHT_VISION) {
+                p.removePotionEffect(effect.getType());
+            }
         }
 
         // Clear inventory
