@@ -23,7 +23,7 @@ public class TrackCommand implements CommandExecutor {
     // Safe keyword since Minecraft usernames cannot contain spaces
     public static final String PORTAL_NAME_KEY = "your portal";
 
-    public static final int CLOSE_Y_THRESHOLD = 10;
+    public static final int CLOSE_Y_THRESHOLD = 7;
     public static final int MEDIUM_Y_THRESHOLD = 25;
     public static final int FAR_Y_THRESHOLD = 50;
 
@@ -171,21 +171,30 @@ public class TrackCommand implements CommandExecutor {
 
             String heightDiffString;
 
-            if (heightDiff > FAR_Y_THRESHOLD) {
-                heightDiffString = "Very far above you";
-            } else if (heightDiff > MEDIUM_Y_THRESHOLD) {
-                heightDiffString = "A good distance above you";
-            } else if (heightDiff > CLOSE_Y_THRESHOLD) {
-                heightDiffString = "Slightly above you";
+            if (heightDiff > CLOSE_Y_THRESHOLD) {
+                heightDiffString = "Above you";
             } else if (heightDiff > -CLOSE_Y_THRESHOLD) {
                 heightDiffString = "Around the same y-level as you";
-            } else if (heightDiff > -MEDIUM_Y_THRESHOLD) {
-                heightDiffString = "Slightly below you";
-            } else if (heightDiff > -FAR_Y_THRESHOLD) {
-                heightDiffString = "A good distance below you";
             } else {
-                heightDiffString = "Very far below you";
+                heightDiffString = "Below you";
             }
+
+
+//            if (heightDiff > FAR_Y_THRESHOLD) {
+//                heightDiffString = "Very far above you";
+//            } else if (heightDiff > MEDIUM_Y_THRESHOLD) {
+//                heightDiffString = "A good distance above you";
+//            } else if (heightDiff > CLOSE_Y_THRESHOLD) {
+//                heightDiffString = "Slightly above you";
+//            } else if (heightDiff > -CLOSE_Y_THRESHOLD) {
+//                heightDiffString = "Around the same y-level as you";
+//            } else if (heightDiff > -MEDIUM_Y_THRESHOLD) {
+//                heightDiffString = "Slightly below you";
+//            } else if (heightDiff > -FAR_Y_THRESHOLD) {
+//                heightDiffString = "A good distance below you";
+//            } else {
+//                heightDiffString = "Very far below you";
+//            }
             source.sendMessage("Tracking " + targetColor + targetName + ".");
             source.sendMessage("Distance: " + distanceString);
             source.sendMessage("Height: " + heightDiffString);
