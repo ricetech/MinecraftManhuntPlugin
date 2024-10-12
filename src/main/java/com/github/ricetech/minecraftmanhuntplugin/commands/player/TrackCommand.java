@@ -196,8 +196,8 @@ public class TrackCommand implements CommandExecutor {
 //                heightDiffString = "Very far below you";
 //            }
             source.sendMessage("Tracking " + targetColor + targetName + ".");
-            source.sendMessage("Distance: " + distanceString);
-            source.sendMessage("Height: " + heightDiffString);
+            source.sendMessage("Horizontal Distance: " + distanceString);
+            source.sendMessage("Vertical Distance: " + heightDiffString);
         }
     }
 
