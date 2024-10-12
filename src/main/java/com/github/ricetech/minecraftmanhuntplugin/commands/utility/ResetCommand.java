@@ -121,7 +121,7 @@ public class ResetCommand implements CommandExecutor {
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (TeamManager.getTeam(p) == ManhuntTeam.SPECTATORS) {
-                    p.sendMessage(MinecraftManhuntPlugin.SPECTATORS_COLOR + "You have been granted all advancements to " +
+                    p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "You have been granted all advancements to " +
                             "avoid spoiling game progress to other players. Unfortunately, there is no way to do that " +
                             "without blasting you with sound. We apologize, and you can turn up your volume in a minute " +
                             "or two once the popups stop appearing.");

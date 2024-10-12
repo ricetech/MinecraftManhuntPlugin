@@ -205,7 +205,7 @@ public class TeamManager {
                 spectators.addEntry(p.getName());
                 p.setGameMode(GameMode.SPECTATOR);
                 p.sendMessage("You have joined the" + MinecraftManhuntPlugin.SPECTATORS_COLOR + " Spectators team.");
-                p.sendMessage(MinecraftManhuntPlugin.SPECTATORS_COLOR + "WARNING: You will be granted all advancements " +
+                p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "WARNING: You will be granted all advancements " +
                         "when the game starts. When that happens, it will be loud. " +
                         "It is suggested to lower your game volume until all of the popups go away.");
             }
