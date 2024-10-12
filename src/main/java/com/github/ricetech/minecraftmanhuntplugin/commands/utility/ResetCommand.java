@@ -104,8 +104,15 @@ public class ResetCommand implements CommandExecutor {
             }
         }
 
+        overworld.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
+
         // Revoke all advancements
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a everything");
+
+        // Grant all advancements to spectators
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement grant @a[team=" + TeamManager.getSpectators().getName() + "] everything");
+
+        overworld.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, true);
 
         // Reset plugin state
         PlayerDeathLocationStorageListener.reset();
