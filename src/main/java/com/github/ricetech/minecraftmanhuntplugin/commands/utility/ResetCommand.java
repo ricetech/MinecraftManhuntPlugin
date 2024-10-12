@@ -118,6 +118,16 @@ public class ResetCommand implements CommandExecutor {
 
         // Grant all advancements to spectators
         Bukkit.getScheduler().runTaskLater(plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement grant @a[team=" + TeamManager.getSpectators().getName() + "] everything"), 20L);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (TeamManager.getTeam(p) == ManhuntTeam.SPECTATORS) {
+                    p.sendMessage(MinecraftManhuntPlugin.SPECTATORS_COLOR + "You have been granted all advancements to " +
+                            "avoid spoiling game progress to other players. Unfortunately, there is no way to do that " +
+                            "without blasting you with sound. We apologize, and you can turn up your volume in a minute " +
+                            "or two once the popups stop appearing.");
+                }
+            }
+        }, 20L);
 
         Bukkit.getScheduler().runTaskLater(plugin, () -> overworld.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, true), 30L);
 
