@@ -20,6 +20,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
@@ -29,6 +30,12 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("unused")
 public class ResetCommand implements CommandExecutor {
+    private final JavaPlugin plugin;
+
+    public ResetCommand(JavaPlugin plugin) {
+        this.plugin = plugin;
+    }
+
     public static void resetPlayer(Player p) {
         // Remove effects
         for (PotionEffect effect : p.getActivePotionEffects()) {
@@ -82,7 +89,7 @@ public class ResetCommand implements CommandExecutor {
         p.setLevel(0);
     }
 
-    public static void runReset() {
+    public static void runReset(JavaPlugin plugin) {
         World overworld = Bukkit.getServer().getWorlds().get(0);
 
         for (Player p : Bukkit.getOnlinePlayers()) {
@@ -107,12 +114,12 @@ public class ResetCommand implements CommandExecutor {
         overworld.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
 
         // Revoke all advancements
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a everything");
+        Bukkit.getScheduler().runTaskLater(plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a everything"), 10L);
 
         // Grant all advancements to spectators
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement grant @a[team=" + TeamManager.getSpectators().getName() + "] everything");
+        Bukkit.getScheduler().runTaskLater(plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement grant @a[team=" + TeamManager.getSpectators().getName() + "] everything"), 20L);
 
-        overworld.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, true);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> overworld.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, true), 30L);
 
         // Reset plugin state
         PlayerDeathLocationStorageListener.reset();
@@ -134,7 +141,7 @@ public class ResetCommand implements CommandExecutor {
             return true;
         }
 
-        runReset();
+        runReset(this.plugin);
 
         return true;
     }

@@ -7,9 +7,16 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class StartGameCommand implements CommandExecutor {
+    private final JavaPlugin plugin;
+
+    public StartGameCommand(JavaPlugin plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         int seconds;
@@ -52,7 +59,7 @@ public class StartGameCommand implements CommandExecutor {
         }
 
         if (reset) {
-            ResetCommand.runReset();
+            ResetCommand.runReset(this.plugin);
         }
 
         ListTeamsCommand.listTeams(false, null);

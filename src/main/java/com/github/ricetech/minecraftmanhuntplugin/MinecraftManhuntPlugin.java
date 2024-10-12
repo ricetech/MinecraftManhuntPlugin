@@ -107,11 +107,11 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Game Management
         this.getCommand(CLEAR_TEAMS_COMMAND_ALIAS).setExecutor(new ClearTeamsCommand());
         this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setExecutor(new MakeTeamsCommand());
-        this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand());
+        this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand());
         // Utilities
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
-        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand());
+        this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this));
         this.getCommand(VERSION_COMMAND_ALIAS).setExecutor(new VersionCommand(this));
         // Player
         this.getCommand(LIST_TEAMS_COMMAND_ALIAS).setExecutor(new ListTeamsCommand());
