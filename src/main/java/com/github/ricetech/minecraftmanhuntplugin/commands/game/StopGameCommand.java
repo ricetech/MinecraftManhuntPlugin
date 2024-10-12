@@ -2,6 +2,8 @@ package com.github.ricetech.minecraftmanhuntplugin.commands.game;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,6 +28,11 @@ public class StopGameCommand implements CommandExecutor {
                     MinecraftManhuntPlugin.TITLE_FADE_IN, MinecraftManhuntPlugin.TITLE_STAY, MinecraftManhuntPlugin.TITLE_FADE_OUT);
         }
         Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: Game Over! The game was stopped manually.");
+
+        // Stop time
+        World overworld = Bukkit.getServer().getWorlds().getFirst();
+        overworld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
+        overworld.setTime(6000L);
         return true;
     }
 }

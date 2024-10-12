@@ -16,7 +16,9 @@ import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.*;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameRule;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
@@ -159,6 +161,11 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(SELF_ELIMINATE_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(TEAM_TP_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(TP_OPTIONS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+
+        // Stop time
+        World overworld = Bukkit.getServer().getWorlds().getFirst();
+        overworld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
+        overworld.setTime(6000L);
     }
 
     @Override
