@@ -3,6 +3,7 @@ package com.github.ricetech.minecraftmanhuntplugin.commands.player;
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
+import com.github.ricetech.minecraftmanhuntplugin.data.TrackType;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.CompassInventoryHandlerListener;
 import org.bukkit.*;
 import org.bukkit.command.Command;
@@ -17,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 public class TrackCommand implements CommandExecutor {
     // Safe keyword since Minecraft usernames cannot contain spaces
@@ -112,7 +112,14 @@ public class TrackCommand implements CommandExecutor {
         }
     }
 
-    private static void sendTrackUpdate(@NotNull Player source, @NotNull Location sourceLoc, @NotNull String targetName, @NotNull Location targetLoc) {
+    private static void sendTrackUpdate(
+            @NotNull Player source,
+            @NotNull Location sourceLoc,
+            @NotNull String targetName,
+            @NotNull Location targetLoc,
+            @NotNull World.Environment targetDimension,
+            @NotNull TrackType trackType
+            ) {
         long distance;
         try {
             distance = Math.round(sourceLoc.distance(targetLoc));
@@ -134,6 +141,14 @@ public class TrackCommand implements CommandExecutor {
         // Update compass
         updateCompass(source, targetLoc);
 
+        String dimension = MinecraftManhuntPlugin.getDimensionName(targetDimension);
+        String trackTypeMsg = switch (trackType) {
+            case NORMAL -> null;
+            case OWN_PORTAL_2DIM -> "Tracking YOUR exit portal. You can track the target's portal once in the Overworld.";
+            case OWN_PORTAL_NO_TARGET_PORTAL -> "Tracking YOUR exit portal. The target doesn't have one.";
+            case TARGET_PORTAL -> "Tracking the target's portal.";
+        };
+
         // Tracking for teammates and Spectators (Precise location)
         if (sourceTeam == targetTeam || sourceTeam == ManhuntTeam.SPECTATORS || targetName.equals(PORTAL_NAME_KEY) ||
                 (sourceTeam == ManhuntTeam.RUNNERS && targetTeam == ManhuntTeam.ELIMINATED) ||
@@ -149,9 +164,13 @@ public class TrackCommand implements CommandExecutor {
             source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ".\n" +
                     "Coordinates: (" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ").\n" +
                     "Horizontal Distance: " + distance + " blocks.\n" +
-                    "Vertical Distance: " + heightDiffString + heightDiff + " blocks.");
-            // Tracking for enemies (Approx location)
+                    "Vertical Distance: " + heightDiffString + heightDiff + " blocks.\n" +
+                    "Dimension: " + dimension);
+            if (trackTypeMsg != null) {
+                source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + trackTypeMsg);
+            }
         } else {
+            // Tracking for enemies (Approx location)
             String distanceString;
             if (distance > DISTANCE_THRESHOLD_5) {
                 // Floor round to nearest 1000
@@ -198,6 +217,10 @@ public class TrackCommand implements CommandExecutor {
             source.sendMessage("Tracking " + targetColor + targetName + ".");
             source.sendMessage("Horizontal Distance: " + distanceString);
             source.sendMessage("Vertical Distance: " + heightDiffString);
+            source.sendMessage("Dimension: " + dimension);
+            if (trackTypeMsg != null) {
+                source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + trackTypeMsg);
+            }
         }
     }
 
@@ -238,7 +261,7 @@ public class TrackCommand implements CommandExecutor {
             return;
         }
 
-        sendTrackUpdate(p, p.getLocation(), PORTAL_NAME_KEY, portalLoc);
+        sendTrackUpdate(p, p.getLocation(), PORTAL_NAME_KEY, portalLoc, portalEnv, TrackType.NORMAL);
     }
 
     public static void trackPlayer(Player source, @NotNull String targetName) {
@@ -308,7 +331,7 @@ public class TrackCommand implements CommandExecutor {
             MinecraftManhuntPlugin.sendErrorMsg(source, "Tracking is not supported in Custom Worlds. Please contact the developer.");
         } else if (sourceWorldEnv == targetWorldEnv) {
             // Same world, track normally
-            sendTrackUpdate(source, sourceLoc, targetName, targetLoc);
+            sendTrackUpdate(source, sourceLoc, targetName, targetLoc, targetWorldEnv, TrackType.NORMAL);
         } else if ((sourceWorldEnv == World.Environment.NETHER && targetWorldEnv == World.Environment.THE_END) ||
                 (sourceWorldEnv == World.Environment.THE_END && targetWorldEnv == World.Environment.NETHER)) {
             // Not the same world, not overworld. Track the source player's own exit portal.
@@ -316,7 +339,7 @@ public class TrackCommand implements CommandExecutor {
             if (sourceExitPortal == null) {
                 MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
             } else {
-                sendTrackUpdate(source, sourceLoc, targetName, sourceExitPortal);
+                sendTrackUpdate(source, sourceLoc, targetName, sourceExitPortal, targetWorldEnv, TrackType.OWN_PORTAL_2DIM);
             }
         } else if (sourceWorldEnv != World.Environment.NORMAL && targetWorldEnv == World.Environment.NORMAL) {
             // Target in overworld, source not in overworld.
@@ -332,7 +355,7 @@ public class TrackCommand implements CommandExecutor {
                 World.Environment targetExitPortalEnv = targetExitPortalWorld.getEnvironment();
                 // Since portalExits stores both Nether and End portals, need to check for same world first
                 if (targetExitPortalEnv == sourceWorldEnv) {
-                    sendTrackUpdate(source, sourceLoc, targetName, targetExitPortal);
+                    sendTrackUpdate(source, sourceLoc, targetName, targetExitPortal, targetWorldEnv, TrackType.TARGET_PORTAL);
                     return;
                 }
             }
@@ -342,9 +365,7 @@ public class TrackCommand implements CommandExecutor {
             if (sourceExitPortal == null) {
                 MinecraftManhuntPlugin.sendErrorMsg(source, "The location of your exit portal is invalid and cannot be tracked.");
             } else {
-                source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Warning: The target doesn't have a valid " +
-                        "exit portal. Tracking your exit portal instead.");
-                sendTrackUpdate(source, sourceLoc, targetName, sourceExitPortal);
+                sendTrackUpdate(source, sourceLoc, targetName, sourceExitPortal, targetWorldEnv, TrackType.OWN_PORTAL_NO_TARGET_PORTAL);
             }
         } else {
             // Source is in the overworld, target in Nether/The End. Track the target's entry portal.
@@ -366,7 +387,7 @@ public class TrackCommand implements CommandExecutor {
                 return;
             }
 
-            sendTrackUpdate(source, sourceLoc, targetName, targetEntryPortal);
+            sendTrackUpdate(source, sourceLoc, targetName, targetEntryPortal, targetWorldEnv, TrackType.TARGET_PORTAL);
         }
     }
 

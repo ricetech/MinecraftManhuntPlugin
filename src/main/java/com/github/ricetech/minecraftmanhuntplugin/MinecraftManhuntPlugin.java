@@ -17,6 +17,7 @@ import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.*;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -197,5 +198,14 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         } else {
             return net.md_5.bungee.api.ChatColor.RESET;
         }
+    }
+
+    public static String getDimensionName(World.Environment e) {
+        return switch (e) {
+            case NORMAL -> "Overworld";
+            case NETHER -> "The Nether";
+            case THE_END -> "The End";
+            case CUSTOM -> "Custom World (You should not be seeing this)";
+        };
     }
 }
