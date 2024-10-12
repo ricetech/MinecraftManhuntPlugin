@@ -165,7 +165,7 @@ public class TrackCommand implements CommandExecutor {
                     "Coordinates: (" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ").\n" +
                     "Horizontal Distance: " + distance + " blocks.\n" +
                     "Vertical Distance: " + Math.abs(heightDiff) + " blocks " + heightDiffString + " you.\n" +
-                    "Dimension: " + dimension);
+                    "Dimension: " + dimension + ".");
             if (trackTypeMsg != null) {
                 source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + trackTypeMsg);
             }
@@ -217,7 +217,7 @@ public class TrackCommand implements CommandExecutor {
             source.sendMessage("Tracking " + targetColor + targetName + ".");
             source.sendMessage("Horizontal Distance: " + distanceString);
             source.sendMessage("Vertical Distance: " + heightDiffString);
-            source.sendMessage("Dimension: " + dimension);
+            source.sendMessage("Dimension: " + dimension + ".");
             if (trackTypeMsg != null) {
                 source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + trackTypeMsg);
             }
