@@ -81,13 +81,15 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     // Milestone/Advancement Constants
     public static final Map<ManhuntMilestone, List<ManhuntMilestone>> milestones = Map.ofEntries(
             Map.entry(ManhuntMilestone.ENTER_NETHER, List.of()),
-            Map.entry(ManhuntMilestone.BLAZE_ROD, List.of(ManhuntMilestone.ENTER_NETHER)),
-            Map.entry(ManhuntMilestone.STRONGHOLD, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.BLAZE_ROD)),
-            Map.entry(ManhuntMilestone.THE_END, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.BLAZE_ROD, ManhuntMilestone.STRONGHOLD)),
-            Map.entry(ManhuntMilestone.KILL_DRAGON, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.BLAZE_ROD, ManhuntMilestone.STRONGHOLD, ManhuntMilestone.THE_END))
+            Map.entry(ManhuntMilestone.FORTRESS, List.of(ManhuntMilestone.ENTER_NETHER)),
+            Map.entry(ManhuntMilestone.BLAZE_ROD, List.of(ManhuntMilestone.FORTRESS, ManhuntMilestone.ENTER_NETHER)),
+            Map.entry(ManhuntMilestone.STRONGHOLD, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.FORTRESS, ManhuntMilestone.BLAZE_ROD)),
+            Map.entry(ManhuntMilestone.THE_END, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.FORTRESS, ManhuntMilestone.BLAZE_ROD, ManhuntMilestone.STRONGHOLD)),
+            Map.entry(ManhuntMilestone.KILL_DRAGON, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.FORTRESS, ManhuntMilestone.BLAZE_ROD, ManhuntMilestone.STRONGHOLD, ManhuntMilestone.THE_END))
     );
     public static final Map<ManhuntMilestone, String> milestoneAdvancements = Map.ofEntries(
             Map.entry(ManhuntMilestone.ENTER_NETHER, "entered_nether"),
+            Map.entry(ManhuntMilestone.FORTRESS, "fortress"),
             Map.entry(ManhuntMilestone.BLAZE_ROD, "blaze_rod"),
             Map.entry(ManhuntMilestone.STRONGHOLD, "in_stronghold"),
             Map.entry(ManhuntMilestone.THE_END, "entered_end"),

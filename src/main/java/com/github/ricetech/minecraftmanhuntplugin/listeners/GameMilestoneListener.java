@@ -21,6 +21,7 @@ public class GameMilestoneListener implements Listener {
     public static final String PREFIX_W = "Runners win by ";
     public static final Map<ManhuntMilestone, String> ANNOUNCEMENTS = Map.ofEntries(
             Map.entry(ManhuntMilestone.ENTER_NETHER,  "making it to the Nether"),
+            Map.entry(ManhuntMilestone.FORTRESS,  "finding a Fortress"),
             Map.entry(ManhuntMilestone.BLAZE_ROD,  "acquiring a Blaze Rod"),
             Map.entry(ManhuntMilestone.STRONGHOLD,  "finding a Stronghold"),
             Map.entry(ManhuntMilestone.THE_END,  "entering The End"),
