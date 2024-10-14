@@ -17,7 +17,7 @@ import java.util.Map;
 
 @SuppressWarnings("unused")
 public class GameMilestoneListener implements Listener {
-    public static final String PREFIX_I = "The runners have progressed by ";
+    public static final String PREFIX_I = "The Runners have progressed by ";
     public static final String PREFIX_W = "Runners win by ";
     public static final Map<ManhuntMilestone, String> ANNOUNCEMENTS = Map.ofEntries(
             Map.entry(ManhuntMilestone.ENTER_NETHER,  "making it to the Nether"),
@@ -39,7 +39,7 @@ public class GameMilestoneListener implements Listener {
             ManhuntTeam team = TeamManager.getTeam(p);
             // Runners win even if Hunters kill the dragon
             if (MinecraftManhuntPlugin.currentMilestone == ManhuntMilestone.KILL_DRAGON && criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(ManhuntMilestone.KILL_DRAGON))) {
-                StopGameCommand.stopGame(null, "Runners win by killing the Ender Dragon.");
+                StopGameCommand.stopGame(null, PREFIX_W + ANNOUNCEMENTS.get(MinecraftManhuntPlugin.currentMilestone));
             } else if (team == ManhuntTeam.RUNNERS) {  // Eliminated players cannot contribute towards milestones/objectives
                 // Check Objectives
                 if (criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(MinecraftManhuntPlugin.currentMilestone))) {

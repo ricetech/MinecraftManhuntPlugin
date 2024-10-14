@@ -38,7 +38,7 @@ public class StopGameCommand implements CommandExecutor {
         if (args.length != 0) {
             return false;
         }
-        stopGame(sender, "The game was stopped manually.");
+        stopGame(sender, "The game was stopped manually");
         return true;
     }
 }
