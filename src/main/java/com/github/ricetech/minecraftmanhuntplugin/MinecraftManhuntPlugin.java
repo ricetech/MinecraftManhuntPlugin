@@ -12,6 +12,7 @@ import com.github.ricetech.minecraftmanhuntplugin.commands.player.TrackPortalCom
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.CountdownCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.ResetCommand;
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.VersionCommand;
+import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntMilestone;
 import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
@@ -23,6 +24,9 @@ import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings({"unused", "DuplicatedCode"})
 public class MinecraftManhuntPlugin extends JavaPlugin {
@@ -74,6 +78,22 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final net.md_5.bungee.api.ChatColor WARNING_MSG_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.YELLOW;
     public static final net.md_5.bungee.api.ChatColor WHISPER_MSG_COLOR_BUNGEE = net.md_5.bungee.api.ChatColor.GRAY;
 
+    // Milestone/Advancement Constants
+    public static final Map<ManhuntMilestone, List<ManhuntMilestone>> milestones = Map.ofEntries(
+            Map.entry(ManhuntMilestone.ENTER_NETHER, List.of()),
+            Map.entry(ManhuntMilestone.BLAZE_ROD, List.of(ManhuntMilestone.ENTER_NETHER)),
+            Map.entry(ManhuntMilestone.STRONGHOLD, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.BLAZE_ROD)),
+            Map.entry(ManhuntMilestone.THE_END, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.BLAZE_ROD, ManhuntMilestone.STRONGHOLD)),
+            Map.entry(ManhuntMilestone.KILL_DRAGON, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.BLAZE_ROD, ManhuntMilestone.STRONGHOLD, ManhuntMilestone.THE_END))
+    );
+    public static final Map<ManhuntMilestone, String> milestoneAdvancements = Map.ofEntries(
+            Map.entry(ManhuntMilestone.ENTER_NETHER, "story/enter_the_nether"),
+            Map.entry(ManhuntMilestone.BLAZE_ROD, "nether/obtain_blaze_rod"),
+            Map.entry(ManhuntMilestone.STRONGHOLD, "story/follow_ender_eye"),
+            Map.entry(ManhuntMilestone.THE_END, "story/enter_the_end"),
+            Map.entry(ManhuntMilestone.KILL_DRAGON, "end/kill_dragon")
+    );
+
     // Title settings
     public static final int TITLE_FADE_IN = 10;
     public static final int TITLE_STAY = 70;
@@ -82,6 +102,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     // Internal variables
     public static boolean isGameInProgress = false;
     public static boolean isTeamSelectInProgress = false;
+    public static ManhuntMilestone currentMilestone = ManhuntMilestone.KILL_DRAGON;
 
     @SuppressWarnings("ConstantConditions")
     @Override
@@ -99,6 +120,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new CompassInventoryHandlerListener(), this);
         manager.registerEvents(new CompassTrackListener(), this);
         manager.registerEvents(new FireResistanceOnPortalListener(), this);
+        manager.registerEvents(new GameMilestoneListener(), this);
         manager.registerEvents(new NightVisionListener(this), this);
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
         manager.registerEvents(new PlayerDeathLocationStorageListener(), this);
