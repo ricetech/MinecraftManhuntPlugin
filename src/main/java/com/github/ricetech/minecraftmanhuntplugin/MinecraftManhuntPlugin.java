@@ -87,11 +87,11 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
             Map.entry(ManhuntMilestone.KILL_DRAGON, List.of(ManhuntMilestone.ENTER_NETHER, ManhuntMilestone.BLAZE_ROD, ManhuntMilestone.STRONGHOLD, ManhuntMilestone.THE_END))
     );
     public static final Map<ManhuntMilestone, String> milestoneAdvancements = Map.ofEntries(
-            Map.entry(ManhuntMilestone.ENTER_NETHER, "story/enter_the_nether"),
-            Map.entry(ManhuntMilestone.BLAZE_ROD, "nether/obtain_blaze_rod"),
-            Map.entry(ManhuntMilestone.STRONGHOLD, "story/follow_ender_eye"),
-            Map.entry(ManhuntMilestone.THE_END, "story/enter_the_end"),
-            Map.entry(ManhuntMilestone.KILL_DRAGON, "end/kill_dragon")
+            Map.entry(ManhuntMilestone.ENTER_NETHER, "entered_nether"),
+            Map.entry(ManhuntMilestone.BLAZE_ROD, "blaze_rod"),
+            Map.entry(ManhuntMilestone.STRONGHOLD, "in_stronghold"),
+            Map.entry(ManhuntMilestone.THE_END, "entered_end"),
+            Map.entry(ManhuntMilestone.KILL_DRAGON, "killed_dragon")
     );
 
     // Title settings
