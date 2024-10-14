@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 
 import java.util.Collection;
+import java.util.EnumMap;
 import java.util.Map;
 
 @SuppressWarnings("unused")
@@ -27,6 +28,12 @@ public class GameMilestoneListener implements Listener {
             Map.entry(ManhuntMilestone.THE_END,  "entering The End"),
             Map.entry(ManhuntMilestone.KILL_DRAGON,  "killing the Ender Dragon")
     );
+    private static final EnumMap<ManhuntMilestone, Boolean> HAS_ANNOUNCEMENT_BEEN_PLAYED = new EnumMap<>(ManhuntMilestone.class);
+
+    public static void reset() {
+        HAS_ANNOUNCEMENT_BEEN_PLAYED.clear();
+    }
+
     /**
      * Stops the game or announces intermediate milestones achieved by the Runners team
      */
@@ -47,8 +54,11 @@ public class GameMilestoneListener implements Listener {
                 }
                 // Check Milestones
                 for (ManhuntMilestone m : MinecraftManhuntPlugin.milestones.get(MinecraftManhuntPlugin.currentMilestone)) {
-                    if (criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(m))) {
+                    if (criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(m)) &&
+                        !HAS_ANNOUNCEMENT_BEEN_PLAYED.getOrDefault(m, false)
+                    ) {
                         Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: " + PREFIX_I + ANNOUNCEMENTS.get(m) + "!");
+                        HAS_ANNOUNCEMENT_BEEN_PLAYED.put(m, true);
                     }
                 }
             }

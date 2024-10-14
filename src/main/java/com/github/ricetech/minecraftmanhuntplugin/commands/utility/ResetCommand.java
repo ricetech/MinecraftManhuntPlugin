@@ -9,6 +9,7 @@ import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.ScoreKeeper;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.CompassInventoryHandlerListener;
+import com.github.ricetech.minecraftmanhuntplugin.listeners.GameMilestoneListener;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationStorageListener;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -138,6 +139,7 @@ public class ResetCommand implements CommandExecutor {
         TeamSwitchCommand.reset();
         TeamTpCommand.reset();
         ScoreKeeper.resetScores();
+        GameMilestoneListener.reset();
     }
 
     @Override
