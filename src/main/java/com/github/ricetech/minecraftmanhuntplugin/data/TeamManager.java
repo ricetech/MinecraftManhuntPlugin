@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.data;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import com.github.ricetech.minecraftmanhuntplugin.commands.game.StopGameCommand;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
@@ -157,16 +158,7 @@ public class TeamManager {
 
     public static void checkRunners() {
         if (runners.getSize() <= 0) {
-            MinecraftManhuntPlugin.isGameInProgress = false;
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Game Over!", "Hunters win by elimination.",
-                        MinecraftManhuntPlugin.TITLE_FADE_IN, MinecraftManhuntPlugin.TITLE_STAY, MinecraftManhuntPlugin.TITLE_FADE_OUT);
-            }
-            Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: Game Over! Hunters win by elimination.");
-            // Stop time
-            World overworld = Bukkit.getServer().getWorlds().getFirst();
-            overworld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
-            overworld.setTime(6000L);
+            StopGameCommand.stopGame(null, "Hunters win by elimination.");
         }
     }
 
