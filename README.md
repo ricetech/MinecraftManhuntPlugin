@@ -59,9 +59,8 @@ page for more information on available commands.
   - Asks players if they died to a Player or Natural Causes
   - Allows players who died to Natural Causes to teleport to their teammates with one click
   - Doesn't require granting permission to use the `/tp` command
-- Inventory Management
-  - Restore the inventory of a player
-  - Useful if someone takes an accidental trip into a lava pool
+- ~~Inventory Management~~
+  - This has been moved to a separate plugin, available [here](https://github.com/ricetech/KeepInventoryPlugin/)
 
 ## Roadmap
 
