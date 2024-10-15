@@ -45,7 +45,7 @@ public class GameMilestoneListener implements Listener {
             Collection<String> criteria = a.getCriteria();
             ManhuntTeam team = TeamManager.getTeam(p);
             // Runners win even if Hunters kill the dragon
-            if (MinecraftManhuntPlugin.manhuntObjective == ManhuntMilestone.KILL_DRAGON && criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(ManhuntMilestone.KILL_DRAGON))) {
+            if (team != ManhuntTeam.SPECTATORS && MinecraftManhuntPlugin.manhuntObjective == ManhuntMilestone.KILL_DRAGON && criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(ManhuntMilestone.KILL_DRAGON))) {
                 HAS_ANNOUNCEMENT_BEEN_PLAYED.put(ManhuntMilestone.KILL_DRAGON, true);
                 StopGameCommand.stopGame(null, PREFIX_W + ANNOUNCEMENTS.get(MinecraftManhuntPlugin.manhuntObjective));
             } else if (team == ManhuntTeam.RUNNERS) {  // Eliminated players cannot contribute towards milestones/objectives
