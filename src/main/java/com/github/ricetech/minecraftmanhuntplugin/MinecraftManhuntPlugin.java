@@ -126,9 +126,9 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         manager.registerEvents(new NightVisionListener(this), this);
         manager.registerEvents(new PlayerDeathCoordsListener(), this);
         manager.registerEvents(new PlayerDeathLocationStorageListener(), this);
-        manager.registerEvents(new PlayerDisconnectLocationStorageListener(this), this);
+        manager.registerEvents(new PlayerDisconnectLocationStorageListener(), this);
         manager.registerEvents(new PlayerEliminationOnDeathListener(), this);
-        manager.registerEvents(new PlayerPortalLocationStorageListener(this), this);
+        manager.registerEvents(new PlayerPortalLocationStorageListener(), this);
 
         // Register Commands
         // Game Management

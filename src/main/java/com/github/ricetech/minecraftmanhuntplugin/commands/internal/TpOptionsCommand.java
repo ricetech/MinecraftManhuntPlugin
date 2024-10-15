@@ -26,7 +26,7 @@ public class TpOptionsCommand implements CommandExecutor {
         // Get list of players to tp to
         List<Player> playerOptions = TeamManager.listTeamPlayers(TeamManager.getTeam(p), p);
 
-        if (playerOptions.size() == 0) {
+        if (playerOptions.isEmpty()) {
             // Teleport to last death location
             p.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + "Warning: There are no available teammates to teleport to.");
             p.sendMessage("You may instead teleport to where you died. You will be given 25 seconds of invincibility " +

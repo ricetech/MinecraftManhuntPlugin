@@ -77,7 +77,7 @@ public class ResetCommand implements CommandExecutor {
         }
 
         // Teleport to spawn
-        p.teleport(Bukkit.getServer().getWorlds().get(0).getSpawnLocation());
+        p.teleport(Bukkit.getServer().getWorlds().getFirst().getSpawnLocation());
 
         // Reset health, food, saturation and exhaustion
         p.setHealth(20);
@@ -91,7 +91,7 @@ public class ResetCommand implements CommandExecutor {
     }
 
     public static void runReset(JavaPlugin plugin) {
-        World overworld = Bukkit.getServer().getWorlds().get(0);
+        World overworld = Bukkit.getServer().getWorlds().getFirst();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             resetPlayer(p);

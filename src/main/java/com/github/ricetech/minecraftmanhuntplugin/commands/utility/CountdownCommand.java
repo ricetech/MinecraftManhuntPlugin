@@ -94,7 +94,7 @@ public class CountdownCommand implements CommandExecutor {
             for (Player hunter : hunters) {
                 hunter.setGameMode(GameMode.SPECTATOR);
                 hunter.setFlySpeed(0f);
-                hunter.teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
+                hunter.teleport(Bukkit.getWorlds().getFirst().getSpawnLocation());
             }
         }
 
