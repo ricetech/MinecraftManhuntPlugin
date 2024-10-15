@@ -37,6 +37,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     public static final String MAKE_TEAMS_COMMAND_ALIAS = "maketeams";
     public static final String START_GAME_COMMAND_ALIAS = "startgame";
     public static final String STOP_GAME_COMMAND_ALIAS = "stopgame";
+    public static final String SET_OBJECTIVE_COMMAND_ALIAS = "setobjective";
     // Utilities
     public static final String COUNTDOWN_COMMAND_ALIAS = "countdown";
     public static final String RESET_COMMAND_ALIAS = "reset";
@@ -136,6 +137,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setExecutor(new MakeTeamsCommand());
         this.getCommand(START_GAME_COMMAND_ALIAS).setExecutor(new StartGameCommand(this));
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setExecutor(new StopGameCommand());
+        this.getCommand(SET_OBJECTIVE_COMMAND_ALIAS).setExecutor(new SetObjectiveCommand());
         // Utilities
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setExecutor(new CountdownCommand(this));
         this.getCommand(RESET_COMMAND_ALIAS).setExecutor(new ResetCommand(this));
@@ -164,6 +166,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         this.getCommand(MAKE_TEAMS_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(START_GAME_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(STOP_GAME_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
+        this.getCommand(SET_OBJECTIVE_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         // Utilities
         this.getCommand(COUNTDOWN_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());
         this.getCommand(RESET_COMMAND_ALIAS).setTabCompleter(new ManhuntTabCompleter());

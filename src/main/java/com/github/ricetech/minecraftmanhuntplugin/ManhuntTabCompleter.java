@@ -32,6 +32,7 @@ public class ManhuntTabCompleter implements TabCompleter {
             case MinecraftManhuntPlugin.MAKE_TEAMS_COMMAND_ALIAS -> tabComplete = List.of(Arrays.asList("random", "select"));
             case MinecraftManhuntPlugin.START_GAME_COMMAND_ALIAS -> tabComplete = Arrays.asList(Collections.emptyList(), Arrays.asList("true", "false"), Arrays.asList("true", "false"));
             case MinecraftManhuntPlugin.STOP_GAME_COMMAND_ALIAS -> tabComplete = null;
+            case MinecraftManhuntPlugin.SET_OBJECTIVE_COMMAND_ALIAS -> tabComplete = List.of(new ArrayList<>(MinecraftManhuntPlugin.milestoneAdvancements.values()));
             // Internal
             case MinecraftManhuntPlugin.RESET_ELIGIBILITY_COMMAND_ALIAS -> tabComplete = null;
             case MinecraftManhuntPlugin.SELF_ELIMINATE_COMMAND_ALIAS -> tabComplete = null;

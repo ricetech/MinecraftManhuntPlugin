@@ -31,6 +31,10 @@ commands:
     description: Stops a manhunt game in progress.
     usage: "Usage: /stopgame"
     permission: mmh.game
+  setobjective:
+    description: Set the Runners' winning objective.
+    usage: "Usage: /setobjective <objective>"
+    permission: mmh.game
   # Utilities
   countdown:
     description: >

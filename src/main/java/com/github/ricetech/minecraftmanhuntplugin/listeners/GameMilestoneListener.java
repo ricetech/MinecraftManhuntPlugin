@@ -28,7 +28,7 @@ public class GameMilestoneListener implements Listener {
             Map.entry(ManhuntMilestone.THE_END,  "entering The End"),
             Map.entry(ManhuntMilestone.KILL_DRAGON,  "killing the Ender Dragon")
     );
-    private static final EnumMap<ManhuntMilestone, Boolean> HAS_ANNOUNCEMENT_BEEN_PLAYED = new EnumMap<>(ManhuntMilestone.class);
+    public static final EnumMap<ManhuntMilestone, Boolean> HAS_ANNOUNCEMENT_BEEN_PLAYED = new EnumMap<>(ManhuntMilestone.class);
 
     public static void reset() {
         HAS_ANNOUNCEMENT_BEEN_PLAYED.clear();
@@ -46,6 +46,7 @@ public class GameMilestoneListener implements Listener {
             ManhuntTeam team = TeamManager.getTeam(p);
             // Runners win even if Hunters kill the dragon
             if (MinecraftManhuntPlugin.manhuntObjective == ManhuntMilestone.KILL_DRAGON && criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(ManhuntMilestone.KILL_DRAGON))) {
+                HAS_ANNOUNCEMENT_BEEN_PLAYED.put(ManhuntMilestone.KILL_DRAGON, true);
                 StopGameCommand.stopGame(null, PREFIX_W + ANNOUNCEMENTS.get(MinecraftManhuntPlugin.manhuntObjective));
             } else if (team == ManhuntTeam.RUNNERS) {  // Eliminated players cannot contribute towards milestones/objectives
                 // Check Objectives
