@@ -2,6 +2,7 @@ package com.github.ricetech.minecraftmanhuntplugin.commands.game;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.ResetCommand;
+import com.github.ricetech.minecraftmanhuntplugin.listeners.GameMilestoneListener;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -65,7 +66,9 @@ public class StartGameCommand implements CommandExecutor {
         ListTeamsCommand.listTeams(false, null);
 
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt is starting!", "Get ready!",
+            p.sendTitle(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt is starting!",
+                    "Runners must win by " +
+                            GameMilestoneListener.ANNOUNCEMENTS.getOrDefault(MinecraftManhuntPlugin.manhuntObjective, "404 objective not found"),
                     MinecraftManhuntPlugin.TITLE_FADE_IN, MinecraftManhuntPlugin.TITLE_STAY, MinecraftManhuntPlugin.TITLE_FADE_OUT);
         }
 
