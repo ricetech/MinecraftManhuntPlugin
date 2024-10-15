@@ -35,7 +35,7 @@ public class SetObjectiveCommand implements CommandExecutor {
 
         MinecraftManhuntPlugin.manhuntObjective = newObjective;
 
-        if (GameMilestoneListener.HAS_ANNOUNCEMENT_BEEN_PLAYED.getOrDefault(newObjective, false)) {
+        if (MinecraftManhuntPlugin.isGameInProgress && GameMilestoneListener.HAS_ANNOUNCEMENT_BEEN_PLAYED.getOrDefault(newObjective, false)) {
             // Game is already won
             StopGameCommand.stopGame(null, GameMilestoneListener.PREFIX_W + GameMilestoneListener.ANNOUNCEMENTS.get(MinecraftManhuntPlugin.manhuntObjective));
         } else {
