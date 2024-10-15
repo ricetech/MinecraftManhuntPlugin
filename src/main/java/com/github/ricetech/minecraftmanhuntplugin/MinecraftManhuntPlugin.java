@@ -104,7 +104,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
     // Internal variables
     public static boolean isGameInProgress = false;
     public static boolean isTeamSelectInProgress = false;
-    public static ManhuntMilestone currentMilestone = ManhuntMilestone.KILL_DRAGON;
+    public static ManhuntMilestone manhuntObjective = ManhuntMilestone.KILL_DRAGON;
 
     @SuppressWarnings("ConstantConditions")
     @Override

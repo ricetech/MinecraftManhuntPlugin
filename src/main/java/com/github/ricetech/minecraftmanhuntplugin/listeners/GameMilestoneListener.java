@@ -45,15 +45,15 @@ public class GameMilestoneListener implements Listener {
             Collection<String> criteria = a.getCriteria();
             ManhuntTeam team = TeamManager.getTeam(p);
             // Runners win even if Hunters kill the dragon
-            if (MinecraftManhuntPlugin.currentMilestone == ManhuntMilestone.KILL_DRAGON && criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(ManhuntMilestone.KILL_DRAGON))) {
-                StopGameCommand.stopGame(null, PREFIX_W + ANNOUNCEMENTS.get(MinecraftManhuntPlugin.currentMilestone));
+            if (MinecraftManhuntPlugin.manhuntObjective == ManhuntMilestone.KILL_DRAGON && criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(ManhuntMilestone.KILL_DRAGON))) {
+                StopGameCommand.stopGame(null, PREFIX_W + ANNOUNCEMENTS.get(MinecraftManhuntPlugin.manhuntObjective));
             } else if (team == ManhuntTeam.RUNNERS) {  // Eliminated players cannot contribute towards milestones/objectives
                 // Check Objectives
-                if (criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(MinecraftManhuntPlugin.currentMilestone))) {
-                    StopGameCommand.stopGame(null, PREFIX_W + ANNOUNCEMENTS.get(MinecraftManhuntPlugin.currentMilestone));
+                if (criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(MinecraftManhuntPlugin.manhuntObjective))) {
+                    StopGameCommand.stopGame(null, PREFIX_W + ANNOUNCEMENTS.get(MinecraftManhuntPlugin.manhuntObjective));
                 }
                 // Check Milestones
-                for (ManhuntMilestone m : MinecraftManhuntPlugin.milestones.get(MinecraftManhuntPlugin.currentMilestone)) {
+                for (ManhuntMilestone m : MinecraftManhuntPlugin.milestones.get(MinecraftManhuntPlugin.manhuntObjective)) {
                     if (criteria.contains(MinecraftManhuntPlugin.milestoneAdvancements.get(m)) &&
                         !HAS_ANNOUNCEMENT_BEEN_PLAYED.getOrDefault(m, false)
                     ) {
