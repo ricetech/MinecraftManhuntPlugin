@@ -158,7 +158,7 @@ public class TeamManager {
 
     public static void checkRunners() {
         if (runners.getSize() <= 0) {
-            StopGameCommand.stopGame(null, "Hunters won by elimination.");
+            StopGameCommand.stopGame(null, "Hunters won by eliminating all Runners");
         }
     }
 
