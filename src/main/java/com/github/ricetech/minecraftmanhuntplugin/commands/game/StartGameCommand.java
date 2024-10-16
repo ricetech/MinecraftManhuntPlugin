@@ -4,6 +4,8 @@ import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
 import com.github.ricetech.minecraftmanhuntplugin.commands.utility.ResetCommand;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.GameMilestoneListener;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -62,6 +64,12 @@ public class StartGameCommand implements CommandExecutor {
         if (reset) {
             ResetCommand.runReset(this.plugin);
         }
+
+        // Set time to 0 & enable daylight cycle
+        // Duplicate required since stopgame turns off daylight cycle
+        World overworld = Bukkit.getServer().getWorlds().getFirst();
+        overworld.setTime(0);
+        overworld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, true);
 
         ListTeamsCommand.listTeams(false, null);
 
