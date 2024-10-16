@@ -119,8 +119,8 @@ public class ResetCommand implements CommandExecutor {
 
         overworld.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
 
-        // Revoke all advancements
-        Bukkit.getScheduler().runTaskLater(plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a everything"), 10L);
+        // Revoke all advancements unless they're a spectator (in which case there's no point)
+        Bukkit.getScheduler().runTaskLater(plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement revoke @a[team=!" + TeamManager.getSpectators().getName() + "] everything"), 10L);
 
         // Grant all advancements to spectators
         Bukkit.getScheduler().runTaskLater(plugin, () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "advancement grant @a[team=" + TeamManager.getSpectators().getName() + "] everything"), 20L);
