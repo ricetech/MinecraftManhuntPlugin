@@ -115,6 +115,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
         // Init Managers
         ScoreKeeper.init();
         TeamManager.init();
+        ScoreKeeper.resetScores();
 
         // Add Event Listeners
         PluginManager manager = getServer().getPluginManager();
