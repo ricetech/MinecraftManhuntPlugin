@@ -144,8 +144,8 @@ public class TrackCommand implements CommandExecutor {
         String dimension = MinecraftManhuntPlugin.getDimensionName(targetDimension);
         String trackTypeMsg = switch (trackType) {
             case NORMAL -> null;
-            case OWN_PORTAL_2DIM -> "Tracking YOUR exit portal. You can track the target's portal once in the Overworld.";
-            case OWN_PORTAL_NO_TARGET_PORTAL -> "Tracking YOUR exit portal. The target doesn't have one.";
+            case OWN_PORTAL_2DIM -> "Tracking YOUR portal. You can track the target's portal once in the Overworld.";
+            case OWN_PORTAL_NO_TARGET_PORTAL -> "Tracking YOUR portal. The target doesn't have one.";
             case TARGET_PORTAL -> "Tracking the target's portal.";
         };
 
@@ -161,11 +161,10 @@ public class TrackCommand implements CommandExecutor {
                 heightDiffString = "below";
             }
 
-            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + ".\n" +
-                    "Coordinates: (" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ").\n" +
-                    "Horizontal Distance: " + distance + " blocks.\n" +
-                    "Vertical Distance: " + Math.abs(heightDiff) + " blocks " + heightDiffString + " you.\n" +
-                    "Dimension: " + dimension + ".");
+            source.sendMessage("Tracking " + targetColor + targetName + ChatColor.RESET + " in " + dimension + ".\n" +
+                    "Coords: (" + targetLoc.getBlockX() + ", " + targetY + ", " + targetLoc.getBlockZ() + ").\n" +
+                    "ΔX: " + distance + " blocks.\n" +
+                    "ΔY: " + Math.abs(heightDiff) + " blocks " + heightDiffString + " you.");
             if (trackTypeMsg != null) {
                 source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + trackTypeMsg);
             }
@@ -214,10 +213,9 @@ public class TrackCommand implements CommandExecutor {
 //            } else {
 //                heightDiffString = "Very far below you";
 //            }
-            source.sendMessage("Tracking " + targetColor + targetName + ".");
-            source.sendMessage("Horizontal Distance: " + distanceString);
-            source.sendMessage("Vertical Distance: " + heightDiffString);
-            source.sendMessage("Dimension: " + dimension + ".");
+            source.sendMessage("Tracking " + targetColor + targetName + " in " + dimension + ".");
+            source.sendMessage("ΔX: " + distanceString);
+            source.sendMessage("ΔY: " + heightDiffString);
             if (trackTypeMsg != null) {
                 source.sendMessage(MinecraftManhuntPlugin.WARNING_MSG_COLOR + trackTypeMsg);
             }

@@ -237,7 +237,7 @@ public class MinecraftManhuntPlugin extends JavaPlugin {
 
     public static String getDimensionName(World.Environment e) {
         return switch (e) {
-            case NORMAL -> "Overworld";
+            case NORMAL -> "the Overworld";
             case NETHER -> "The Nether";
             case THE_END -> "The End";
             case CUSTOM -> "Custom World (You should not be seeing this)";
