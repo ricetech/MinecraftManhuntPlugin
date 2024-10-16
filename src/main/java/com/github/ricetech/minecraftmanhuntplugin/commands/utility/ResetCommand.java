@@ -14,6 +14,7 @@ import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationS
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.GameRule;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -38,6 +39,10 @@ public class ResetCommand implements CommandExecutor {
     }
 
     public static void resetPlayer(Player p) {
+        Location worldSpawn = Bukkit.getWorlds().getFirst().getSpawnLocation();
+        // Reset respawn points (i.e. reset bed spawns)
+        p.setRespawnLocation(worldSpawn);
+
         // Remove effects
         for (PotionEffect effect : p.getActivePotionEffects()) {
             if (effect.getType() != PotionEffectType.NIGHT_VISION) {
