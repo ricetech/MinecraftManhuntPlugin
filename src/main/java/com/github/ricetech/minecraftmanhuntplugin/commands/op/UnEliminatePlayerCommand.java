@@ -31,6 +31,11 @@ public class UnEliminatePlayerCommand implements CommandExecutor {
             return true;
         }
 
+        if (!MinecraftManhuntPlugin.isGameInProgress) {
+            Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: The game has been resumed!");
+            MinecraftManhuntPlugin.isGameInProgress = true;
+        }
+
         TeamManager.unEliminatePlayer(p);
 
         return true;
