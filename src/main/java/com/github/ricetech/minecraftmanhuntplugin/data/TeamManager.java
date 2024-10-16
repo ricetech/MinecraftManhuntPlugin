@@ -213,7 +213,7 @@ public class TeamManager {
 
     public static void eliminatePlayer(Player p) {
         eliminated.addEntry(p.getName());
-        Bukkit.broadcastMessage(MinecraftManhuntPlugin.RUNNERS_COLOR + p.getName() + ChatColor.RESET + " has been " +
+        Bukkit.broadcastMessage(MinecraftManhuntPlugin.GAME_MSG_COLOR + "Manhunt: " + MinecraftManhuntPlugin.RUNNERS_COLOR + p.getName() + MinecraftManhuntPlugin.GAME_MSG_COLOR + " has been " +
                 MinecraftManhuntPlugin.HUNTERS_COLOR + "eliminated.");
         checkRunners();
     }
