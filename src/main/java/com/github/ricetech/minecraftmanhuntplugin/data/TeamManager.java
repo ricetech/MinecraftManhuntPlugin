@@ -81,6 +81,8 @@ public class TeamManager {
         for (ManhuntTeam team : ManhuntTeam.values()) {
             validTeams.add(team.name());
         }
+
+        clearTeams();
     }
 
     public static Set<String> getValidTeams() {
