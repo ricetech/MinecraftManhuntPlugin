@@ -1,6 +1,7 @@
 package com.github.ricetech.minecraftmanhuntplugin.commands.internal;
 
 import com.github.ricetech.minecraftmanhuntplugin.MinecraftManhuntPlugin;
+import com.github.ricetech.minecraftmanhuntplugin.data.ManhuntTeam;
 import com.github.ricetech.minecraftmanhuntplugin.data.TeamManager;
 import com.github.ricetech.minecraftmanhuntplugin.listeners.PlayerDeathLocationStorageListener;
 import org.bukkit.Bukkit;
@@ -93,7 +94,11 @@ public class TeamTpCommand implements CommandExecutor {
                 return true;
             }
 
-            if (TeamManager.getTeam(p) != TeamManager.getTeam(target)) {
+            ManhuntTeam fromTeam = TeamManager.getTeam(p);
+            ManhuntTeam toTeam = TeamManager.getTeam(target);
+
+            if (fromTeam != toTeam && !((fromTeam == ManhuntTeam.RUNNERS && toTeam == ManhuntTeam.ELIMINATED) ||
+                    (fromTeam == ManhuntTeam.ELIMINATED && toTeam == ManhuntTeam.RUNNERS))) {
                 MinecraftManhuntPlugin.sendErrorMsg(sender, "Target player is not on your team. Try clicking on another player.");
                 Bukkit.dispatchCommand(p, MinecraftManhuntPlugin.TP_OPTIONS_COMMAND_ALIAS);
                 return true;
